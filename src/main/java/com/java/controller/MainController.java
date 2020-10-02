@@ -1,15 +1,37 @@
 package com.java.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.java.model.User;
+import com.java.service.UserService;
 
 @Controller
 public class MainController {
+	
+	@Autowired
+	UserService userService;
 
 	@RequestMapping(value={"/login","/"})
-	public ModelAndView firstPage() {
-		return new ModelAndView("login");
+	public ModelAndView firstPage() 
+	{
+		User user = new User();
+		ModelAndView model = new ModelAndView("login");
+		model.addObject("user", user);
+		
+		return model;
 	}	
 	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public ModelAndView processRequest(@ModelAttribute("user") User user)
+	{
+		if(userService.checUser(user))
+			return new ModelAndView("home");
+		else
+			return new ModelAndView("login");
+	}
 }

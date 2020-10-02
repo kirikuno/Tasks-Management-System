@@ -1,4 +1,7 @@
 <%@page session="false"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
 <html>
 <head>
 <title>Login</title>
@@ -283,11 +286,11 @@ input[type=text]:placeholder {
     </div>
 
     <!-- Login Form -->
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="username" placeholder="username">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
-    </form>
+    <form:form action="/login" method="POST" modelAttribute="user">
+      <form:input type="text" id="login" class="fadeIn second" path="username" placeholder="username"/>
+      <form:input type="text" id="password" class="fadeIn third" path="password" placeholder="password"/>
+      <input type="submit" class="fadeIn fourth" value="Log In"/>
+    </form:form>
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
