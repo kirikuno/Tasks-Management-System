@@ -20,14 +20,14 @@ CREATE TABLE [dbo].[Role_Menu](
 )
 
 CREATE TABLE [dbo].[user](
-	[userid] [varchar](50)	,
+	[userid] int,
 	[username] [nchar](10) NULL,
 	[password] [nchar](10) NULL,
 	PRIMARY KEY(userid)
-) 
+)
 
 CREATE TABLE [dbo].[Role_Author](
-	[userid] [varchar](50),
+	[userid] int,
 	[role_id] [nchar](10),
 	PRIMARY KEY(userid,role_id),
 	FOREIGN KEY (userid) REFERENCES [dbo].[user](userid),
@@ -45,7 +45,7 @@ CREATE TABLE [dbo].[Tasks](
 
 CREATE TABLE [dbo].[Task_Assigned](
 	[task_id] [varchar](50),
-	[userid] [varchar](50),
+	[userid] int,
 	[phase_id] [nchar](10) NULL,
 	[deadline] [date] NULL,
 	[phase_status] [nchar](10) NULL,
@@ -59,8 +59,9 @@ CREATE TABLE [dbo].[Task_Assigned](
 CREATE TABLE [dbo].[revenue](
 	[from_date] [date] NULL,
 	[to_date] [date] NULL,
-	[user_id] [varchar](50) NULL,
-	[finished_task_number] [numeric](18, 0) NULL
+	[userid] int,
+	[finished_task_number] [numeric](18, 0) NULL,
+	FOREIGN KEY (userid) REFERENCES [dbo].[user](userid)
 ) 
 
 
