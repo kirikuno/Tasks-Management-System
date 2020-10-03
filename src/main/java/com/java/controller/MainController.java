@@ -22,15 +22,20 @@ public class MainController {
 		User user = new User();
 		ModelAndView model = new ModelAndView("login");
 		model.addObject("user", user);
-		
 		return model;
 	}	
+	
+	@RequestMapping(value="/home")
+	public ModelAndView homePage()
+	{
+		return new ModelAndView("welcome");
+	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView processRequest(@ModelAttribute("user") User user)
 	{
 		if(userService.checUser(user))
-			return new ModelAndView("home");
+			return new ModelAndView("welcome");
 		else
 			return new ModelAndView("login");
 	}
