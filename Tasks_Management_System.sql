@@ -21,8 +21,8 @@ CREATE TABLE [dbo].[Role_Menu](
 
 CREATE TABLE [dbo].[user](
 	[userid] int,
-	[username] [nchar](10) NULL,
-	[password] [nchar](10) NULL,
+	[username] [nvarchar](50) NULL,
+	[password] [nvarchar](50) NULL,
 	PRIMARY KEY(userid)
 )
 
