@@ -29,7 +29,7 @@ public class MainController {
 		return model;
 	}	
 	
-	@RequestMapping(value="/home")
+	@RequestMapping(value="/index")
 	public ModelAndView homePage()
 	{
 		return new ModelAndView("index");
