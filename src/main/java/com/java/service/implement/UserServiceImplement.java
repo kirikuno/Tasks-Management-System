@@ -1,5 +1,6 @@
 package com.java.service.implement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,12 @@ public class UserServiceImplement implements UserService {
 	@Override
 	public Boolean checUser(User user) {
 		return userDao.checUser(user);
+	}
+
+	@Override
+	public ArrayList<String> loadingMenu(User user) 
+	{
+		return userDao.loadingMenu(user);
 	}
 
 }

@@ -52,7 +52,7 @@
                     <!-- Form -->
                     <div class="row">
                         <div class="col-12">
-                            <form:form class="form-horizontal m-t-20" id="loginform" action="index" method="POST" modelAttribute="user">
+                            <form:form class="form-horizontal m-t-20" id="loginform" action="/login" method="POST" modelAttribute="user">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i class="ti-user"></i></span>

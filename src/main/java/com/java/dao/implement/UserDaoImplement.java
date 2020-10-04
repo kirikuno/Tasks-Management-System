@@ -59,4 +59,19 @@ public class UserDaoImplement extends JdbcDaoSupport implements UserDao{
 		return false;
 	}
 
+	@Override
+	public ArrayList<String> loadingMenu(User user) {
+		String sql = "select Menu_id from Role_Menu where Role_id IN (select role_id from  Role_Author RA, [Tasks_Management].[dbo].[User] U where  username = ? and U.userid = RA.userid) group by Menu_id;";
+		
+		ArrayList<String> result = new ArrayList<String>();
+		
+		List<Map<String, Object>> rows  = getJdbcTemplate().queryForList(sql,new Object[]{user.getUsername()}); //
+		
+		for(Map<String, Object> row: rows)
+		{
+			result.add((String)row.get("Menu_id"));
+		}
+		return result;
+	}
+
 }

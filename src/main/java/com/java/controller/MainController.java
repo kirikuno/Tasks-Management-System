@@ -1,5 +1,7 @@
 package com.java.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,7 +31,7 @@ public class MainController {
 		return model;
 	}	
 	
-	@RequestMapping(value="/index")
+	@RequestMapping(value="/home")
 	public ModelAndView homePage()
 	{
 		return new ModelAndView("index");
@@ -39,8 +41,16 @@ public class MainController {
 	public ModelAndView processRequest(@ModelAttribute("user") User user)
 	{
 		if(userService.checUser(user))
-			return new ModelAndView("welcome");
+		{
+			ArrayList<String> menu = userService.loadingMenu(user);
+			for(String m: menu)
+			{
+				System.out.println(m); // show name of Menu	out terminal
+			}
+			
+			return new ModelAndView("index");
+		}
 		else
-			return new ModelAndView("login");
+			return new ModelAndView("authentication-login1");
 	}
 }
