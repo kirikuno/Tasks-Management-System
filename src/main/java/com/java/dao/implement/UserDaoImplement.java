@@ -37,6 +37,7 @@ public class UserDaoImplement extends JdbcDaoSupport implements UserDao{
 		for (Map<String, Object> row : rows) 
 		{
 			User user = new User();
+			user.setUser_id((Integer)row.get("userid"));
 			user.setUsername((String) row.get("username"));
 			user.setPassword((String) row.get("password"));
 			result.add(user);

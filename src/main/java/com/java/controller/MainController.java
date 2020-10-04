@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.model.User;
+import com.java.service.CategoryService;
 import com.java.service.UserService;
 
 @Controller
@@ -15,6 +16,9 @@ public class MainController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	CategoryService categoryService;
 
 	@RequestMapping(value={"/login","/"})
 	public ModelAndView firstPage() 
