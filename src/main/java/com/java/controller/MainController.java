@@ -20,7 +20,7 @@ public class MainController {
 	public ModelAndView firstPage() 
 	{
 		User user = new User();
-		ModelAndView model = new ModelAndView("login");
+		ModelAndView model = new ModelAndView("authentication-login1");
 		model.addObject("user", user);
 		return model;
 	}	
@@ -28,7 +28,7 @@ public class MainController {
 	@RequestMapping(value="/home")
 	public ModelAndView homePage()
 	{
-		return new ModelAndView("welcome");
+		return new ModelAndView("index");
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
