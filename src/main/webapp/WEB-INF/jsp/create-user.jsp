@@ -510,26 +510,7 @@
 			<!-- ============================================================== -->
 			<!-- Bread crumb and right sidebar toggle -->
 			<!-- ============================================================== -->
-			<div class="page-breadcrumb">
-				<div class="row">
-					<div class="col-5 align-self-center">
-						<h4 class="page-title">Dashboard</h4>
-						<div class="d-flex align-items-center"></div>
-					</div>
-					<div class="col-7 align-self-center">
-						<div
-							class="d-flex no-block justify-content-end align-items-center">
-							<nav aria-label="breadcrumb">
-								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="#">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">
-										Library</li>
-								</ol>
-							</nav>
-						</div>
-					</div>
-				</div>
-			</div>
+
 			<!-- ============================================================== -->
 			<!-- End Bread crumb and right sidebar toggle -->
 			<!-- ============================================================== -->
@@ -537,47 +518,57 @@
 			<!-- Container fluid  -->
 			<!-- ============================================================== -->
 			<div class="container-fluid">
+
 				<!-- ============================================================== -->
 				<!-- Info box -->
 				<!-- ============================================================== -->
-				<div class="row m-t-30">
-					<div class="col-md-4">
-						<div class="card text-white bg-primary">
-							<div class="card-header">
-								<h4 class="m-b-0 text-white">To Do</h4>
-							</div>
-							<div class="card-body">
-								<h3 class="card-title">Special title treatment</h3>
-								<p class="card-text">With supporting text below as a natural
-									lead-in to additional content.</p>
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<form class="form-horizontal r-separator">
+								<div class="card-body bg-light">
+									<h4 class="card-title m-t-10 p-b-20">Create User</h4>
+									<div class="form-group row p-b-15">
+										<label for="inputEmail3"
+											class="col-sm-3 text-right control-label col-form-label">UserName</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" id="inputEmail3"
+												placeholder="User Name Here">
+										</div>
+									</div>
+									<div class="form-group row p-b-15">
+										<label for="inputEmail3"
+											class="col-sm-3 text-right control-label col-form-label">Password</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" id="inputEmail3"
+												placeholder="Password Here">
+										</div>
+									</div>
 
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="card text-white bg-danger">
-							<div class="card-header">
-								<h4 class="m-b-0 text-white">Doing</h4>
-							</div>
-							<div class="card-body">
-								<h3 class="card-title">Special title treatment</h3>
-								<p class="card-text">With supporting text below as a natural
-									lead-in to additional content.</p>
+									<div class="form-group row p-b-15">
+										<label for="inputEmail3"
+											class="col-sm-3 text-right control-label col-form-label">Role
+										</label>
+										<div class="col-sm-9">
+											<select class="form-control">
+												<option>Choose Your Option</option>
+												<option>Dev1</option>
+												<option>Dev2</option>
+												<option>Dev3</option>
+											</select>
+										</div>
+									</div>
 
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="card text-white bg-success">
-							<div class="card-header">
-								<h4 class="m-b-0 text-white">Doing</h4>
-							</div>
-							<div class="card-body">
-								<h3 class="card-title">Special title treatment</h3>
-								<p class="card-text">With supporting text below as a natural
-									lead-in to additional content.</p>
-
-							</div>
+								</div>
+								<div class="card-body">
+									<div class="form-group m-b-0 text-right">
+										<button type="submit"
+											class="btn btn-info waves-effect waves-light">Save</button>
+										<button type="submit"
+											class="btn btn-dark waves-effect waves-light">Cancel</button>
+									</div>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -615,11 +606,10 @@
 	<!-- customizer Panel -->
 	<!-- ============================================================== -->
 
-
+	<div class="chat-windows"></div>
 	<!-- ============================================================== -->
 	<!-- All Jquery -->
 	<!-- ============================================================== -->
-	<div class="chat-windows"></div>
 	<script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
 	<!-- Bootstrap tether Core JavaScript -->
 	<script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
