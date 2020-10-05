@@ -20,4 +20,9 @@ public class CategoryServiceImplement implements CategoryService {
 		return categoryDao.getAllMenu();
 	}
 
+	@Override
+	public Category getMenuById(String id) {
+		return categoryDao.getMenuById(id);
+	}
+
 }

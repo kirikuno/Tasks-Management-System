@@ -12,8 +12,8 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.java.dao.UserDao;
+import com.java.model.Category;
 import com.java.model.User;
-
 
 @Repository
 public class UserDaoImplement extends JdbcDaoSupport implements UserDao{
@@ -60,16 +60,20 @@ public class UserDaoImplement extends JdbcDaoSupport implements UserDao{
 	}
 
 	@Override
-	public ArrayList<String> loadingMenu(User user) {
-		String sql = "select Menu_id from Role_Menu where Role_id IN (select role_id from  Role_Author RA, [Tasks_Management].[dbo].[User] U where  username = ? and U.userid = RA.userid) group by Menu_id;";
+	public ArrayList<Category> loadingMenu(User user) {
+		String sql = " select * from Category where Menu_id IN (select Menu_id from Role_Menu where Role_id IN (select role_id from  Role_Author RA, [Tasks_Management].[dbo].[User] U where  username = ? and U.userid = RA.userid) group by Menu_id);";
 		
-		ArrayList<String> result = new ArrayList<String>();
+		ArrayList<Category> result = new ArrayList<Category>();
 		
 		List<Map<String, Object>> rows  = getJdbcTemplate().queryForList(sql,new Object[]{user.getUsername()}); //
 		
 		for(Map<String, Object> row: rows)
 		{
-			result.add((String)row.get("Menu_id"));
+			Category menu = new Category();
+			menu.setMenu_id((String)row.get("Menu_id"));
+			menu.setMenu_name((String)row.get("Menu_name"));
+			menu.setMenu_description((String)row.get("Menu_description"));
+			result.add(menu);
 		}
 		return result;
 	}

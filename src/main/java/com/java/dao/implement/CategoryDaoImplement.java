@@ -44,4 +44,21 @@ public class CategoryDaoImplement extends JdbcDaoSupport implements CategoryDao 
 		return result;
 	}
 
+	@Override
+	public Category getMenuById(String id) {
+		
+		String sql = "SELECT * FROM Category Where Menu_id=?;";
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql,new Object[]{id});
+		Category result = new Category();
+		
+		for (Map<String, Object> row : rows) 
+		{
+			Category menu = new Category();
+			menu.setMenu_id((String)row.get("Menu_id"));
+            menu.setMenu_name((String)row.get("Menu_name"));
+            menu.setMenu_description((String)row.get("Menu_description"));
+		}
+		return result;
+	}
+
 }

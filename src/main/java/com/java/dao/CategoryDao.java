@@ -6,4 +6,5 @@ import com.java.model.Category;
 
 public interface CategoryDao {
 	List<Category> getAllMenu();
+	Category getMenuById(String id);
 }

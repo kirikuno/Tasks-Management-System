@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.java.dao.UserDao;
+import com.java.model.Category;
 import com.java.model.User;
 import com.java.service.UserService;
 
@@ -27,7 +28,7 @@ public class UserServiceImplement implements UserService {
 	}
 
 	@Override
-	public ArrayList<String> loadingMenu(User user) 
+	public ArrayList<Category> loadingMenu(User user) 
 	{
 		return userDao.loadingMenu(user);
 	}

@@ -1,3 +1,7 @@
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -109,25 +113,16 @@
                   <span class="hide-menu">Tasks </span>
                 </a>
                 <ul aria-expanded="false" class="collapse first-level">
-                  <li class="sidebar-item">
-                    <a href="inbox-email.html" class="sidebar-link">
-                      <i class="mdi mdi-email"></i>
-                      <span class="hide-menu"> Task </span>
-                    </a>
-                  </li>
-                  <li class="sidebar-item">
-                    <a href="inbox-email.html" class="sidebar-link">
-                      <i class="mdi mdi-email"></i>
-                      <span class="hide-menu"> Create Project </span>
-                    </a>
-                  </li>
-                  <li class="sidebar-item">
-                    <a href="inbox-email-detail.html" class="sidebar-link">
-                      <i class="mdi mdi-email-alert"></i>
-                      <span class="hide-menu"> Create User  </span>
-                    </a>
-                  </li>
+                
+               <c:forEach var="menu" items="${menuList}">
                   
+                  <li class="sidebar-item">
+                    <a href="${menu.getMenu_id()}" class="sidebar-link">
+                      <i class="mdi mdi-email-alert"></i>
+                      <span class="hide-menu"> <c:out value = "${menu.getMenu_name()}"/></span>
+                    </a>
+                  </li>
+               </c:forEach>
                  
                 </ul>
               </li>

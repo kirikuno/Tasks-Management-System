@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.java.model.Category;
 import com.java.model.User;
 import com.java.service.CategoryService;
 import com.java.service.UserService;
@@ -31,6 +32,31 @@ public class MainController {
 		return model;
 	}	
 	
+	@RequestMapping(value="/menu1")
+	public ModelAndView taskDetail()
+	{
+		return new ModelAndView("task-detail");
+	}
+
+	
+	@RequestMapping(value="/menu2")
+	public ModelAndView registerUser()
+	{
+		return new ModelAndView("create-user");
+	}
+	
+	@RequestMapping(value="/menu3")
+	public ModelAndView createProject()
+	{
+		return new ModelAndView("create-project");
+	}
+	
+	@RequestMapping(value="/menu4")
+	public ModelAndView analysis()
+	{
+		return new ModelAndView("analysis");
+	}
+	
 	@RequestMapping(value="/home")
 	public ModelAndView homePage()
 	{
@@ -42,13 +68,9 @@ public class MainController {
 	{
 		if(userService.checUser(user))
 		{
-			ArrayList<String> menu = userService.loadingMenu(user);
-			for(String m: menu)
-			{
-				System.out.println(m); // show name of Menu	out terminal
-			}
+			ArrayList<Category> menuList = userService.loadingMenu(user);
 			
-			return new ModelAndView("index");
+			return new ModelAndView("index","menuList",menuList);
 		}
 		else
 			return new ModelAndView("authentication-login1");
