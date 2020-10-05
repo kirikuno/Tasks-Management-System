@@ -1,3 +1,7 @@
+<%@page session="false"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
 <!DOCTYPE html>
 <html dir="ltr">
 
@@ -48,18 +52,18 @@
                     <!-- Form -->
                     <div class="row">
                         <div class="col-12">
-                            <form class="form-horizontal m-t-20" id="loginform" action="index">
+                            <form:form class="form-horizontal m-t-20" id="loginform" action="/login" method="POST" modelAttribute="user">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                    <form:input type="text" class="form-control form-control-lg" placeholder="Username" aria-label="Username" path="username" aria-describedby="basic-addon1"/>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="text" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+                                    <form:input type="text" class="form-control form-control-lg" placeholder="Password" aria-label="Password" path="password" aria-describedby="basic-addon1"/>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-12">
@@ -88,7 +92,7 @@
                                         Don't have an account? <a href="authentication-register1.html" class="text-info m-l-5"><b>Sign Up</b></a>
                                     </div>
                                 </div>
-                            </form>
+                            </form:form>
                         </div>
                     </div>
                 </div>
