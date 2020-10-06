@@ -579,81 +579,70 @@
 									classes for horizontal form</h6>
 								<form class="form-horizontal p-t-20">
 									<div class="form-group row">
-										<label for="uname" class="col-sm-3 control-label">Username*</label>
+										<label class="col-sm-3 control-label">User</label>
+										<div class="col-md-9">
+											<select class="form-control custom-select">
+												<option value="">User1</option>
+												<option value="">User2</option>
+												<option value="">User3</option>
+												<option value="">User4</option>
+											</select> 
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="email2" class="col-sm-3 control-label">Phase ID</label>
 										<div class="col-sm-9">
 											<div class="input-group">
-												<input type="text" class="form-control" id="uname"
-													placeholder="Username">
-												<div class="input-group-append">
-													<span class="input-group-text"><i class="ti-user"></i></span>
-												</div>
+												<input type="text" class="form-control"
+													id="exampleInputEmail1" placeholder="Enter Phase ID">
 											</div>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label for="email2" class="col-sm-3 control-label">Email*</label>
+										<label for="web10" class="col-sm-3 control-label">Deadline</label>
 										<div class="col-sm-9">
 											<div class="input-group">
-												<input type="email" class="form-control"
-													id="exampleInputEmail1" placeholder="Enter email">
-												<div class="input-group-append">
-													<span class="input-group-text"><i class="ti-email"></i></span>
-												</div>
+												<input type="date" class="form-control" id="web10"
+												>
+												
 											</div>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label for="web10" class="col-sm-3 control-label">Website</label>
+										<label for="email2" class="col-sm-3 control-label">Phase Status</label>
 										<div class="col-sm-9">
 											<div class="input-group">
-												<input type="text" class="form-control" id="web10"
-													placeholder="Enter Website Name">
-												<div class="input-group-append">
-													<span class="input-group-text"><i class="ti-world"></i></span>
-												</div>
+												<input type="text" class="form-control"
+													id="exampleInputEmail1" placeholder="Enter Phase Status">
 											</div>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label for="pass3" class="col-sm-3 control-label">Password*</label>
+										<label for="email2" class="col-sm-3 control-label">Home Flag</label>
 										<div class="col-sm-9">
 											<div class="input-group">
-												<input type="password" class="form-control" id="pass3"
-													placeholder="Enter pwd">
-												<div class="input-group-append">
-													<span class="input-group-text"><i class="ti-lock"></i></span>
-												</div>
+												<input type="text" class="form-control"
+													id="exampleInputEmail1" placeholder="Enter Home Flag">
 											</div>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label for="pass4" class="col-sm-3 control-label">Re
-											Password*</label>
+										<label for="web10" class="col-sm-3 control-label">Finished Date</label>
 										<div class="col-sm-9">
 											<div class="input-group">
-												<input type="password" class="form-control" id="pass4"
-													placeholder="Re Enter pwd">
-												<div class="input-group-append">
-													<span class="input-group-text"><i class="ti-lock"></i></span>
-												</div>
+												<input type="date" class="form-control" id="web10"
+												>
+												
 											</div>
 										</div>
 									</div>
-									<div class="form-group row">
-										<div class="offset-sm-3 col-sm-9">
-											<div class="custom-control custom-checkbox mr-sm-2">
-												<input type="checkbox" class="custom-control-input"
-													id="checkbox4" value="check"> <label
-													class="custom-control-label" for="checkbox4">Check
-													Me Out !</label>
-											</div>
-										</div>
-									</div>
+									
+									
+									
 									<div class="form-group row m-b-0">
 										<div class="offset-sm-3 col-sm-9 ">
 											<button type="submit"
-												class="btn btn-info waves-effect waves-light">Sign
-												in</button>
+												class="btn btn-info waves-effect waves-light">OK</button>
 										</div>
 									</div>
 								</form>
@@ -684,28 +673,25 @@
 										<thead>
 											<tr>
 												<th>No</th>
-												<th>Name</th>
-												<th>Email</th>
-												<th>Phone</th>
-												<th>Role</th>
-												<th>Age</th>
-												<th>Joining date</th>
-												<th>Salery</th>
-												<th>Act</th>
+												<th>User Name </th>
+												<th>Role </th>
+												<th>Phase ID</th>
+												<th>Deadline</th>
+												<th>Phase Status</th>
+												<th>Home Flag</th>
+												<th>Finished Date</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
-												<td>14</td>
-												<td><a href="javascript:void(0)"><img
-														src="../../assets/images/users/8.jpg" alt="user"
-														width="40" class="rounded-circle" /> Govinda jalan</a></td>
-												<td>govinda@gmail.com</td>
-												<td>+345 456 789</td>
-												<td><span class="label label-success">Accountant</span></td>
-												<td>28</td>
-												<td>1-10-2013</td>
-												<td>$2200</td>
+												<td>1</td>
+												<td> Govinda jalan</a></td>
+												<td><span class="label label-success">Dev</span></td>
+												<td>1</td>
+												<td>2020/11/9</td>
+												<td>abc</td>
+												<td>1</td>
+												<td>2020/12/9</td>
 												<td>
 
 													<div class="button-box">
@@ -723,8 +709,8 @@
 																
 																<div class="modal-footer">
 																	<button type="button" class="btn btn-default"
-																		data-dismiss="modal">Yes</button>
-																	<button type="button" class="btn btn-primary">No</button>
+																		>Yes</button>
+																	<button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
 																</div>
 															</div>
 														</div>
