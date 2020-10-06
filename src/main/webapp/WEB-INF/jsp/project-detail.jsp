@@ -717,6 +717,74 @@
 													</div>
 												</td>
 											</tr>
+											<tr>
+												<td>1</td>
+												<td> Govinda jalan</a></td>
+												<td><span class="label label-success">Dev</span></td>
+												<td>1</td>
+												<td>2020/11/9</td>
+												<td>abc</td>
+												<td>1</td>
+												<td>2020/12/9</td>
+												<td>
+
+													<div class="button-box">
+														<button type="button" class="btn btn-primary"
+															data-toggle="modal" data-target="#exampleModal"
+															data-whatever="@mdo">Delete User</button>
+													</div>
+													<div class="modal fade" id="exampleModal" tabindex="-1"
+														role="dialog" aria-labelledby="exampleModalLabel1">
+														<div class="modal-dialog center" role="document">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h4 class="modal-title" id="exampleModalLabel1">Do You Want Delete User</h4>
+																</div>
+																
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-default"
+																		>Yes</button>
+																	<button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+																</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>1</td>
+												<td> Govinda jalan</a></td>
+												<td><span class="label label-success">Dev</span></td>
+												<td>1</td>
+												<td>2020/11/9</td>
+												<td>abc</td>
+												<td>1</td>
+												<td>2020/12/9</td>
+												<td>
+
+													<div class="button-box">
+														<button type="button" class="btn btn-primary"
+															data-toggle="modal" data-target="#exampleModal"
+															data-whatever="@mdo">Delete User</button>
+													</div>
+													<div class="modal fade" id="exampleModal" tabindex="-1"
+														role="dialog" aria-labelledby="exampleModalLabel1">
+														<div class="modal-dialog center" role="document">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h4 class="modal-title" id="exampleModalLabel1">Do You Want Delete User</h4>
+																</div>
+																
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-default"
+																		>Yes</button>
+																	<button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+																</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
 										</tbody>
 
 									</table>
