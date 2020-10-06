@@ -1,6 +1,7 @@
 package com.java.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.model.Category;
+import com.java.model.Role;
 import com.java.model.User;
 import com.java.service.CategoryService;
+import com.java.service.RoleService;
 import com.java.service.UserService;
 
 @Controller
@@ -22,6 +25,9 @@ public class MainController {
 	
 	@Autowired
 	CategoryService categoryService;
+	
+	@Autowired
+	RoleService roleService;
 
 	@RequestMapping(value={"/login","/"})
 	public ModelAndView firstPage() 
@@ -42,7 +48,13 @@ public class MainController {
 	@RequestMapping(value="/menu2")
 	public ModelAndView registerUser()
 	{
-		return new ModelAndView("create-user");
+        ModelAndView model = new ModelAndView("create-user","user",new User());
+		
+		List<Role> roleList = roleService.getAllRoles();
+		
+		model.addObject("roleList",roleList);
+		
+		return model;
 	}
 	
 	@RequestMapping(value="/menu3")

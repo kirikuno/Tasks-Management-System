@@ -11,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import com.java.dao.RoleDao;
 import com.java.model.Role;
-import com.java.service.RoleService;
 
 @Repository
-public class RoleDaoImplement extends JdbcDaoSupport implements  RoleService {
+public class RoleDaoImplement extends JdbcDaoSupport implements RoleDao {
 
 	@Autowired
 	DataSource dataSource;
@@ -27,7 +27,8 @@ public class RoleDaoImplement extends JdbcDaoSupport implements  RoleService {
 	}
 	
 	@Override
-	public List<Role> getAllRoles() {
+	public List<Role> getAllRoles() 
+	{
 		String sql = "SELECT * FROM [Tasks_Management].[dbo].[Role];";
 		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 		List<Role> result = new ArrayList<Role>();
@@ -41,5 +42,4 @@ public class RoleDaoImplement extends JdbcDaoSupport implements  RoleService {
 		}
 		return result;
 	}
-
 }
