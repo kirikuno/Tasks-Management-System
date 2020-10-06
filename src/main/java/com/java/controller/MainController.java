@@ -75,4 +75,10 @@ public class MainController {
 		else
 			return new ModelAndView("authentication-login1");
 	}
+	//test view 
+	@RequestMapping(value="/project-detail")
+	public ModelAndView projectdetail()
+	{
+		return new ModelAndView("project-detail");
+	}
 }
