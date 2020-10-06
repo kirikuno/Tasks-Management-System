@@ -81,4 +81,11 @@ public class MainController {
 	{
 		return new ModelAndView("project-detail");
 	}
+	@RequestMapping(value="/create-project")
+	public ModelAndView cprojectdetail()
+	{
+		return new ModelAndView("create-project");
+	}
+	
+	//
 }
