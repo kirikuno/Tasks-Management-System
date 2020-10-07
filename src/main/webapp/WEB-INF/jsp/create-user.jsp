@@ -555,11 +555,15 @@
 											class="col-sm-3 text-right control-label col-form-label">Role
 										</label>
 										<div class="col-sm-9">
-											<select class="form-control">
+											<fieldset class="form-control">
 												<c:forEach var="role" items="${roleList}">
-													<option><c:out value="${role.getRole_name()}" /></option>
+													<%-- <option><c:out value="${role.getRole_name()}" /></option> --%>
+													 <input id="${role.getRole_id()}" type="checkbox" name="role_id" value="${role.getRole_id()}"/>
+                                                     <label for="${role.getRole_id()}" >
+                                                        <c:out value="${role.getRole_name()}"/>
+                                                     </label><br/>
 												</c:forEach>
-											</select>
+											</fieldset>
 
 										</div>
 									</div>

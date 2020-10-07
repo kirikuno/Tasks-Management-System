@@ -8,6 +8,9 @@ import com.java.model.User;
 
 public interface UserService {
   List<User> getAllUsers();
-  Boolean checUser(User user);
+  Boolean checkUser(User user);
+  Boolean checkExistUser(User user);
   ArrayList<Category> loadingMenu(User user);
+  void insertUser(User user);
+  int getIdByUsername(String username);
 }

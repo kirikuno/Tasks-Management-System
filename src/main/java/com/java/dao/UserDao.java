@@ -9,6 +9,9 @@ import com.java.model.User;
 public interface UserDao {
 
 	List<User> getAllUsers();
-    Boolean checUser(User user);
+    Boolean checkUser(User user);
 	ArrayList<Category> loadingMenu(User user);
+	Boolean checkExistUser(User user);
+	void insertUser(User user);
+	int getIdByUsername(String username);
 }

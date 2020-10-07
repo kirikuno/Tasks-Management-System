@@ -12,9 +12,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.java.model.Category;
 import com.java.model.Role;
+import com.java.model.Role_Author;
 import com.java.model.User;
 import com.java.service.CategoryService;
 import com.java.service.RoleService;
+import com.java.service.Role_AuthorService;
 import com.java.service.UserService;
 
 @Controller
@@ -28,6 +30,9 @@ public class MainController {
 	
 	@Autowired
 	RoleService roleService;
+	
+	@Autowired
+	Role_AuthorService roleAuthorService;
 
 	@RequestMapping(value={"/login","/"})
 	public ModelAndView firstPage() 
@@ -78,7 +83,7 @@ public class MainController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView processRequest(@ModelAttribute("user") User user)
 	{
-		if(userService.checUser(user))
+		if(userService.checkUser(user))
 		{
 			ArrayList<Category> menuList = userService.loadingMenu(user);
 			
@@ -87,6 +92,22 @@ public class MainController {
 		else
 			return new ModelAndView("authentication-login1");
 	}
+	
+	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
+	public ModelAndView processRegister(@ModelAttribute("user")User user)
+	{
+		if(userService.checkExistUser(user)) // exist UserName in DB
+		{
+			return registerUser(); // + show fail
+		}
+		else
+		{
+			userService.insertUser(user);
+			roleAuthorService.insertRole_Author(new Role_Author(userService.getIdByUsername(user.getUsername()),"R6"));
+			return registerUser(); // + show success
+		}
+	}
+	
 	//test view 
 	@RequestMapping(value="/project-detail")
 	public ModelAndView projectdetail()

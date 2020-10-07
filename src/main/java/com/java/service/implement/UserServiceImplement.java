@@ -23,14 +23,29 @@ public class UserServiceImplement implements UserService {
 	}
 
 	@Override
-	public Boolean checUser(User user) {
-		return userDao.checUser(user);
+	public Boolean checkUser(User user) {
+		return userDao.checkUser(user);
 	}
 
 	@Override
 	public ArrayList<Category> loadingMenu(User user) 
 	{
 		return userDao.loadingMenu(user);
+	}
+
+	@Override
+	public Boolean checkExistUser(User user) {
+		return userDao.checkExistUser(user);
+	}
+
+	@Override
+	public void insertUser(User user) {
+		userDao.insertUser(user);
+	}
+
+	@Override
+	public int getIdByUsername(String username) {
+		return userDao.getIdByUsername(username);
 	}
 
 }

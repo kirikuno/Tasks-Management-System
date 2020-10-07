@@ -46,7 +46,7 @@ public class UserDaoImplement extends JdbcDaoSupport implements UserDao{
 	}
 
 	@Override
-	public Boolean checUser(User user) {
+	public Boolean checkUser(User user) {
 		List<User> allUsers = getAllUsers();
 		
 		for(User u: allUsers)
@@ -75,6 +75,46 @@ public class UserDaoImplement extends JdbcDaoSupport implements UserDao{
 			menu.setMenu_description((String)row.get("Menu_description"));
 			result.add(menu);
 		}
+		return result;
+	}
+
+	@Override
+	public Boolean checkExistUser(User user) {
+        List<User> allUsers = getAllUsers();
+		
+		for(User u: allUsers)
+		{
+			if(u.getUsername().equals(user.getUsername()))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public void insertUser(User user) 
+	{
+		String sql = "INSERT INTO [Tasks_Management].[dbo].[user] " +
+				"(username,password) VALUES (?,?)" ;
+		getJdbcTemplate().update(sql, new Object[]{
+				user.getUsername(), user.getPassword()
+		});
+		
+	}
+
+	@Override
+	public int getIdByUsername(String username) {
+		String sql = "Select userid from [Tasks_Management].[dbo].[User] where username = ? ";
+		
+		int result = 0;
+        List<Map<String, Object>> rows  = getJdbcTemplate().queryForList(sql,new Object[]{username});
+		
+		for(Map<String, Object> row: rows)
+		{
+			result = (Integer)row.get("userid");
+		}
+		
 		return result;
 	}
 
