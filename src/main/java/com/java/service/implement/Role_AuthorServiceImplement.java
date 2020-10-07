@@ -1,5 +1,7 @@
 package com.java.service.implement;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,11 @@ public class Role_AuthorServiceImplement implements Role_AuthorService {
 	public void insertRole_Author(Role_Author ra) 
 	{
 		roleAuthorDao.insertRole_Author(ra);
+	}
+
+	@Override
+	public void insertRoleAuthors(List<Role_Author> roleAuthors) {
+		roleAuthorDao.insertRoleAuthors(roleAuthors);
 	}
 
 }

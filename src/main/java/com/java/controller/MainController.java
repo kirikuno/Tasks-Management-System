@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.model.Category;
@@ -94,7 +95,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
-	public ModelAndView processRegister(@ModelAttribute("user")User user)
+	public ModelAndView processRegister(@ModelAttribute("user")User user, @RequestParam(value = "role_id", required = true) ArrayList<String> roleIdList )
 	{
 		if(userService.checkExistUser(user)) // exist UserName in DB
 		{
@@ -103,7 +104,15 @@ public class MainController {
 		else
 		{
 			userService.insertUser(user);
-			roleAuthorService.insertRole_Author(new Role_Author(userService.getIdByUsername(user.getUsername()),"R6"));
+			
+			ArrayList<Role_Author> roleAuthorList = new ArrayList<Role_Author>();
+			
+			for(String role_id: roleIdList)
+			{
+				Role_Author roleAuthor = new Role_Author(userService.getIdByUsername(user.getUsername()),role_id);
+				roleAuthorList.add(roleAuthor);
+			}
+			roleAuthorService.insertRoleAuthors(roleAuthorList);
 			return registerUser(); // + show success
 		}
 	}
