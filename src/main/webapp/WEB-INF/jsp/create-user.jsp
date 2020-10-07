@@ -1,3 +1,7 @@
+<%@page session="false"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
@@ -525,23 +529,24 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="card">
-							<form class="form-horizontal r-separator">
+							<form:form class="form-horizontal r-separator" method="POST"
+								modelAttribute="user">
 								<div class="card-body bg-light">
 									<h4 class="card-title m-t-10 p-b-20">Create User</h4>
 									<div class="form-group row p-b-15">
 										<label for="inputEmail3"
 											class="col-sm-3 text-right control-label col-form-label">UserName</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" id="inputEmail3"
-												placeholder="User Name Here">
+											<form:input type="text" class="form-control" id="inputEmail3"
+												placeholder="User Name Here" path="username" />
 										</div>
 									</div>
 									<div class="form-group row p-b-15">
 										<label for="inputEmail3"
 											class="col-sm-3 text-right control-label col-form-label">Password</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" id="inputEmail3"
-												placeholder="Password Here">
+											<form:input type="text" class="form-control" id="inputEmail3"
+												placeholder="Password Here" path="password" />
 										</div>
 									</div>
 
@@ -551,24 +556,24 @@
 										</label>
 										<div class="col-sm-9">
 											<select class="form-control">
-												<option>Choose Your Option</option>
-												<option>Dev1</option>
-												<option>Dev2</option>
-												<option>Dev3</option>
+												<c:forEach var="role" items="${roleList}">
+													<option><c:out value="${role.getRole_name()}" /></option>
+												</c:forEach>
 											</select>
+
 										</div>
 									</div>
 
 								</div>
 								<div class="card-body">
 									<div class="form-group m-b-0 text-right">
-										<button type="submit"
+										<button type="submit" formaction="/registerUser"
 											class="btn btn-info waves-effect waves-light">Save</button>
 										<button type="submit"
 											class="btn btn-dark waves-effect waves-light">Cancel</button>
 									</div>
 								</div>
-							</form>
+							</form:form>
 						</div>
 					</div>
 				</div>
