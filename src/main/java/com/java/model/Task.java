@@ -4,6 +4,7 @@ public class Task {
 
 	private String task_id;
 	private String task_name;
+	private String task_description;
 	private String status;
 	private String due_date;
 	private String create_date;
@@ -38,11 +39,16 @@ public class Task {
 		this.create_date = create_date;
 	}
 	
-	
+	public String getTask_description() {
+		return task_description;
+	}
+	public void setTask_description(String task_description) {
+		this.task_description = task_description;
+	}
 	@Override
 	public String toString() {
-		return "Task [task_id=" + task_id + ", task_name=" + task_name + ", status=" + status + ", due_date=" + due_date
-				+ ", create_date=" + create_date + "]";
+		return "Task [task_id=" + task_id + ", task_name=" + task_name + ", task_description=" + task_description
+				+ ", status=" + status + ", due_date=" + due_date + ", create_date=" + create_date + "]";
 	}
 	
 	

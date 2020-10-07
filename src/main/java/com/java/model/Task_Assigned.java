@@ -6,7 +6,7 @@ public class Task_Assigned {
 	private String task_id;
 	private String user_id;
 	private String phase_id;
-	private String phase_status;
+	private String status;
 	private Date deadline;
 	private Boolean home_flag;
 	private Date finished_date;
@@ -35,12 +35,12 @@ public class Task_Assigned {
 		this.phase_id = phase_id;
 	}
 
-	public String getPhase_status() {
-		return phase_status;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setPhase_status(String phase_status) {
-		this.phase_status = phase_status;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public Date getDeadline() {
@@ -70,7 +70,7 @@ public class Task_Assigned {
 	@Override
 	public String toString() {
 		return "Task_Assigned [task_id=" + task_id + ", user_id=" + user_id + ", phase_id=" + phase_id
-				+ ", phase_status=" + phase_status + ", deadline=" + deadline + ", home_flag=" + home_flag
+				+ ", phase_status=" + status + ", deadline=" + deadline + ", home_flag=" + home_flag
 				+ ", finished_date=" + finished_date + "]";
 	}
 
