@@ -117,17 +117,5 @@ public class MainController {
 		}
 	}
 	
-	//test view 
-	@RequestMapping(value="/project-detail")
-	public ModelAndView projectdetail()
-	{
-		return new ModelAndView("project-detail");
-	}
-	@RequestMapping(value="/create-project")
-	public ModelAndView cprojectdetail()
-	{
-		return new ModelAndView("create-project");
-	}
-	
-	//
+
 }

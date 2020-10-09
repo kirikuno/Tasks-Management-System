@@ -549,46 +549,47 @@
 								<h4 class="card-title">Create Project</h4>
 							</div>
 							<hr class="m-t-0" />
-							<form class="form-horizontal r-separator">
+							<form:form class="form-horizontal r-separator" action="" method="post">
 								<div class="card-body">
-									<div class="form-group row p-b-15">
-										<label for="inputEmail3"
-											class="col-sm-3 text-right control-label col-form-label">Project
-											Name</label>
-										<div class="col-sm-9">
-											<input type="text" class="form-control" id="inputEmail3"
-												placeholder="Full Name Here" />
+									
+										<div class="form-group row p-b-15">
+											<label for="inputEmail3"
+												class="col-sm-3 text-right control-label col-form-label">Project
+												Name</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control" id="inputEmail3"
+													placeholder="Full Name Here" />
+											</div>
 										</div>
-									</div>
-									<div class="form-group row p-b-15">
-										<label for="inputEmail3"
-											class="col-sm-3 text-right control-label col-form-label">Status</label>
-										<div class="col-sm-9">
-											<input type="text" class="form-control" id="inputEmail3"
-												placeholder="Title Here" />
+										<div class="form-group row p-b-15">
+											<label for="inputEmail3"
+												class="col-sm-3 text-right control-label col-form-label">Status</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control" id="inputEmail3"
+													placeholder="Title Here" />
+											</div>
 										</div>
-									</div>
 
-									<div class="form-group row p-b-15">
-										<label for="inputEmail3"
-											class="col-sm-3 text-right control-label col-form-label">Due
-											Date</label>
-										<div class="col-sm-9">
-											<input type="date" class="form-control" value="2018-05-13">
+										<div class="form-group row p-b-15">
+											<label for="inputEmail3"
+												class="col-sm-3 text-right control-label col-form-label">Due
+												Date</label>
+											<div class="col-sm-9">
+												<input type="date" class="form-control" value="2018-05-13">
+											</div>
+										</div>
+
+									</div>
+									<div class="card-body bg-light">
+										<div class="form-group m-b-0 text-right">
+											<button type="submit"
+												class="btn btn-info waves-effect waves-light">Save</button>
+											<button type="submit"
+												class="btn btn-dark waves-effect waves-light">
+												Cancel</button>
 										</div>
 									</div>
-
-								</div>
-								<div class="card-body bg-light">
-									<div class="form-group m-b-0 text-right">
-										<button type="submit"
-											class="btn btn-info waves-effect waves-light">Save</button>
-										<button type="submit"
-											class="btn btn-dark waves-effect waves-light">
-											Cancel</button>
-									</div>
-								</div>
-							</form>
+							</form:form>
 						</div>
 					</div>
 				</div>

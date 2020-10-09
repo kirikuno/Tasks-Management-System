@@ -39,7 +39,7 @@ public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 		for (Map<String, Object> row : rows) 
 		{
 			Task task = new Task();
-			task.setTask_id((String)row.get("task_id"));
+			task.setTask_id((int)row.get("task_id"));
 			task.setTask_name((String) row.get("task_name"));
 			task.setDue_date((Date) row.get("due_date"));
 			task.setStatus((String) row.get("status"));
@@ -51,7 +51,11 @@ public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 
 	@Override
 	public void insertTask(Task task) {
-		// TODO Auto-generated method stub
+		String sql = "INSERT INTO tasks " +
+				"(task_id, status,due_date,task_name) VALUES (?, ?, ?)" ;
+		getJdbcTemplate().update(sql, new Object[]{
+//				emp.getEmpId(), emp.getEmpName(),emp.getDepartId()
+		});
 		
 	}
 

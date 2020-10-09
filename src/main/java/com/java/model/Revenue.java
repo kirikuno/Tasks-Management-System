@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Revenue {
 	private Date from_date;
 	private Date to_date;
-	private String user_id;
+	private int user_id;
 	private int finished_task_number;
 
 	public Date getFrom_date() {
@@ -24,11 +24,11 @@ public class Revenue {
 		this.to_date = to_date;
 	}
 
-	public String getUser_id() {
+	public int getUser_id() {
 		return user_id;
 	}
 
-	public void setUser_id(String user_id) {
+	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
 
