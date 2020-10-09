@@ -549,7 +549,7 @@
 								<h4 class="card-title">Create Project</h4>
 							</div>
 							<hr class="m-t-0" />
-							<form:form class="form-horizontal r-separator" action="" method="post">
+							<form:form class="form-horizontal r-separator" action="/add-project" method="post" modelAttribute="project">
 								<div class="card-body">
 									
 										<div class="form-group row p-b-15">
@@ -557,27 +557,28 @@
 												class="col-sm-3 text-right control-label col-form-label">Project
 												Name</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputEmail3"
-													placeholder="Full Name Here" />
+												<form:input type="text" class="form-control" id="inputEmail3" 
+													path="project_name" placeholder="Full Name Here" />
 											</div>
 										</div>
-										<div class="form-group row p-b-15">
-											<label for="inputEmail3"
-												class="col-sm-3 text-right control-label col-form-label">Status</label>
-											<div class="col-sm-9">
-												<input type="text" class="form-control" id="inputEmail3"
-													placeholder="Title Here" />
-											</div>
-										</div>
-
 										<div class="form-group row p-b-15">
 											<label for="inputEmail3"
 												class="col-sm-3 text-right control-label col-form-label">Due
 												Date</label>
 											<div class="col-sm-9">
-												<input type="date" class="form-control" value="2018-05-13">
+												<form:input type="date" class="form-control" path="due_date" />
 											</div>
 										</div>
+										<div class="form-group row p-b-15">
+											<label for="inputEmail3"
+												class="col-sm-3 text-right control-label col-form-label">Description</label>
+											<div class="col-sm-9">
+												<form:input type="text" class="form-control" id="inputEmail3"
+													path="project_description" placeholder="Description Here" />
+											</div>
+										</div>
+
+										
 
 									</div>
 									<div class="card-body bg-light">
@@ -617,19 +618,19 @@
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="task" items="${task}">
+											<c:forEach var="project" items="${projects}">
 												<tr>
-													<td>${task.task_id }</td>
-													<td>${task.task_name }</td>
-													<td>${task.due_date }</td>
+													<td>${project.project_id }</td>
+													<td>${project.project_name }</td>
+													<td>${project.due_date }</td>
 
-													<td>${task.status}</td>
+													<td>${project.project_description}</td>
 													<td>
 														<div class="button-box">
 															<button type="button" class="btn btn-default">Edit</button>
 															<button type="button" class="btn btn-primary"
 																data-toggle="modal" data-target="#exampleModal"
-																data-whatever="@mdo">Delete User</button>
+																data-whatever="@mdo">Delete project</button>
 														</div>
 														<div class="modal fade" id="exampleModal" tabindex="-1"
 															role="dialog" aria-labelledby="exampleModalLabel1">
@@ -637,7 +638,7 @@
 																<div class="modal-content">
 																	<div class="modal-header">
 																		<h4 class="modal-title" id="exampleModalLabel1">Do
-																			You Want Delete User</h4>
+																			You Want Delete Project</h4>
 																	</div>
 
 																	<div class="modal-footer">

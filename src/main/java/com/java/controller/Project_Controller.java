@@ -4,30 +4,40 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.java.model.Task;
-import com.java.service.TaskService;
+import com.java.model.Project;
+
+import com.java.service.ProjectService;
+
+
 
 @Controller
 public class Project_Controller {
 	@Autowired
-	TaskService taskservice;
+	ProjectService projectservice;
+	
 	@RequestMapping(value="/create-project")
 	public ModelAndView cprojectdetail()
 	{
-		List<Task> task=taskservice.getAllTask();
+		List<Project> projects=projectservice.getAllProject();
 		ModelAndView model=new ModelAndView("create-project");
-		model.addObject("task", task);
+		model.addObject("projects", projects);
+		model.addObject("project", new Project());
 		return model;
 	}
-	@PostMapping(value = "/create-project")
-	public ModelAndView createPJ() {
+	@PostMapping(value = "/add-project")
+	public ModelAndView createPJ(@ModelAttribute("project") Project project) {
 		
-		return null;
+		projectservice.insertProject(project);
 		
-	}
+		
+	
+		return new ModelAndView("redirect:create-project");
+		
+}
 	
 }
