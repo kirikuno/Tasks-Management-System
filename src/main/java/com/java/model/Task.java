@@ -1,12 +1,14 @@
 package com.java.model;
 
+import java.util.Date;
+
 public class Task {
 
 	private String task_id;
 	private String task_name;
 	private String task_description;
 	private String status;
-	private String due_date;
+	private Date due_date;
 	private String create_date;
 	public String getTask_id() {
 		return task_id;
@@ -26,10 +28,10 @@ public class Task {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getDue_date() {
+	public Date getDue_date() {
 		return due_date;
 	}
-	public void setDue_date(String due_date) {
+	public void setDue_date(Date due_date) {
 		this.due_date = due_date;
 	}
 	public String getCreate_date() {

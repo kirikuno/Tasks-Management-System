@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="" />
@@ -614,38 +616,40 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>1</td>
-												<td>Govinda jalan</a></td>
-												<td>2020/11/9</td>
+											<c:forEach var="task" items="${task}">
+												<tr>
+													<td>${task.task_id }</td>
+													<td>${task.task_name }</td>
+													<td>${task.due_date }</td>
 
-												<td>1</td>
-												<td>
-													<div class="button-box">
-														<button type="button" class="btn btn-default">Edit</button>
-														<button type="button" class="btn btn-primary"
-															data-toggle="modal" data-target="#exampleModal"
-															data-whatever="@mdo">Delete User</button>
-													</div>
-													<div class="modal fade" id="exampleModal" tabindex="-1"
-														role="dialog" aria-labelledby="exampleModalLabel1">
-														<div class="modal-dialog center" role="document">
-															<div class="modal-content">
-																<div class="modal-header">
-																	<h4 class="modal-title" id="exampleModalLabel1">Do
-																		You Want Delete User</h4>
-																</div>
+													<td>${task.status}</td>
+													<td>
+														<div class="button-box">
+															<button type="button" class="btn btn-default">Edit</button>
+															<button type="button" class="btn btn-primary"
+																data-toggle="modal" data-target="#exampleModal"
+																data-whatever="@mdo">Delete User</button>
+														</div>
+														<div class="modal fade" id="exampleModal" tabindex="-1"
+															role="dialog" aria-labelledby="exampleModalLabel1">
+															<div class="modal-dialog center" role="document">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<h4 class="modal-title" id="exampleModalLabel1">Do
+																			You Want Delete User</h4>
+																	</div>
 
-																<div class="modal-footer">
-																	<button type="button" class="btn btn-default">Yes</button>
-																	<button type="button" class="btn btn-primary"
-																		data-dismiss="modal">No</button>
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-default">Yes</button>
+																		<button type="button" class="btn btn-primary"
+																			data-dismiss="modal">No</button>
+																	</div>
 																</div>
 															</div>
 														</div>
-													</div>
-												</td>
-											</tr>
+													</td>
+												</tr>
+											</c:forEach>
 										</tbody>
 
 									</table>
