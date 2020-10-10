@@ -6,11 +6,12 @@ public class Task_Assigned {
 	private int task_id;
 	private int user_id;
 	private int phase_id;
-	private String status;
+	private int status;
 	private Date deadline;
-	private Boolean home_flag;
+	
 	private Date finished_date;
 	private String description;
+	
 	public int getTask_id() {
 		return task_id;
 	}
@@ -29,10 +30,10 @@ public class Task_Assigned {
 	public void setPhase_id(int phase_id) {
 		this.phase_id = phase_id;
 	}
-	public String getStatus() {
+	public int getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 	public Date getDeadline() {
@@ -41,12 +42,8 @@ public class Task_Assigned {
 	public void setDeadline(Date deadline) {
 		this.deadline = deadline;
 	}
-	public Boolean getHome_flag() {
-		return home_flag;
-	}
-	public void setHome_flag(Boolean home_flag) {
-		this.home_flag = home_flag;
-	}
+
+	
 	public Date getFinished_date() {
 		return finished_date;
 	}
@@ -62,7 +59,7 @@ public class Task_Assigned {
 	@Override
 	public String toString() {
 		return "Task_Assigned [task_id=" + task_id + ", user_id=" + user_id + ", phase_id=" + phase_id + ", status="
-				+ status + ", deadline=" + deadline + ", home_flag=" + home_flag + ", finished_date=" + finished_date
+				+ status + ", deadline=" + deadline + ",  finished_date=" + finished_date
 				+ ", description=" + description + "]";
 	}
 

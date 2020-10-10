@@ -10,6 +10,7 @@ public class Task {
 	private String status;
 	private Date due_date;
 	private int project_id;
+	private int lead_id;
 	public int getTask_id() {
 		return task_id;
 	}
@@ -46,10 +47,19 @@ public class Task {
 	public void setProject_id(int project_id) {
 		this.project_id = project_id;
 	}
+	
+	public int getLead_id() {
+		return lead_id;
+	}
+	public void setLead_id(int lead_id) {
+		this.lead_id = lead_id;
+	}
 	@Override
 	public String toString() {
 		return "Task [task_id=" + task_id + ", task_name=" + task_name + ", task_description=" + task_description
-				+ ", status=" + status + ", due_date=" + due_date + ", project_id=" + project_id + "]";
+				+ ", status=" + status + ", due_date=" + due_date + ", project_id=" + project_id + ", lead_id="
+				+ lead_id + "]";
 	}
+	
 	
 }
