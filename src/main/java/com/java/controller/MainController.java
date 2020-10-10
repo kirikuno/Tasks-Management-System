@@ -12,12 +12,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.model.Category;
+import com.java.model.Project;
 import com.java.model.Role;
 import com.java.model.Role_Author;
+import com.java.model.Task_Assigned;
 import com.java.model.User;
 import com.java.service.CategoryService;
 import com.java.service.RoleService;
 import com.java.service.Role_AuthorService;
+import com.java.service.Task_AssignedService;
 import com.java.service.UserService;
 
 @Controller
@@ -34,6 +37,9 @@ public class MainController {
 	
 	@Autowired
 	Role_AuthorService roleAuthorService;
+	
+	@Autowired
+	Task_AssignedService taskAssignedService;
 
 	@RequestMapping(value={"/login","/"})
 	public ModelAndView firstPage() 
@@ -47,7 +53,7 @@ public class MainController {
 	@RequestMapping(value="/menu1")
 	public ModelAndView taskDetail()
 	{
-		return new ModelAndView("task-detail");
+		return new ModelAndView("project-detail");
 	}
 
 	
@@ -63,10 +69,10 @@ public class MainController {
 		return model;
 	}
 	
-	@RequestMapping(value="/menu3")
+	@RequestMapping("/menu3")
 	public ModelAndView createProject()
 	{
-		return new ModelAndView("create-project");
+		return new ModelAndView("create-project","project",new Project());
 	}
 	
 	@RequestMapping(value="/menu4")
@@ -88,7 +94,15 @@ public class MainController {
 		{
 			ArrayList<Category> menuList = userService.loadingMenu(user);
 			
-			return new ModelAndView("index","menuList",menuList);
+			List<Task_Assigned> taskAssignedList = taskAssignedService.getTaskAssignedByUsername(user.getUsername());
+			
+            for(Object o: taskAssignedList)
+            {
+            	System.out.println(o.toString());
+            }
+            ModelAndView model = new ModelAndView("index","menuList",menuList);
+            model.addObject("taskAssignedList",taskAssignedList);
+			return model;
 		}
 		else
 			return new ModelAndView("authentication-login1");
