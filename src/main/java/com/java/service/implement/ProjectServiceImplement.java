@@ -31,6 +31,24 @@ public class ProjectServiceImplement implements ProjectService {
 	 projectDao.insertProject(project);
 		
 	}
+
+	@Override
+	public void updateProject(Project project) {
+	projectDao.updateProject(project);
+		
+	}
+
+	@Override
+	public Project getbyId(int id) {
+		// TODO Auto-generated method stub
+		return projectDao.getbyId(id);
+	}
+
+	@Override
+	public void deleteProject(int id) {
+		projectDao.deleteProject(id);
+		
+	}
 	
 
 

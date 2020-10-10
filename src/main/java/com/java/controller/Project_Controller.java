@@ -31,11 +31,7 @@ public class Project_Controller {
 	}
 	@PostMapping(value = "/add-project")
 	public ModelAndView createPJ(@ModelAttribute("project") Project project) {
-		
 		projectservice.insertProject(project);
-		
-		
-	
 		return new ModelAndView("redirect:create-project");
 		
 }
