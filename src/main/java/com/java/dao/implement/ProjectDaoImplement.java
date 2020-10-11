@@ -65,9 +65,9 @@ public class ProjectDaoImplement extends JdbcDaoSupport implements ProjectDAO{
 
 	@Override
 	public void updateProject(Project project) {
-		String sql="update project set project_name=?,project_description=?,due_date where priject_id=? ";
+		String sql="update project set project_name=?,project_description=?,due_date=? where project_id=? ";
 		getJdbcTemplate().update(sql,
-				project.getProject_name(), project.getProject_description(),project.getDue_date()
+				project.getProject_name(), project.getProject_description(),project.getDue_date(),project.getProject_id()
 		);
 		
 	}
@@ -75,7 +75,7 @@ public class ProjectDaoImplement extends JdbcDaoSupport implements ProjectDAO{
 	@Override
 	public Project getbyId(int id) {
 		String sql = "SELECT * FROM project WHERE project_id = ?";
-		return (Project)getJdbcTemplate().queryForObject(sql, new Object[]{id}, new RowMapper<Project>(){
+		Project project= (Project)getJdbcTemplate().queryForObject(sql, new Object[]{id}, new RowMapper<Project>(){
 			@Override
 			public Project mapRow(ResultSet rs, int rwNumber) throws SQLException {
 				Project project = new Project();
@@ -86,6 +86,7 @@ public class ProjectDaoImplement extends JdbcDaoSupport implements ProjectDAO{
 				return project;
 			}
 		});
+		return project;
 	
 	}
 

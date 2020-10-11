@@ -40,7 +40,7 @@ public class ProjectServiceImplement implements ProjectService {
 
 	@Override
 	public Project getbyId(int id) {
-		// TODO Auto-generated method stub
+		
 		return projectDao.getbyId(id);
 	}
 

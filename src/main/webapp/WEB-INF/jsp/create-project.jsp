@@ -549,47 +549,56 @@
 								<h4 class="card-title">Create Project</h4>
 							</div>
 							<hr class="m-t-0" />
-							<form:form class="form-horizontal r-separator" action="/add-project" method="post" modelAttribute="project">
+							<form:form class="form-horizontal r-separator"
+								action="/add-project" method="post" modelAttribute="project">
 								<div class="card-body">
-									
-										<div class="form-group row p-b-15">
-											<label for="inputEmail3"
-												class="col-sm-3 text-right control-label col-form-label">Project
-												Name</label>
-											<div class="col-sm-9">
-												<form:input type="text" class="form-control" id="inputEmail3" 
-													path="project_name" placeholder="Full Name Here" />
-											</div>
-										</div>
-										<div class="form-group row p-b-15">
-											<label for="inputEmail3"
-												class="col-sm-3 text-right control-label col-form-label">Due
-												Date</label>
-											<div class="col-sm-9">
-												<form:input type="date" class="form-control" path="due_date" />
-											</div>
-										</div>
-										<div class="form-group row p-b-15">
-											<label for="inputEmail3"
-												class="col-sm-3 text-right control-label col-form-label">Description</label>
-											<div class="col-sm-9">
-												<form:input type="text" class="form-control" id="inputEmail3"
-													path="project_description" placeholder="Description Here" />
-											</div>
-										</div>
-
-										
-
-									</div>
-									<div class="card-body bg-light">
-										<div class="form-group m-b-0 text-right">
-											<button type="submit"
-												class="btn btn-info waves-effect waves-light">Save</button>
-											<button type="submit"
-												class="btn btn-dark waves-effect waves-light">
-												Cancel</button>
+									<div class="form-group row p-b-15" hidden="">
+										<label for="inputEmail3"
+											class="col-sm-3 text-right control-label col-form-label">Project
+											ID</label>
+										<div class="col-sm-9">
+											<form:input type="text" class="form-control" id="inputEmail3"
+												path="project_id" placeholder="Full Name Here" />
 										</div>
 									</div>
+									<div class="form-group row p-b-15">
+										<label for="inputEmail3"
+											class="col-sm-3 text-right control-label col-form-label">Project
+											Name</label>
+										<div class="col-sm-9">
+											<form:input type="text" class="form-control" id="inputEmail3"
+												path="project_name" placeholder="Full Name Here" />
+										</div>
+									</div>
+									<div class="form-group row p-b-15">
+										<label for="inputEmail3"
+											class="col-sm-3 text-right control-label col-form-label">Due
+											Date</label>
+										<div class="col-sm-9">
+											<form:input type="date" class="form-control" path="due_date" />
+										</div>
+									</div>
+									<div class="form-group row p-b-15">
+										<label for="inputEmail3"
+											class="col-sm-3 text-right control-label col-form-label">Description</label>
+										<div class="col-sm-9">
+											<form:input type="text" class="form-control" id="inputEmail3"
+												path="project_description" placeholder="Description Here" />
+										</div>
+									</div>
+
+
+
+								</div>
+								<div class="card-body bg-light">
+									<div class="form-group m-b-0 text-right">
+										<button type="submit"
+											class="btn btn-info waves-effect waves-light">Save</button>
+										<button type="submit"
+											class="btn btn-dark waves-effect waves-light">
+											Cancel</button>
+									</div>
+								</div>
 							</form:form>
 						</div>
 					</div>
@@ -627,7 +636,8 @@
 													<td>${project.project_description}</td>
 													<td>
 														<div class="button-box">
-															<button type="button" class="btn btn-default">Edit</button>
+															<a type="button" class="btn btn-default"
+																href="/edit-project/${project.project_id}">Edit</a>
 															<button type="button" class="btn btn-primary"
 																data-toggle="modal" data-target="#exampleModal"
 																data-whatever="@mdo">Delete project</button>
@@ -640,9 +650,12 @@
 																		<h4 class="modal-title" id="exampleModalLabel1">Do
 																			You Want Delete Project</h4>
 																	</div>
-
+																	<div class="modal-body">
+																		Delete Project Name:  <c:out value="${project.project_name}" />
+																	</div>
 																	<div class="modal-footer">
-																		<button type="button" class="btn btn-default">Yes</button>
+																		<a type="button" class="btn btn-default"
+																			href="/delete-project/${project.project_id}">Yes</a>
 																		<button type="button" class="btn btn-primary"
 																			data-dismiss="modal">No</button>
 																	</div>
