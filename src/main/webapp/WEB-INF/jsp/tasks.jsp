@@ -515,7 +515,7 @@
 			<div class="page-breadcrumb">
 				<div class="row">
 					<div class="col-5 align-self-center">
-						<h4 class="page-title">Project Name</h4>
+						<h4 class="page-title">Task of Project</h4>
 						<div class="d-flex align-items-center"></div>
 					</div>
 					<div class="col-7 align-self-center">
@@ -546,27 +546,27 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">Create Project</h4>
+								<h4 class="card-title">Create Task</h4>
 							</div>
 							<hr class="m-t-0" />
-							<form:form class="form-horizontal r-separator"
-								action="/add-project" method="post" modelAttribute="project">
+							<form class="form-horizontal r-separator"
+								action="/add-task" method="post" modelAttribute="task">
 								<div class="card-body">
 									<div class="form-group row p-b-15" hidden="">
 										<label for="inputEmail3"
-											class="col-sm-3 text-right control-label col-form-label">Project
+											class="col-sm-3 text-right control-label col-form-label">Task
 											ID</label>
 										<div class="col-sm-9">
-											<form:input type="text" class="form-control" id="inputEmail3"
+											<input type="text" class="form-control" id="inputEmail3"
 												path="project_id" placeholder="Full Name Here" />
 										</div>
 									</div>
 									<div class="form-group row p-b-15">
 										<label for="inputEmail3"
-											class="col-sm-3 text-right control-label col-form-label">Project
+											class="col-sm-3 text-right control-label col-form-label">Task
 											Name</label>
 										<div class="col-sm-9">
-											<form:input type="text" class="form-control" id="inputEmail3"
+											<input type="text" class="form-control" id="inputEmail3"
 												path="project_name" placeholder="Full Name Here" />
 										</div>
 									</div>
@@ -575,17 +575,29 @@
 											class="col-sm-3 text-right control-label col-form-label">Due
 											Date</label>
 										<div class="col-sm-9">
-											<form:input type="date" class="form-control" path="due_date" />
+											<input type="date" class="form-control" path="due_date" />
+										</div>
+									</div>
+									<div class="form-group row p-b-15">
+										<label class="col-sm-3 text-right control-label col-form-label">Lead</label>
+										<div class="col-md-9">
+											<select class="form-control custom-select">
+												<option value="">User1</option>
+												<option value="">User2</option>
+												<option value="">User3</option>
+												<option value="">User4</option>
+											</select> 
 										</div>
 									</div>
 									<div class="form-group row p-b-15">
 										<label for="inputEmail3"
 											class="col-sm-3 text-right control-label col-form-label">Description</label>
 										<div class="col-sm-9">
-											<form:input type="text" class="form-control" id="inputEmail3"
+											<input type="text" class="form-control" id="inputEmail3"
 												path="project_description" placeholder="Description Here" />
 										</div>
 									</div>
+									
 
 
 
@@ -599,7 +611,7 @@
 											Cancel</button>
 									</div>
 								</div>
-							</form:form>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -620,20 +632,23 @@
 										<thead>
 											<tr>
 												<th>No</th>
-												<th>Project Name</th>
+												<th>Task Name</th>
 												<th>Due Date</th>
+												<th>Lead</th>
+												<th>Description</th>
 												<th>Status</th>
 
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="project" items="${projects}">
+											<c:forEach var="task" items="${tasks}">
 												<tr>
-													<td>${project.project_id }</td>
-													<td>${project.project_name }</td>
-													<td>${project.due_date }</td>
-
-													<td>${project.project_description}</td>
+													<td>${task.id }</td>
+													<td>${task.task_name }</td>
+													<td>${task.due_date }</td>
+													<td>${task.lead_id.username }</td>
+													<td>${task.task_description}</td>
+													<td>${task.status }</td>
 													<td>
 														<div class="button-box">
 															<a type="button" class="btn btn-default"
@@ -641,12 +656,11 @@
 															<!-- <a type="button" class="btn btn-primary"
 																data-toggle="modal" data-target="#exampleModal"
 																data-whatever="@mdo">Delete project</a> -->
-																 <a type="button" class="btn btn-danger"
-																href="/delete-project/${project.project_id}">Delete</a> 
-																 <a type="button" class="btn btn-success"
-																href="/create-task">View Task	</a> 
-														</div>
-														<%-- <div class="modal fade" id="exampleModal" tabindex="-1"
+															<a type="button" class="btn btn-danger"
+																href="/delete-project/${project.project_id}">Delete</a>
+															<a type="button" class="btn btn-success"
+																href="/create-task">View Task </a>
+														</div> <%-- <div class="modal fade" id="exampleModal" tabindex="-1"
 															role="dialog" aria-labelledby="exampleModalLabel1">
 															<div class="modal-dialog center" role="document">
 																<div class="modal-content">
@@ -670,7 +684,25 @@
 												</tr>
 											</c:forEach>
 										</tbody>
-
+										<tr>
+											<td>1</td>
+											<td>Test</td>
+											<td>2020-12-12</td>
+											<td>son</td>
+											<td>...</td>
+											<td>true</td>
+											<td>
+											<div class="button-box">
+												<a type="button" class="btn btn-default"
+													>Edit</a>
+												<!-- <a type="button" class="btn btn-primary"
+																data-toggle="modal" data-target="#exampleModal"
+																data-whatever="@mdo">Delete project</a> -->
+												<a type="button" class="btn btn-danger"
+													>Delete</a> 
+											</div>
+											</td>
+										</tr>
 									</table>
 								</div>
 							</div>

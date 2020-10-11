@@ -56,9 +56,14 @@ public class Project_Controller {
 
 	}
 	@GetMapping(value="delete-project/{id}")
-	public ModelAndView delete(@PathVariable(name = "id") int id) {
+	public ModelAndView delete(@PathVariable(name = "id") int id,@ModelAttribute("project") Project project) {
+		ModelAndView model = new ModelAndView("create-project");
 		projectservice.deleteProject(id);
-		return  new ModelAndView("redirect:create-project");
+		List<Project> projects = projectservice.getAllProject();
+		model.addObject("projects", projects);
+		model.addObject("project", project);
+		
+		return  model;
 		
 	}
 
