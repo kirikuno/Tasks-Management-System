@@ -24,10 +24,13 @@ public class Task_Controller {
 	@Autowired
 	TaskService taskservice;
 
-	@GetMapping(value = "task-project")
-	public ModelAndView taskProject() {
+	@GetMapping(value = "task-project/{id}")
+	public ModelAndView taskProject(@PathVariable(name ="id")int id) {
 		
 		ModelAndView model = new ModelAndView("tasks");
+		List<Task>  tasks=taskservice.getbyProject(id);
+		model.addObject("tasks", tasks);
+		model.addObject("project", new Project());
 		
 		return model;
 		

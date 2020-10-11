@@ -643,10 +643,10 @@
 										<tbody>
 											<c:forEach var="task" items="${tasks}">
 												<tr>
-													<td>${task.id }</td>
+													<td>${task.task_id }</td>
 													<td>${task.task_name }</td>
 													<td>${task.due_date }</td>
-													<td>${task.lead_id.username }</td>
+													<td>${task.lead_id}</td>
 													<td>${task.task_description}</td>
 													<td>${task.status }</td>
 													<td>
@@ -684,25 +684,7 @@
 												</tr>
 											</c:forEach>
 										</tbody>
-										<tr>
-											<td>1</td>
-											<td>Test</td>
-											<td>2020-12-12</td>
-											<td>son</td>
-											<td>...</td>
-											<td>true</td>
-											<td>
-											<div class="button-box">
-												<a type="button" class="btn btn-default"
-													>Edit</a>
-												<!-- <a type="button" class="btn btn-primary"
-																data-toggle="modal" data-target="#exampleModal"
-																data-whatever="@mdo">Delete project</a> -->
-												<a type="button" class="btn btn-danger"
-													>Delete</a> 
-											</div>
-											</td>
-										</tr>
+										
 									</table>
 								</div>
 							</div>

@@ -18,6 +18,7 @@ import com.java.model.Project;
 import com.java.model.Task;
 
 
+
 @Repository
 public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 
@@ -81,7 +82,25 @@ public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 
 	@Override
 	public List<Task> getbyProject(int id) {
-		return null;
+		String sql = "SELECT * FROM Tasks where project_id=?";
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql,id);
+		
+		
+		List<Task> result = new ArrayList<Task>();
+		for(Map<String, Object> row:rows){
+			Task ta = new Task();
+			ta.setTask_id((int) row.get("task_id"));
+			ta.setTask_name((String)row.get("task_name"));
+			ta.setTask_description((String)row.get("task_description"));
+			ta.setStatus((String)row.get("status"));
+			ta.setDue_date((Date)row.get("due_date"));
+			ta.setLead_id((int) row.get("leader_id"));
+			ta.setProject_id((int) row.get("project_id"));
+			result.add(ta);
+		}
+		
+		return result;
+		
 
 
 }
