@@ -93,7 +93,7 @@ public class ProjectDaoImplement extends JdbcDaoSupport implements ProjectDAO{
 	@Override
 	public void deleteProject(int id) {
 		String sql="DELETE FROM [Tasks_Management].[dbo].Task_Assigned WHERE task_id in (select task_id from [Tasks_Management].[dbo].Tasks where project_id = ?); DELETE FROM [Tasks_Management].[dbo].Tasks WHERE project_id = ?; DELETE FROM [Tasks_Management].[dbo].Project WHERE project_id = ? ";
-		getJdbcTemplate().update(sql,id);
+		getJdbcTemplate().update(sql,new Object[]{id,id,id});
 	}
 
 
