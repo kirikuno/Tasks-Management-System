@@ -21,4 +21,9 @@ public class Task_AssignedServiceImplement implements Task_AssignedService {
 		return taskAssignedDao.getTaskAssignedByUsername(username);
 	}
 
+	@Override
+	public List<Task_Assigned> getTaskAssignedByTaskId(int id) {
+		return taskAssignedDao.getTaskAssignedByTaskId(id);
+	}
+
 }

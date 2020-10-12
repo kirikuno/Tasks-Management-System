@@ -1,10 +1,11 @@
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="" />
@@ -515,7 +516,7 @@
 			<div class="page-breadcrumb">
 				<div class="row">
 					<div class="col-5 align-self-center">
-						<h4 class="page-title">Task of Project</h4>
+						<h4 class="page-title">Project Name</h4>
 						<div class="d-flex align-items-center"></div>
 					</div>
 					<div class="col-7 align-self-center">
@@ -543,43 +544,17 @@
 				<!-- Info box -->
 				<!-- ============================================================== -->
 				<div class="row">
-					<div class="col-12">
+
+					
+					<div class="col-lg-6">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">Create Task</h4>
-							</div>
-							<hr class="m-t-0" />
-							<form class="form-horizontal r-separator"
-								action="/add-task" method="post" modelAttribute="task">
-								<div class="card-body">
-									<div class="form-group row p-b-15" hidden="">
-										<label for="inputEmail3"
-											class="col-sm-3 text-right control-label col-form-label">Task
-											ID</label>
-										<div class="col-sm-9">
-											<input type="text" class="form-control" id="inputEmail3"
-												path="project_id" placeholder="Full Name Here" />
-										</div>
-									</div>
-									<div class="form-group row p-b-15">
-										<label for="inputEmail3"
-											class="col-sm-3 text-right control-label col-form-label">Task
-											Name</label>
-										<div class="col-sm-9">
-											<input type="text" class="form-control" id="inputEmail3"
-												path="project_name" placeholder="Full Name Here" />
-										</div>
-									</div>
-									<div class="form-group row p-b-15">
-										<label for="inputEmail3"
-											class="col-sm-3 text-right control-label col-form-label">Due
-											Date</label>
-										<div class="col-sm-9">
-											<input type="date" class="form-control" path="due_date" />
-										</div>
-									</div>
-									<div class="form-group row p-b-15">
-										<label class="col-sm-3 text-right control-label col-form-label">Lead</label>
+								<h4 class="card-title">Form with right Icon</h4>
+								<h6 class="card-subtitle">Use Bootstrap's predefined grid
+									classes for horizontal form</h6>
+								<form class="form-horizontal p-t-20">
+									<div class="form-group row">
+										<label class="col-sm-3 control-label">Leader</label>
 										<div class="col-md-9">
 											<select class="form-control custom-select">
 												<option value="">User1</option>
@@ -589,29 +564,68 @@
 											</select> 
 										</div>
 									</div>
-									<div class="form-group row p-b-15">
-										<label for="inputEmail3"
-											class="col-sm-3 text-right control-label col-form-label">Description</label>
+									<div class="form-group row">
+										<label for="email2" class="col-sm-3 control-label">Phase ID</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" id="inputEmail3"
-												path="project_description" placeholder="Description Here" />
+											<div class="input-group">
+												<input type="text" class="form-control"
+													id="exampleInputEmail1" placeholder="Enter Phase ID">
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="web10" class="col-sm-3 control-label">Deadline</label>
+										<div class="col-sm-9">
+											<div class="input-group">
+												<input type="date" class="form-control" id="web10"
+												>
+												
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="email2" class="col-sm-3 control-label">Phase Status</label>
+										<div class="col-sm-9">
+											<div class="input-group">
+												<input type="text" class="form-control"
+													id="exampleInputEmail1" placeholder="Enter Phase Status">
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="email2" class="col-sm-3 control-label">Status</label>
+										<div class="col-sm-9">
+											<div class="input-group">
+												<input type="text" class="form-control"
+													id="exampleInputEmail1" placeholder="Enter Home Flag">
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="web10" class="col-sm-3 control-label">Finished Date</label>
+										<div class="col-sm-9">
+											<div class="input-group">
+												<input type="date" class="form-control" id="web10"
+												>
+												
+											</div>
 										</div>
 									</div>
 									
-
-
-
-								</div>
-								<div class="card-body bg-light">
-									<div class="form-group m-b-0 text-right">
-										<button type="submit"
-											class="btn btn-info waves-effect waves-light">Save</button>
-										<button type="submit"
-											class="btn btn-dark waves-effect waves-light">
-											Cancel</button>
+									
+									
+									<div class="form-group row m-b-0">
+										<div class="offset-sm-3 col-sm-9 ">
+											<button type="submit"
+												class="btn btn-info waves-effect waves-light">add</button>
+												
+											<button type="submit"
+												class="btn btn-info waves-effect waves-light">edit</button>
+										</div>
 									</div>
-								</div>
-							</form>
+									
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -624,67 +638,68 @@
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">Default Table</h4>
-
+								<h6 class="card-subtitle">
+									Using the most basic table markup, here’s how
+									<code>.table</code>
+									-based tables look in Bootstrap. All table styles are inherited
+									in Bootstrap 4, meaning any nested tables will be styled in the
+									same manner as the parent.
+								</h6>
 								<div class="table-responsive">
 									<table id="demo-foo-addrow"
 										class="table m-t-30 no-wrap table-hover contact-list"
 										data-page-size="10">
 										<thead>
 											<tr>
-												<th>No</th>
-												<th>Task Name</th>
-												<th>Due Date</th>
-												<th>Lead</th>
+												<th>Task ID</th>
+												<th>User ID</th>
+												<th>Phase ID</th>
+												<th>Finished Date</th>
+												<th>Deadline</th>
 												<th>Description</th>
-												<th>Status</th>
-
+												<th>Status ID</th>
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="task" items="${tasks}">
-												<tr>
-													<td>${task.task_id }</td>
-													<td>${task.task_name }</td>
-													<td>${task.due_date }</td>
-													<td>${task.lead_id}</td>
-													<td>${task.task_description}</td>
-													<td>${task.status }</td>
-													<td>
-														<div class="button-box">
-															<a type="button" class="btn btn-default"
-																href="/edit-project/${project.project_id}">Edit</a>
-															<!-- <a type="button" class="btn btn-primary"
-																data-toggle="modal" data-target="#exampleModal"
-																data-whatever="@mdo">Delete project</a> -->
-															<a type="button" class="btn btn-danger"
-																href="/delete-project/${project.project_id}">Delete</a>
-															<a type="button" class="btn btn-success"
-																href="/assigned-task/${task.task_id }">View Assigned Tasks </a>
-														</div> <%-- <div class="modal fade" id="exampleModal" tabindex="-1"
-															role="dialog" aria-labelledby="exampleModalLabel1">
-															<div class="modal-dialog center" role="document">
-																<div class="modal-content">
-																	<div class="modal-header">
-																		<h4 class="modal-title" id="exampleModalLabel1">Do
-																			You Want Delete Project</h4>
-																	</div>
-																	<div class="modal-body">
-																		Delete Project Name:  <c:out value="${project.project_name}"/>
-																	</div>
-																	<div class="modal-footer">
-																		<a type="button" class="btn btn-default"
-																			href="/delete-project/${project.project_id}">Yes</a>
-																		<button type="button" class="btn btn-primary"
-																			data-dismiss="modal">No</button>
-																	</div>
+										<c:forEach var="assignedTask" items="${assignedTasks}">
+											<tr>
+												<td>${assignedTask.task_id}</td>
+												<td>${assignedTask.user_id}</td>
+												<td><span class="label label-success">${assignedTask.phase_id}</span></td>
+												<td>${assignedTask.finished_date}</td>
+												<td>${assignedTask.deadline}</td>
+												<td>${assignedTask.description}</td>
+												<td>${assignedTask.status}</td>
+												
+												<td>
+
+													<div class="button-box">
+														<button type="button" class="btn btn-primary"
+															data-toggle="modal" data-target="#exampleModal"
+															data-whatever="@mdo">Delete Assigned Task</button>
+													</div>
+													<div class="modal fade" id="exampleModal" tabindex="-1"
+														role="dialog" aria-labelledby="exampleModalLabel1">
+														<div class="modal-dialog center" role="document">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h4 class="modal-title" id="exampleModalLabel1">Do You Want Assigned Task</h4>
+																</div>
+																
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-default"
+																		>Yes</button>
+																	<button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
 																</div>
 															</div>
-														</div> --%>
-													</td>
-												</tr>
+														</div>
+													</div>
+												</td>
+											</tr>
 											</c:forEach>
+											
 										</tbody>
-										
+
 									</table>
 								</div>
 							</div>

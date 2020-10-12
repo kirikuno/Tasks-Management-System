@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,8 +20,10 @@ import com.java.model.Role_Author;
 import com.java.model.Task_Assigned;
 import com.java.model.User;
 import com.java.service.CategoryService;
+import com.java.service.ProjectService;
 import com.java.service.RoleService;
 import com.java.service.Role_AuthorService;
+import com.java.service.TaskService;
 import com.java.service.Task_AssignedService;
 import com.java.service.UserService;
 
@@ -40,6 +44,12 @@ public class MainController {
 	
 	@Autowired
 	Task_AssignedService taskAssignedService;
+	
+	@Autowired
+	ProjectService projectService;
+	
+	@Autowired
+	TaskService taskService;
 
 	@RequestMapping(value={"/login","/"})
 	public ModelAndView firstPage() 
@@ -50,10 +60,17 @@ public class MainController {
 		return model;
 	}	
 	
-	@RequestMapping(value="/menu1")
-	public ModelAndView taskDetail()
+	@GetMapping(value="/assigned-task/{id}")
+	public ModelAndView taskDetail(@PathVariable(name ="id")int id)
 	{
-		return new ModelAndView("project-detail");
+		List<Project> projects = projectService.getAllProject();
+		List<com.java.model.Task> tasks = taskService.getbyProject(1);
+		List<Task_Assigned> assignedTasks = taskAssignedService.getTaskAssignedByTaskId(id);
+		ModelAndView model = new ModelAndView("assigned-task");
+		model.addObject("projects", projects);
+		model.addObject("tasks", tasks);
+		model.addObject("assignedTasks",assignedTasks);
+		return model;
 	}
 
 	
