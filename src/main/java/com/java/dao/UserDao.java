@@ -14,4 +14,5 @@ public interface UserDao {
 	Boolean checkExistUser(User user);
 	void insertUser(User user);
 	int getIdByUsername(String username);
+	User getbyId(int id);
 }

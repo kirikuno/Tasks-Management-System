@@ -549,19 +549,24 @@
 							<div class="card-header">
 								<h4 class="m-b-0 text-white">To Do</h4>
 							</div>
-							
-							<c:forEach var="taskAssigned" items="${taskAssignedList}" >
-							<c:if test="${taskAssigned.getStatus() == 1}">
-							<button class="card-body" style="opacity: 0.5;
-    filter: alpha(opacity=90);">
-                               
-								<h3 class="card-title">TK: <c:out value="${taskAssigned.getTask_id()}"/></h3>
-								<p class="card-text"><c:out value="${taskAssigned.getDescription()}"/></p>
-								
-							</button>
-							</c:if>
-							</c:forEach>		
-							
+
+							<c:forEach var="taskAssigned" items="${taskAssignedList}">
+								<c:if test="${taskAssigned.getStatus() == 1}">
+									<button class="card-body"
+										style="opacity: 0.5; filter: alpha(opacity = 90);">
+
+										<h3 class="card-title">
+											TK:
+											<c:out value="${taskAssigned.getTask_id()}" />
+										</h3>
+										<p class="card-text">
+											<c:out value="${taskAssigned.getDescription()}" />
+										</p>
+
+									</button>
+								</c:if>
+							</c:forEach>
+
 						</div>
 					</div>
 					<div class="col-md-4">
@@ -569,19 +574,24 @@
 							<div class="card-header">
 								<h4 class="m-b-0 text-white">In Progress</h4>
 							</div>
-							
-							<c:forEach var="taskAssigned" items="${taskAssignedList}" >
-							<c:if test="${taskAssigned.getStatus() == 2}">
-							<button class="card-body" style="opacity: 0.5;
-    filter: alpha(opacity=90);">
-                               
-								<h3 class="card-title">TK: <c:out value="${taskAssigned.getTask_id()}"/></h3>
-								<p class="card-text"><c:out value="${taskAssigned.getDescription()}"/></p>
-								
-							</button>
-							</c:if>
+
+							<c:forEach var="taskAssigned" items="${taskAssignedList}">
+								<c:if test="${taskAssigned.getStatus() == 2}">
+									<button class="card-body"
+										style="opacity: 0.5; filter: alpha(opacity = 90);">
+
+										<h3 class="card-title">
+											TK:
+											<c:out value="${taskAssigned.getTask_id()}" />
+										</h3>
+										<p class="card-text">
+											<c:out value="${taskAssigned.getDescription()}" />
+										</p>
+
+									</button>
+								</c:if>
 							</c:forEach>
-							
+
 						</div>
 					</div>
 					<div class="col-md-4">
@@ -589,19 +599,24 @@
 							<div class="card-header">
 								<h4 class="m-b-0 text-white">Done</h4>
 							</div>
-							
-							<c:forEach var="taskAssigned" items="${taskAssignedList}" >
-							<c:if test="${taskAssigned.getStatus() == 3}">
-							<button class="card-body" style="opacity: 0.5;
-    filter: alpha(opacity=90);">
-                               
-								<h3 class="card-title">TK: <c:out value="${taskAssigned.getTask_id()}"/></h3>
-								<p class="card-text"><c:out value="${taskAssigned.getDescription()}"/></p>
-								
-							</button>
-							</c:if>
+
+							<c:forEach var="taskAssigned" items="${taskAssignedList}">
+								<c:if test="${taskAssigned.getStatus() == 3}">
+									<button class="card-body"
+										style="opacity: 0.5; filter: alpha(opacity = 90);">
+
+										<h3 class="card-title">
+											TK:
+											<c:out value="${taskAssigned.getTask_id()}" />
+										</h3>
+										<p class="card-text">
+											<c:out value="${taskAssigned.getDescription()}" />
+										</p>
+
+									</button>
+								</c:if>
 							</c:forEach>
-							
+
 						</div>
 					</div>
 				</div>

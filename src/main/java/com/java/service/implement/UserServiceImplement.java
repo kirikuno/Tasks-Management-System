@@ -48,4 +48,10 @@ public class UserServiceImplement implements UserService {
 		return userDao.getIdByUsername(username);
 	}
 
+	@Override
+	public User getbyId(int id) {
+		
+		return userDao.getbyId(id);
+	}
+
 }

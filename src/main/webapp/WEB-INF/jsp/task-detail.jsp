@@ -544,149 +544,175 @@
 				<!-- Info box -->
 				<!-- ============================================================== -->
 				<div class="row">
-				<div class="col-sm-4">
-				<div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                            <c:forEach var="taska" items="${taskAssign}">
-                                <ul class="timeline timeline-left">
-                                    <li class="timeline-inverted timeline-item">
-                                        <div class="timeline-badge success"><img src="../../assets/images/users/userall.jpg" alt="img" class="img-fluid"> </div>
-                                        <div class="timeline-panel">
-                                            <div class="timeline-heading">
-                                                <h4 class="timeline-title">${taska.user_id}</h4>
-                                                <p><small class="text-muted"><i class="fa fa-clock-o"></i>${taska.status }</small> </p>
-                                            </div>
-                                            <div class="timeline-body">
-                                                <p>${taska.description }</p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                </c:forEach>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-			</div>
-			<div class="col-sm-7">
-			<div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header bg-info">
-                                <h4 class="m-b-0 text-white">Task Detail</h4>
-                            </div>
-                            <form class="form-horizontal">
-                                <div class="form-body">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Task Info</h4>
-                                    </div>
-                                    <hr class="m-t-0 m-b-40">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Due Date Task</label>
-                                                    <div class="col-md-9">
-                                                        <p class="form-control-static"> 2020-10-30 </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/span-->
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Task Name</label>
-                                                    <div class="col-md-9">
-                                                        <p class="form-control-static"> edit existing books in the system </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/span-->
-                                        </div>
-                                        <!--/row-->
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Due Date Project</label>
-                                                    <div class="col-md-9">
-                                                        <p class="form-control-static"> 2020-10-30 </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/span-->
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Project Name </label>
-                                                    <div class="col-md-9">
-                                                        <p class="form-control-static"> Banking Management System </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/span-->
-                                        </div>
-                                        
-                                        <!--/row-->
-                                        <h4 class="card-title">Asigned Info</h4>
-                                    </div>
-                                    <hr class="m-t-0 m-b-40">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Deadline</label>
-                                                    <div class="col-md-9">
-                                                        <p class="form-control-static"> 2020-10-09 </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        
-                                        
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Finished Date</label>
-                                                    <div class="col-md-9">
-                                                        <p class="form-control-static"> 2020-10-08 </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/span-->
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Description </label>
-                                                    <div class="col-md-9">
-                                                        <p class="form-control-static"> design UI  </p>
-                                                    </div>
-                                                </div>	
-                                            </div>
-                                            <!--/span-->
-                                        </div>
-                                        <!--/row-->
-                                        
-                                    </div>
-                                    <hr>
-                                    <div class="form-actions">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="row">
-                                                        <div class="col-md-offset-3 col-md-9">
-                                                            <button type="submit" class="btn btn-success"> <i class="fa fa-pencil"></i> Submit Task</button>
-                                                            
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6"> </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-			</div>
-			</div>
+					<div class="col-sm-4">
+						<div class="row">
+							<div class="col-12">
+								<div class="card">
+									<div class="card-body">
+										
+											<c:forEach var="taska" items="${taskAssign}">
+
+												<ul class="timeline timeline-left">
+													<li class="timeline-inverted timeline-item">
+														<div class="timeline-badge success">
+															<img src="../../assets/images/users/userall.jpg"
+																alt="img" class="img-fluid">
+														</div>
+														<div class="timeline-panel">
+															<div class="timeline-heading">
+													
+																<h4 class="timeline-title">${taska.user_id}</h4>
+
+																<p>
+																	<small class="text-muted"><i
+																		class="fa fa-clock-o"></i> 
+																		<c:if  test="${taska.status == 2}"> <font color="red"> <c:out value="Status: In Progress"/> </font></c:if> 
+																		<c:if test="${taska.status == 1}"> <font color="blue"> <c:out value="Status: To Do"/> </font> </c:if>
+																		<c:if test="${taska.status == 3}"><font color="green"> <c:out value="Status: Done" /> </font></c:if>
+																		
+																		</small>
+																</p>
+															</div>
+															<div class="timeline-body">
+																<p>Description:  ${taska.description }</p>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</c:forEach>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-7">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="card">
+									<div class="card-header bg-info">
+										<h4 class="m-b-0 text-white">Task Detail</h4>
+									</div>
+									<form class="form-horizontal">
+										<div class="form-body">
+											<div class="card-body">
+												<h4 class="card-title">Task Info</h4>
+											</div>
+											<hr class="m-t-0 m-b-40">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group row">
+															<label class="control-label text-right col-md-3">Due
+																Date Task</label>
+															<div class="col-md-9">
+																<p class="form-control-static">2020-10-30</p>
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+													<div class="col-md-6">
+														<div class="form-group row">
+															<label class="control-label text-right col-md-3">Task
+																Name</label>
+															<div class="col-md-9">
+																<p class="form-control-static">edit existing books
+																	in the system</p>
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+												</div>
+												<!--/row-->
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group row">
+															<label class="control-label text-right col-md-3">Due
+																Date Project</label>
+															<div class="col-md-9">
+																<p class="form-control-static">2020-10-30</p>
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+													<div class="col-md-6">
+														<div class="form-group row">
+															<label class="control-label text-right col-md-3">Project
+																Name </label>
+															<div class="col-md-9">
+																<p class="form-control-static">Banking Management
+																	System</p>
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+												</div>
+
+												<!--/row-->
+												<h4 class="card-title">Asigned Info</h4>
+											</div>
+											<hr class="m-t-0 m-b-40">
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group row">
+															<label class="control-label text-right col-md-3">Deadline</label>
+															<div class="col-md-9">
+																<p class="form-control-static">2020-10-09</p>
+															</div>
+														</div>
+													</div>
+
+
+													<div class="col-md-6">
+														<div class="form-group row">
+															<label class="control-label text-right col-md-3">Finished
+																Date</label>
+															<div class="col-md-9">
+																<p class="form-control-static">2020-10-08</p>
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+													<div class="col-md-6">
+														<div class="form-group row">
+															<label class="control-label text-right col-md-3">Description
+															</label>
+															<div class="col-md-9">
+																<p class="form-control-static">design UI</p>
+															</div>
+														</div>
+													</div>
+													<!--/span-->
+												</div>
+												<!--/row-->
+
+											</div>
+											<hr>
+											<div class="form-actions">
+												<div class="card-body">
+													<div class="row">
+														<div class="col-md-6">
+															<div class="row">
+																<div class="col-md-offset-3 col-md-9">
+																	<button type="submit" class="btn btn-success">
+																		<i class="fa fa-pencil"></i> Submit Task
+																	</button>
+
+																</div>
+															</div>
+														</div>
+														<div class="col-md-6"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<!-- ============================================================== -->
 			<!-- Table -->

@@ -1,5 +1,7 @@
 package com.java.dao.implement;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -8,11 +10,13 @@ import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.java.dao.UserDao;
 import com.java.model.Category;
+import com.java.model.Project;
 import com.java.model.User;
 
 @Repository
@@ -116,6 +120,22 @@ public class UserDaoImplement extends JdbcDaoSupport implements UserDao{
 		}
 		
 		return result;
+	}
+
+	@Override
+	public User getbyId(int id) {
+		String sql = "SELECT * FROM [Tasks_Management].[dbo].[User] WHERE userid = ?";
+		User us= (User)getJdbcTemplate().queryForObject(sql, new Object[]{id}, new RowMapper<User>(){
+			@Override
+			public User mapRow(ResultSet rs, int rwNumber) throws SQLException {
+				User us = new User();
+				us.setUser_id(rs.getInt("userid"));
+				us.setUsername(rs.getString("username"));
+				us.setPassword((rs.getString("password")));
+				return us;
+			}
+		});
+		return us;
 	}
 
 }

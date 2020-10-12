@@ -18,9 +18,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.java.model.Project;
 import com.java.model.Task;
 import com.java.model.Task_Assigned;
+import com.java.model.User;
 import com.java.service.ProjectService;
 import com.java.service.TaskService;
 import com.java.service.Task_AssignedService;
+import com.java.service.UserService;
 
 @Controller
 public class Task_Controller {
@@ -28,6 +30,8 @@ public class Task_Controller {
 	TaskService taskservice;
 	@Autowired
 	Task_AssignedService task_asignedservice;
+	@Autowired
+	UserService userservice;
 	@GetMapping(value = "task-project/{id}")
 	public ModelAndView taskProject(@PathVariable(name = "id") int id) {
 
@@ -46,9 +50,6 @@ public class Task_Controller {
 		List<Task_Assigned> task_asign=task_asignedservice.getallTaskAssignedByID(id);
 		model.addObject("taskAssign", task_asign);
 		
-		for(Task_Assigned i : task_asign) {
-			System.out.println(i.getDescription());
-		}
 		return model;
 	}
 }

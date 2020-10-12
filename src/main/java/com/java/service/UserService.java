@@ -13,4 +13,5 @@ public interface UserService {
   ArrayList<Category> loadingMenu(User user);
   void insertUser(User user);
   int getIdByUsername(String username);
+  User getbyId(int id);
 }
