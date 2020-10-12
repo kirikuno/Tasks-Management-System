@@ -35,7 +35,7 @@ public class ProjectDaoImplement extends JdbcDaoSupport implements ProjectDAO{
 	@Override
 	public List<Project> getAllProject() 
 	{
-		String sql = "SELECT * FROM project";
+		String sql = "SELECT * FROM [Tasks_Management].[dbo].project";
 		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 		List<Project> result = new ArrayList<Project>();
 		
@@ -55,7 +55,7 @@ public class ProjectDaoImplement extends JdbcDaoSupport implements ProjectDAO{
 
 	@Override
 	public void insertProject(Project project) {
-		String sql = "INSERT INTO project " +
+		String sql = "INSERT INTO [Tasks_Management].[dbo].project " +
 				"( project_name,project_description,due_date) VALUES (?, ?, ?)" ;
 		getJdbcTemplate().update(sql, new Object[]{
 				project.getProject_name(), project.getProject_description(),project.getDue_date()
@@ -65,7 +65,7 @@ public class ProjectDaoImplement extends JdbcDaoSupport implements ProjectDAO{
 
 	@Override
 	public void updateProject(Project project) {
-		String sql="update project set project_name=?,project_description=?,due_date=? where project_id=? ";
+		String sql="update [Tasks_Management].[dbo].project set project_name=?,project_description=?,due_date=? where project_id=? ";
 		getJdbcTemplate().update(sql,
 				project.getProject_name(), project.getProject_description(),project.getDue_date(),project.getProject_id()
 		);
@@ -74,7 +74,7 @@ public class ProjectDaoImplement extends JdbcDaoSupport implements ProjectDAO{
 
 	@Override
 	public Project getbyId(int id) {
-		String sql = "SELECT * FROM project WHERE project_id = ?";
+		String sql = "SELECT * FROM [Tasks_Management].[dbo].project WHERE project_id = ?";
 		Project project= (Project)getJdbcTemplate().queryForObject(sql, new Object[]{id}, new RowMapper<Project>(){
 			@Override
 			public Project mapRow(ResultSet rs, int rwNumber) throws SQLException {
@@ -92,11 +92,8 @@ public class ProjectDaoImplement extends JdbcDaoSupport implements ProjectDAO{
 
 	@Override
 	public void deleteProject(int id) {
-		String sql1="DELETE FROM Tasks WHERE project_id = ?";
-		getJdbcTemplate().update(sql1,id);
-		String sql2="delete from project where project_id=?";
-		getJdbcTemplate().update(sql2,id);
-		
+		String sql="DELETE FROM [Tasks_Management].[dbo].Task_Assigned WHERE task_id in (select task_id from [Tasks_Management].[dbo].Tasks where project_id = ?); DELETE FROM [Tasks_Management].[dbo].Tasks WHERE project_id = ?; DELETE FROM [Tasks_Management].[dbo].Project WHERE project_id = ? ";
+		getJdbcTemplate().update(sql,id);
 	}
 
 

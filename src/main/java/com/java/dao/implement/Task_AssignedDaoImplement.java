@@ -30,7 +30,7 @@ public class Task_AssignedDaoImplement extends JdbcDaoSupport implements Task_As
 	@Override
 	public List<Task_Assigned> getTaskAssignedByUsername(String username) 
 	{
-		String sql = "select * from Task_Assigned where userid in(select userid from [Tasks_Management].[dbo].[user] where username = ?)";
+		String sql = "select * from [Tasks_Management].[dbo].Task_Assigned where userid in(select userid from [Tasks_Management].[dbo].[user] where username = ?)";
 		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql,new Object[]{username});
 		ArrayList<Task_Assigned> result = new ArrayList <Task_Assigned>();
 		

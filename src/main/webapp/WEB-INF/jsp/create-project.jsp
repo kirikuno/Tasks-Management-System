@@ -644,7 +644,7 @@
 																 <a type="button" class="btn btn-danger"
 																href="/delete-project/${project.project_id}">Delete</a> 
 																 <a type="button" class="btn btn-success"
-																href="/create-task">View Task	</a> 
+																href="/task-project/${project.project_id}">View Task	</a> 
 														</div>
 														<%-- <div class="modal fade" id="exampleModal" tabindex="-1"
 															role="dialog" aria-labelledby="exampleModalLabel1">

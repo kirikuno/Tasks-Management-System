@@ -29,7 +29,7 @@ public class CategoryDaoImplement extends JdbcDaoSupport implements CategoryDao 
 	
 	@Override
 	public List<Category> getAllMenu() {
-		String sql = "SELECT * FROM Category;";
+		String sql = "SELECT * FROM [Tasks_Management].[dbo].Category;";
 		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 		List<Category> result = new ArrayList<Category>();
 		
@@ -47,7 +47,7 @@ public class CategoryDaoImplement extends JdbcDaoSupport implements CategoryDao 
 	@Override
 	public Category getMenuById(String id) {
 		
-		String sql = "SELECT * FROM Category Where Menu_id=?;";
+		String sql = "SELECT * FROM [Tasks_Management].[dbo].Category Where Menu_id=?;";
 		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql,new Object[]{id});
 		Category result = new Category();
 		

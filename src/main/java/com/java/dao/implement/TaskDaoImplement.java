@@ -34,7 +34,7 @@ public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 	@Override
 	public List<Task> getAllTask() 
 	{
-		String sql = "SELECT * FROM Tasks";
+		String sql = "SELECT * FROM [Tasks_Management].[dbo].Tasks";
 		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 		List<Task> result = new ArrayList<Task>();
 		
@@ -53,7 +53,7 @@ public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 
 	@Override
 	public void insertTask(Task task) {
-		String sql = "INSERT INTO tasks " +
+		String sql = "INSERT INTO [Tasks_Management].[dbo].tasks " +
 				"(task_id, status,due_date,task_name) VALUES (?, ?, ?)" ;
 		getJdbcTemplate().update(sql, new Object[]{
 //				emp.getEmpId(), emp.getEmpName(),emp.getDepartId()
@@ -82,7 +82,7 @@ public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 
 	@Override
 	public List<Task> getbyProject(int id) {
-		String sql = "SELECT * FROM Tasks where project_id=?";
+		String sql = "SELECT * FROM [Tasks_Management].[dbo].Tasks where project_id=?";
 		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql,id);
 		
 		

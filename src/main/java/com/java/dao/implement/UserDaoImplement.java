@@ -61,7 +61,7 @@ public class UserDaoImplement extends JdbcDaoSupport implements UserDao{
 
 	@Override
 	public ArrayList<Category> loadingMenu(User user) {
-		String sql = " select * from Category where Menu_id IN (select Menu_id from Role_Menu where Role_id IN (select role_id from  Role_Author RA, [Tasks_Management].[dbo].[User] U where  username = ? and U.userid = RA.userid) group by Menu_id);";
+		String sql = " select * from [Tasks_Management].[dbo].Category where Menu_id IN (select Menu_id from [Tasks_Management].[dbo].Role_Menu where Role_id IN (select role_id from  [Tasks_Management].[dbo].Role_Author RA, [Tasks_Management].[dbo].[User] U where  username = ? and U.userid = RA.userid) group by Menu_id);";
 		
 		ArrayList<Category> result = new ArrayList<Category>();
 		

@@ -30,7 +30,7 @@ public class Role_AuthorDaoImplement extends JdbcDaoSupport implements Role_Auth
 	@Override
 	public void insertRole_Author(Role_Author ra) 
 	{
-			String sql = "INSERT INTO Role_Author " +
+			String sql = "INSERT INTO [Tasks_Management].[dbo].Role_Author " +
 					"(userid,role_id) VALUES (?,?)" ;
 			getJdbcTemplate().update(sql, new Object[]{
 					ra.getUser_id(), ra.getRole_id()
@@ -39,7 +39,7 @@ public class Role_AuthorDaoImplement extends JdbcDaoSupport implements Role_Auth
 	
 	@Override
 	public void insertRoleAuthors(final List<Role_Author> roleAuthors) {
-		String sql = "INSERT INTO Role_Author " + "(userid,role_id) VALUES (?,?)" ;
+		String sql = "INSERT INTO [Tasks_Management].[dbo].Role_Author " + "(userid,role_id) VALUES (?,?)" ;
 		
 		getJdbcTemplate().batchUpdate(sql, new BatchPreparedStatementSetter() {
 			public void setValues(PreparedStatement ps, int i) throws SQLException {
