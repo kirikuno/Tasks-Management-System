@@ -26,4 +26,10 @@ public class Task_AssignedServiceImplement implements Task_AssignedService {
 		return taskAssignedDao.getTaskAssignedByTaskId(id);
 	}
 
+	@Override
+	public List<Task_Assigned> getallTaskAssignedByID(int id) {
+		
+		return taskAssignedDao.getallTaskAssignedByID(id);
+	}
+
 }
