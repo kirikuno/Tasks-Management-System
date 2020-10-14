@@ -652,6 +652,7 @@
 										<thead>
 											<tr>
 												<th>Task ID</th>
+												<th>UserName</th>
 												<th>User ID</th>
 												<th>Phase ID</th>
 												<th>Finished Date</th>
@@ -664,7 +665,8 @@
 										<c:forEach var="assignedTask" items="${assignedTasks}">
 											<tr>
 												<td>${assignedTask.task_id}</td>
-												<td>${assignedTask.user_id}</td>
+												<td>${assignedTask.user_id.getUsername()}</td>
+												<td>${assignedTask.user_id.getUser_id()}</td>
 												<td><span class="label label-success">${assignedTask.phase_id}</span></td>
 												<td>${assignedTask.finished_date}</td>
 												<td>${assignedTask.deadline}</td>
@@ -674,25 +676,8 @@
 												<td>
 
 													<div class="button-box">
-														<button type="button" class="btn btn-primary"
-															data-toggle="modal" data-target="#exampleModal"
-															data-whatever="@mdo">Delete Assigned Task</button>
-													</div>
-													<div class="modal fade" id="exampleModal" tabindex="-1"
-														role="dialog" aria-labelledby="exampleModalLabel1">
-														<div class="modal-dialog center" role="document">
-															<div class="modal-content">
-																<div class="modal-header">
-																	<h4 class="modal-title" id="exampleModalLabel1">Do You Want Assigned Task</h4>
-																</div>
-																
-																<div class="modal-footer">
-																	<button type="button" class="btn btn-default"
-																		>Yes</button>
-																	<button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-																</div>
-															</div>
-														</div>
+														<a type="button" class="btn btn-primary"
+															href="deleteAssignedTask/${assignedTask.task_id}/${assignedTask.user_id.getUser_id()}/${assignedTask.phase_id}" >Delete Assigned Task</a>
 													</div>
 												</td>
 											</tr>

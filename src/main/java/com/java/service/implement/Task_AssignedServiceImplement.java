@@ -32,4 +32,9 @@ public class Task_AssignedServiceImplement implements Task_AssignedService {
 		return taskAssignedDao.getallTaskAssignedByID(id);
 	}
 
+	@Override
+	public void deleteAssignedTask(int task_id, int user_id, int phase_id) {
+		taskAssignedDao.deleteAssignedTask(task_id,user_id,phase_id);	
+	}
+
 }

@@ -66,6 +66,13 @@ public class MainController {
 		model.addObject("assignedTasks", assignedTasks);
 		return model;
 	}
+	
+	@GetMapping(value = "/assigned-task/deleteAssignedTask/{taskId}/{userId}/{phaseId}")
+	public ModelAndView deleteAssignedTask(@PathVariable("taskId") int taskID, @PathVariable("userId") int userId, @PathVariable("phaseId") int phaseId ) 
+	{
+		taskAssignedService.deleteAssignedTask(taskID,userId,phaseId);
+		return taskDetail(taskID);
+	}
 
 	@RequestMapping(value = "/menu2")
 	public ModelAndView registerUser() {
