@@ -561,7 +561,7 @@
 														<div class="timeline-panel">
 															<div class="timeline-heading">
 													
-																<h4 class="timeline-title">${taska.user_id}</h4>
+																<h4 class="timeline-title">${taska.user_id.username}</h4>
 
 																<p>
 																	<small class="text-muted"><i

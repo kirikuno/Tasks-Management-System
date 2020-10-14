@@ -9,4 +9,5 @@ public interface Task_AssignedDao {
 
 	List<Task_Assigned> getTaskAssignedByTaskId(int id);
 	List<Task_Assigned> getallTaskAssignedByID(int id);
+	
 }

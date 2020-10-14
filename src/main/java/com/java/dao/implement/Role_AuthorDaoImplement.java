@@ -13,7 +13,9 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.java.dao.Role_AuthorDao;
+import com.java.model.Role;
 import com.java.model.Role_Author;
+import com.java.model.User;
 
 @Repository
 public class Role_AuthorDaoImplement extends JdbcDaoSupport implements Role_AuthorDao {
@@ -37,22 +39,5 @@ public class Role_AuthorDaoImplement extends JdbcDaoSupport implements Role_Auth
 			});
 	}
 	
-	@Override
-	public void insertRoleAuthors(final List<Role_Author> roleAuthors) {
-		String sql = "INSERT INTO [Tasks_Management].[dbo].Role_Author " + "(userid,role_id) VALUES (?,?)" ;
-		
-		getJdbcTemplate().batchUpdate(sql, new BatchPreparedStatementSetter() {
-			public void setValues(PreparedStatement ps, int i) throws SQLException {
-				Role_Author roleAuthor = roleAuthors.get(i);
-				ps.setInt(1, roleAuthor.getUser_id());
-				ps.setString(2, roleAuthor.getRole_id());
-			}
-			
-			public int getBatchSize() {
-				return roleAuthors.size();
-			}
-		});
-
-	}
         
 }

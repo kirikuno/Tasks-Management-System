@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Task_Assigned {
 	private int task_id;
-	private int user_id;
+	private User user_id;
 	private int phase_id;
 	private int status;
 	private Date deadline;
@@ -12,16 +12,30 @@ public class Task_Assigned {
 	private Date finished_date;
 	private String description;
 	
+	public Task_Assigned() {
+		super();
+	}
+	public Task_Assigned(int task_id, User user_id, int phase_id, int status, Date deadline, Date finished_date,
+			String description) {
+		super();
+		this.task_id = task_id;
+		this.user_id = user_id;
+		this.phase_id = phase_id;
+		this.status = status;
+		this.deadline = deadline;
+		this.finished_date = finished_date;
+		this.description = description;
+	}
 	public int getTask_id() {
 		return task_id;
 	}
 	public void setTask_id(int task_id) {
 		this.task_id = task_id;
 	}
-	public int getUser_id() {
+	public User getUser_id() {
 		return user_id;
 	}
-	public void setUser_id(int user_id) {
+	public void setUser_id(User user_id) {
 		this.user_id = user_id;
 	}
 	public int getPhase_id() {

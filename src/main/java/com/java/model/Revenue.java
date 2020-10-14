@@ -5,8 +5,20 @@ import java.sql.Date;
 public class Revenue {
 	private Date from_date;
 	private Date to_date;
-	private int user_id;
+	private User user_id;
 	private int finished_task_number;
+
+	public Revenue() {
+		super();
+	}
+
+	public Revenue(Date from_date, Date to_date, User user_id, int finished_task_number) {
+		super();
+		this.from_date = from_date;
+		this.to_date = to_date;
+		this.user_id = user_id;
+		this.finished_task_number = finished_task_number;
+	}
 
 	public Date getFrom_date() {
 		return from_date;
@@ -24,11 +36,11 @@ public class Revenue {
 		this.to_date = to_date;
 	}
 
-	public int getUser_id() {
+	public User getUser_id() {
 		return user_id;
 	}
 
-	public void setUser_id(int user_id) {
+	public void setUser_id(User user_id) {
 		this.user_id = user_id;
 	}
 
@@ -46,5 +58,4 @@ public class Revenue {
 				+ ", finished_task_number=" + finished_task_number + "]";
 	}
 
-	
 }

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import com.java.dao.TaskDAO;
 import com.java.model.Project;
 import com.java.model.Task;
+import com.java.model.User;
 
 
 
@@ -89,13 +90,17 @@ public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 		List<Task> result = new ArrayList<Task>();
 		for(Map<String, Object> row:rows){
 			Task ta = new Task();
+			User user=new User();
+			user.setUser_id((int) row.get("leader_id"));
+			Project project=new Project();
+			project.setProject_id((int) row.get("project_id"));
 			ta.setTask_id((int) row.get("task_id"));
 			ta.setTask_name((String)row.get("task_name"));
 			ta.setTask_description((String)row.get("task_description"));
 			ta.setStatus((String)row.get("status"));
 			ta.setDue_date((Date)row.get("due_date"));
-			ta.setLead_id((int) row.get("leader_id"));
-			ta.setProject_id((int) row.get("project_id"));
+			ta.setLead_id(user);
+			ta.setProject_id(project);
 			result.add(ta);
 		}
 		

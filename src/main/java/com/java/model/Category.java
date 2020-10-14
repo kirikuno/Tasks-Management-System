@@ -6,6 +6,15 @@ public class Category
 	private String menu_name;
 	private String menu_description;
 	
+	public Category() {
+		super();
+	}
+	public Category(String menu_id, String menu_name, String menu_description) {
+		super();
+		this.menu_id = menu_id;
+		this.menu_name = menu_name;
+		this.menu_description = menu_description;
+	}
 	public String getMenu_id() {
 		return menu_id;
 	}

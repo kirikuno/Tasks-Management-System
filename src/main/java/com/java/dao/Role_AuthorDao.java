@@ -8,5 +8,5 @@ public interface Role_AuthorDao {
 
 	void insertRole_Author(Role_Author ra);
 
-	void insertRoleAuthors(List<Role_Author> roleAuthors);
+	
 }

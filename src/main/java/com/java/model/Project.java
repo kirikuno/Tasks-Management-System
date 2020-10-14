@@ -11,6 +11,18 @@ public class Project {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date due_date;
 
+	public Project() {
+		super();
+	}
+
+	public Project(int project_id, String project_name, String project_description, Date due_date) {
+		super();
+		this.project_id = project_id;
+		this.project_name = project_name;
+		this.project_description = project_description;
+		this.due_date = due_date;
+	}
+
 	public int getProject_id() {
 		return project_id;
 	}

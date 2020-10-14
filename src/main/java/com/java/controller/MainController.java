@@ -113,10 +113,7 @@ public class MainController {
 			
 			List<Task_Assigned> taskAssignedList = taskAssignedService.getTaskAssignedByUsername(user.getUsername());
 			
-            for(Object o: taskAssignedList)
-            {
-            	System.out.println(o.toString());
-            }
+           
             ModelAndView model = new ModelAndView("index","menuList",menuList);
             model.addObject("taskAssignedList",taskAssignedList);
 			return model;
@@ -125,28 +122,28 @@ public class MainController {
 			return new ModelAndView("authentication-login1");
 	}
 	
-	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
-	public ModelAndView processRegister(@ModelAttribute("user")User user, @RequestParam(value = "role_id", required = true) ArrayList<String> roleIdList )
-	{
-		if(userService.checkExistUser(user)) // exist UserName in DB
-		{
-			return registerUser(); // + show fail
-		}
-		else
-		{
-			userService.insertUser(user);
-			
-			ArrayList<Role_Author> roleAuthorList = new ArrayList<Role_Author>();
-			
-			for(String role_id: roleIdList)
-			{
-				Role_Author roleAuthor = new Role_Author(userService.getIdByUsername(user.getUsername()),role_id);
-				roleAuthorList.add(roleAuthor);
-			}
-			roleAuthorService.insertRoleAuthors(roleAuthorList);
-			return registerUser(); // + show success
-		}
-	}
+//	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
+//	public ModelAndView processRegister(@ModelAttribute("user")User user, @RequestParam(value = "role_id", required = true) ArrayList<String> roleIdList )
+//	{
+//		if(userService.checkExistUser(user)) // exist UserName in DB
+//		{
+//			return registerUser(); // + show fail
+//		}
+//		else
+//		{
+//			userService.insertUser(user);
+//			
+//			ArrayList<Role_Author> roleAuthorList = new ArrayList<Role_Author>();
+//			
+//			for(String role_id: roleIdList)
+//			{
+//				Role_Author roleAuthor = new Role_Author(userService.getIdByUsername(user.getUsername()),role_id);
+//				roleAuthorList.add(roleAuthor);
+//			}
+//			roleAuthorService.insertRoleAuthors(roleAuthorList);
+//			return registerUser(); // + show success
+//		}
+//	}
 	
 
 }
