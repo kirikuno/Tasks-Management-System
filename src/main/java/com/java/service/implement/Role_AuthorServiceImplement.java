@@ -21,6 +21,8 @@ public class Role_AuthorServiceImplement implements Role_AuthorService {
 		roleAuthorDao.insertRole_Author(ra);
 	}
 
-	
-
+	@Override
+	public void insertRoleAuthors(List<Role_Author> roleAuthorList) {
+		roleAuthorDao.insertRoleAuthors(roleAuthorList);
+	}
 }

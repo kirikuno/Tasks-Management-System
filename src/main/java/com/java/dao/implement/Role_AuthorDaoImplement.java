@@ -39,5 +39,22 @@ public class Role_AuthorDaoImplement extends JdbcDaoSupport implements Role_Auth
 			});
 	}
 	
+	@Override
+	public void insertRoleAuthors(final List<Role_Author> roleAuthorList) {
+		String sql = "INSERT INTO [Tasks_Management].[dbo].[Role_Author] " + "(userid,role_id) VALUES (?,?)";
+		getJdbcTemplate().batchUpdate(sql, new BatchPreparedStatementSetter() {
+			public void setValues(PreparedStatement ps, int i) throws SQLException {
+				Role_Author roleAuthor = roleAuthorList.get(i);
+				ps.setInt(1, roleAuthor.getUser_id().getUser_id());
+				ps.setString(2, roleAuthor.getRole_id().getRole_id());
+			}
+			
+			public int getBatchSize() {
+				return roleAuthorList.size();
+			}
+		});
+
+	}
+	
         
 }

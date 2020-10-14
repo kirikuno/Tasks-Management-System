@@ -29,121 +29,105 @@ import com.java.service.UserService;
 
 @Controller
 public class MainController {
-	
+
 	@Autowired
 	UserService userService;
-	
+
 	@Autowired
 	CategoryService categoryService;
-	
+
 	@Autowired
 	RoleService roleService;
-	
+
 	@Autowired
 	Role_AuthorService roleAuthorService;
-	
+
 	@Autowired
 	Task_AssignedService taskAssignedService;
-	
+
 	@Autowired
 	ProjectService projectService;
-	
+
 	@Autowired
 	TaskService taskService;
 
-	@RequestMapping(value={"/login","/"})
-	public ModelAndView firstPage() 
-	{
+	@RequestMapping(value = { "/login", "/" })
+	public ModelAndView firstPage() {
 		User user = new User();
 		ModelAndView model = new ModelAndView("authentication-login1");
 		model.addObject("user", user);
 		return model;
-	}	
-	
-	@GetMapping(value="/assigned-task/{id}")
-	public ModelAndView taskDetail(@PathVariable(name ="id")int id)
-	{
-		List<Project> projects = projectService.getAllProject();
-		List<com.java.model.Task> tasks = taskService.getbyProject(1);
+	}
+
+	@GetMapping(value = "/assigned-task/{id}")
+	public ModelAndView taskDetail(@PathVariable(name = "id") int id) {
 		List<Task_Assigned> assignedTasks = taskAssignedService.getTaskAssignedByTaskId(id);
 		ModelAndView model = new ModelAndView("assigned-task");
-		model.addObject("projects", projects);
-		model.addObject("tasks", tasks);
-		model.addObject("assignedTasks",assignedTasks);
+		model.addObject("assignedTasks", assignedTasks);
 		return model;
 	}
 
-	
-	@RequestMapping(value="/menu2")
-	public ModelAndView registerUser()
-	{
-        ModelAndView model = new ModelAndView("create-user","user",new User());
-		
+	@RequestMapping(value = "/menu2")
+	public ModelAndView registerUser() {
+		ModelAndView model = new ModelAndView("create-user", "user", new User());
+
 		List<Role> roleList = roleService.getAllRoles();
-		
-		model.addObject("roleList",roleList);
-		
+
+		model.addObject("roleList", roleList);
+
 		return model;
 	}
-	
+
 	@RequestMapping("/menu3")
-	public ModelAndView createProject()
-	{
-		return new ModelAndView("create-project","project",new Project());
+	public ModelAndView createProject() {
+		return new ModelAndView("create-project", "project", new Project());
 	}
-	
-	@RequestMapping(value="/menu4")
-	public ModelAndView analysis()
-	{
+
+	@RequestMapping(value = "/menu4")
+	public ModelAndView analysis() {
 		return new ModelAndView("analysis");
 	}
-	
-	@RequestMapping(value="/home")
-	public ModelAndView homePage()
-	{
+
+	@RequestMapping(value = "/home")
+	public ModelAndView homePage() {
 		return new ModelAndView("index");
 	}
-	
+
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView processRequest(@ModelAttribute("user") User user)
-	{
-		if(userService.checkUser(user))
-		{
+	public ModelAndView processRequest(@ModelAttribute("user") User user) {
+		if (userService.checkUser(user)) {
 			ArrayList<Category> menuList = userService.loadingMenu(user);
-			
+
 			List<Task_Assigned> taskAssignedList = taskAssignedService.getTaskAssignedByUsername(user.getUsername());
-			
-           
-            ModelAndView model = new ModelAndView("index","menuList",menuList);
-            model.addObject("taskAssignedList",taskAssignedList);
+
+			ModelAndView model = new ModelAndView("index", "menuList", menuList);
+			model.addObject("taskAssignedList", taskAssignedList);
 			return model;
-		}
-		else
+		} else
 			return new ModelAndView("authentication-login1");
 	}
-	
-//	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
-//	public ModelAndView processRegister(@ModelAttribute("user")User user, @RequestParam(value = "role_id", required = true) ArrayList<String> roleIdList )
-//	{
-//		if(userService.checkExistUser(user)) // exist UserName in DB
-//		{
-//			return registerUser(); // + show fail
-//		}
-//		else
-//		{
-//			userService.insertUser(user);
-//			
-//			ArrayList<Role_Author> roleAuthorList = new ArrayList<Role_Author>();
-//			
-//			for(String role_id: roleIdList)
-//			{
-//				Role_Author roleAuthor = new Role_Author(userService.getIdByUsername(user.getUsername()),role_id);
-//				roleAuthorList.add(roleAuthor);
-//			}
-//			roleAuthorService.insertRoleAuthors(roleAuthorList);
-//			return registerUser(); // + show success
-//		}
-//	}
-	
+
+	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
+	public ModelAndView processRegister(@ModelAttribute("user") User user,
+			@RequestParam(value = "role_id", required = true) ArrayList<String> roleIdList) {
+		if (userService.checkExistUser(user)) // exist UserName in DB
+		{
+			return registerUser(); // + show fail
+		} else {
+			userService.insertUser(user);
+
+			ArrayList<Role_Author> roleAuthorList = new ArrayList<Role_Author>();
+
+			for (String role_id : roleIdList) {
+				Role role = new Role();
+				role.setRole_id(role_id);
+				user.setUser_id(userService.getIdByUsername(user.getUsername()));
+				Role_Author roleAuthor = new Role_Author(user, role);
+				roleAuthorList.add(roleAuthor);
+			}
+			roleAuthorService.insertRoleAuthors(roleAuthorList);
+			return registerUser(); // + show success
+		}
+	}
 
 }
