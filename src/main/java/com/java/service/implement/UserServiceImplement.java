@@ -54,4 +54,9 @@ public class UserServiceImplement implements UserService {
 		return userDao.getbyId(id);
 	}
 
+	@Override
+	public List<User> getUsersByProjectId(int id) {
+		return userDao.getUsersByProjectId(id);
+	}
+
 }

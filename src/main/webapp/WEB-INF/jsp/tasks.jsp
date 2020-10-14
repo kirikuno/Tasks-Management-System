@@ -646,7 +646,7 @@
 													<td>${task.task_id }</td>
 													<td>${task.task_name }</td>
 													<td>${task.due_date }</td>
-													<td>${task.lead_id}</td>
+													<td>${task.lead_id.getUsername()}</td>
 													<td>${task.task_description}</td>
 													<td>${task.status }</td>
 													<td>

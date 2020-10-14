@@ -138,4 +138,21 @@ public class UserDaoImplement extends JdbcDaoSupport implements UserDao{
 		return us;
 	}
 
+	@Override
+	public List<User> getUsersByProjectId(int id) {
+		String sql = "select * from [Tasks_Management].[dbo].[user] where userid in (select leader_id from [Tasks_Management].[dbo].[Tasks] where project_id = ?) order by userid;";
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql,new Object[]{id});
+		List<User> result = new ArrayList<User>();
+		
+		for (Map<String, Object> row : rows) 
+		{
+			User user = new User();
+			user.setUser_id((Integer)row.get("userid"));
+			user.setUsername((String) row.get("username"));
+			user.setPassword((String) row.get("password"));
+			result.add(user);
+		}
+		return result;
+	}
+
 }

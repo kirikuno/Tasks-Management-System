@@ -74,7 +74,7 @@ public class Task_AssignedDaoImplement extends JdbcDaoSupport implements Task_As
 
 	@Override
 	public List<Task_Assigned> getallTaskAssignedByID(int id) {
-		String sql = "select  ta.userid,ta.task_id,u.username,ta.deadline,ta.description,ta.finished_date,ta.phase_id,ta.status from dbo.Task_Assigned ta,[dbo].[user] u  where ta.userid= u.userid and task_id =? order by phase_id asc";
+		String sql = "select  ta.userid,ta.task_id,u.username,ta.deadline,ta.description,ta.finished_date,ta.phase_id,ta.status from [Tasks_Management].[dbo].Task_Assigned ta,[dbo].[user] u  where ta.userid= u.userid and task_id =? order by phase_id asc";
 		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql, id);
 
 		List<Task_Assigned> result = new ArrayList<Task_Assigned>();

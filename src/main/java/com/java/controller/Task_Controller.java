@@ -37,6 +37,10 @@ public class Task_Controller {
 
 		ModelAndView model = new ModelAndView("tasks");
 		List<Task> tasks = taskservice.getbyProject(id);
+		List<User> users = userservice.getUsersByProjectId(id);
+		for (int i = 0; i < tasks.size(); i++) {
+            tasks.get(i).setLead_id(users.get(i));
+        }
 		model.addObject("tasks", tasks);
 		model.addObject("project", new Project());
 

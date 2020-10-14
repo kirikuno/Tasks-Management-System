@@ -14,4 +14,5 @@ public interface UserService {
   void insertUser(User user);
   int getIdByUsername(String username);
   User getbyId(int id);
+  List<User> getUsersByProjectId(int id);
 }
