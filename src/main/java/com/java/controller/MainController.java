@@ -83,7 +83,7 @@ public class MainController {
 	{
 		String path = "redirect:/assigned-task/" + assignedTask.getTask_id();
 		ModelAndView model = new ModelAndView(path);
-		assignedTask.getUser_id().setUser_id(userService.getIdByUsername(username));;
+		(assignedTask.getUser_id()).setUser_id(userService.getIdByUsername(username));
 		taskAssignedService.insertAssignedTask(assignedTask);
 		return model;
 	}

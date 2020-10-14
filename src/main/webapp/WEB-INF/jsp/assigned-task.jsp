@@ -583,8 +583,8 @@
 											ID</label>
 										<div class="col-sm-9">
 											<div class="input-group">
-												<form:input type="text" class="form-control" path="task_id"
-													id="taskID" disabled="true" />
+												<form:input type="number" class="form-control" path="task_id"
+													id="taskID" disabled="false" />
 											</div>
 										</div>
 									</div>
@@ -622,7 +622,7 @@
 										<label for="status" class="col-sm-3 control-label">Status</label>
 										<div class="col-sm-9">
 											<div class="input-group">
-												<form:input type="text" class="form-control" id="status"
+												<form:input type="number" class="form-control" id="status"
 													placeholder="Enter Status of Assigned Task" path="status"/>
 											</div>
 										</div>

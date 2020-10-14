@@ -14,6 +14,7 @@ public class Task_Assigned {
 	
 	public Task_Assigned() {
 		super();
+		user_id = new User();
 	}
 	public Task_Assigned(int task_id, User user_id, int phase_id, int status, Date deadline, Date finished_date,
 			String description) {
