@@ -37,4 +37,9 @@ public class Task_AssignedServiceImplement implements Task_AssignedService {
 		taskAssignedDao.deleteAssignedTask(task_id,user_id,phase_id);	
 	}
 
+	@Override
+	public void insertAssignedTask(Task_Assigned ta) {
+		taskAssignedDao.insertAssignedTask(ta);
+	}
+
 }

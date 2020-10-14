@@ -1,6 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
@@ -28,6 +29,19 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+<script type="text/javascript">
+	function showRow(row) {
+
+		var x = row.cells;
+		document.getElementById("taskID").value = x[0].innerHTML;
+		document.getElementById("user_name").value = x[1].innerHTML;
+		document.getElementById("phaseID").value = x[3].textContent;
+		document.getElementById("finishedDate").value = x[4].innerHTML;
+		document.getElementById("deadline").value = x[5].innerHTML;
+		document.getElementById("description").value = x[6].innerHTML;
+		document.getElementById("status").value = x[7].innerHTML;
+	}
+</script>
 </head>
 
 <body>
@@ -545,86 +559,97 @@
 				<!-- ============================================================== -->
 				<div class="row">
 
-					
+
 					<div class="col-lg-6">
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">Form with right Icon</h4>
 								<h6 class="card-subtitle">Use Bootstrap's predefined grid
 									classes for horizontal form</h6>
-								<form class="form-horizontal p-t-20">
+								<form:form class="form-horizontal p-t-20" method="POST"
+									modelAttribute="assignedTask">
 									<div class="form-group row">
-										<label class="col-sm-3 control-label">Leader</label>
+										<label for="username" class="col-sm-3 control-label">UserName</label>
 										<div class="col-md-9">
-											<select class="form-control custom-select">
-												<option value="">User1</option>
-												<option value="">User2</option>
-												<option value="">User3</option>
-												<option value="">User4</option>
-											</select> 
+											<select id="user_name" name="user_name" class="form-control">
+												<c:forEach var="user" items="${userList}">
+													<option value="${user.username}">${user.username}</option>
+												</c:forEach>
+											</select>
 										</div>
 									</div>
 									<div class="form-group row">
-										<label for="email2" class="col-sm-3 control-label">Phase ID</label>
+										<label for="taskID" class="col-sm-3 control-label">Task
+											ID</label>
 										<div class="col-sm-9">
 											<div class="input-group">
-												<input type="text" class="form-control"
-													id="exampleInputEmail1" placeholder="Enter Phase ID">
-											</div>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label for="web10" class="col-sm-3 control-label">Deadline</label>
-										<div class="col-sm-9">
-											<div class="input-group">
-												<input type="date" class="form-control" id="web10"
-												>
-												
-											</div>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label for="email2" class="col-sm-3 control-label">Phase Status</label>
-										<div class="col-sm-9">
-											<div class="input-group">
-												<input type="text" class="form-control"
-													id="exampleInputEmail1" placeholder="Enter Phase Status">
-											</div>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label for="email2" class="col-sm-3 control-label">Status</label>
-										<div class="col-sm-9">
-											<div class="input-group">
-												<input type="text" class="form-control"
-													id="exampleInputEmail1" placeholder="Enter Home Flag">
-											</div>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label for="web10" class="col-sm-3 control-label">Finished Date</label>
-										<div class="col-sm-9">
-											<div class="input-group">
-												<input type="date" class="form-control" id="web10"
-												>
-												
+												<form:input type="text" class="form-control" path="task_id"
+													id="taskID" disabled="true" />
 											</div>
 										</div>
 									</div>
 									
-									
-									
+
+									<div class="form-group row">
+										<label for="phaseID" class="col-sm-3 control-label">Phase
+											ID</label>
+										<div class="col-sm-9">
+											<div class="input-group">
+												<form:input type="text" class="form-control" id="phaseID"
+													placeholder="Enter Phase ID" path="phase_id" />
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="deadline" class="col-sm-3 control-label">Deadline</label>
+										<div class="col-sm-9">
+											<div class="input-group">
+												<form:input type="date" class="form-control" id="deadline" path="deadline"/>
+
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="description" class="col-sm-3 control-label">Description</label>
+										<div class="col-sm-9">
+											<div class="input-group">
+												<form:input type="text" class="form-control" id="description"
+													placeholder="Enter Description" path="description"/>
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="status" class="col-sm-3 control-label">Status</label>
+										<div class="col-sm-9">
+											<div class="input-group">
+												<form:input type="text" class="form-control" id="status"
+													placeholder="Enter Status of Assigned Task" path="status"/>
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="finishedDate" class="col-sm-3 control-label">Finished
+											Date</label>
+										<div class="col-sm-9">
+											<div class="input-group">
+												<form:input type="date" class="form-control" id="finishedDate" path="finished_date"/>
+											</div>
+										</div>
+									</div>
+
+
+
 									<div class="form-group row m-b-0">
 										<div class="offset-sm-3 col-sm-9 ">
 											<button type="submit"
-												class="btn btn-info waves-effect waves-light">add</button>
-												
+												class="btn btn-info waves-effect waves-light" formaction="/insertAssignedTask">add</button>
+
 											<button type="submit"
 												class="btn btn-info waves-effect waves-light">edit</button>
 										</div>
 									</div>
-									
-								</form>
+
+								</form:form>
 							</div>
 						</div>
 					</div>
@@ -662,27 +687,28 @@
 											</tr>
 										</thead>
 										<tbody>
-										<c:forEach var="assignedTask" items="${assignedTasks}">
-											<tr>
-												<td>${assignedTask.task_id}</td>
-												<td>${assignedTask.user_id.getUsername()}</td>
-												<td>${assignedTask.user_id.getUser_id()}</td>
-												<td><span class="label label-success">${assignedTask.phase_id}</span></td>
-												<td>${assignedTask.finished_date}</td>
-												<td>${assignedTask.deadline}</td>
-												<td>${assignedTask.description}</td>
-												<td>${assignedTask.status}</td>
-												
-												<td>
+											<c:forEach var="assignedTask" items="${assignedTasks}">
+												<tr onclick="javascript:showRow(this);">
+													<td>${assignedTask.task_id}</td>
+													<td>${assignedTask.user_id.getUsername()}</td>
+													<td>${assignedTask.user_id.getUser_id()}</td>
+													<td><span class="label label-success">${assignedTask.phase_id}</span></td>
+													<td>${assignedTask.finished_date}</td>
+													<td>${assignedTask.deadline}</td>
+													<td>${assignedTask.description}</td>
+													<td>${assignedTask.status}</td>
 
-													<div class="button-box">
-														<a type="button" class="btn btn-primary"
-															href="/deleteAssignedTask/${assignedTask.task_id}/${assignedTask.user_id.getUser_id()}/${assignedTask.phase_id}" >Delete Assigned Task</a>
-													</div>
-												</td>
-											</tr>
+													<td>
+
+														<div class="button-box">
+															<a type="button" class="btn btn-primary"
+																href="/deleteAssignedTask/${assignedTask.task_id}/${assignedTask.user_id.getUser_id()}/${assignedTask.phase_id}">Delete
+																Assigned Task</a>
+														</div>
+													</td>
+												</tr>
 											</c:forEach>
-											
+
 										</tbody>
 
 									</table>

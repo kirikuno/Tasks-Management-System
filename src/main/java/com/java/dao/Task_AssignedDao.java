@@ -9,5 +9,5 @@ public interface Task_AssignedDao {
 	List<Task_Assigned> getTaskAssignedByTaskId(int id);
 	List<Task_Assigned> getallTaskAssignedByID(int id);
 	void deleteAssignedTask(int task_id, int user_id, int phase_id);
-	
+	void insertAssignedTask(Task_Assigned ta);
 }

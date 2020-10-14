@@ -105,4 +105,12 @@ public class Task_AssignedDaoImplement extends JdbcDaoSupport implements Task_As
 		getJdbcTemplate().update(sql, new Object[]{task_id,user_id,phase_id});	
 	}
 
+	@Override
+	public void insertAssignedTask(Task_Assigned ta) {
+		String sql = "INSERT INTO [Tasks_Management].[dbo].[Task_Assigned] " +
+				"(task_id,userid,phase_id,deadline,finished_date,description,status) VALUES (?,?,?,?,?,?,?)" ;
+		getJdbcTemplate().update(sql, new Object[]{
+				ta.getTask_id(),ta.getUser_id().getUser_id(),ta.getPhase_id(),ta.getDeadline(),ta.getFinished_date(),ta.getDescription(),ta.getStatus()
+		});
+	}
 }

@@ -61,8 +61,11 @@ public class MainController {
 	@RequestMapping(value = "/assigned-task/{id}")
 	public ModelAndView taskDetail(@PathVariable(name = "id") int id) {
 		List<Task_Assigned> assignedTasks = taskAssignedService.getTaskAssignedByTaskId(id);
+		List<User> userList = userService.getAllUsers();
 		ModelAndView model = new ModelAndView("assigned-task");
 		model.addObject("assignedTasks", assignedTasks);
+		model.addObject("assignedTask",new Task_Assigned());
+		model.addObject("userList", userList);
 		return model;
 	}
 	
@@ -72,6 +75,16 @@ public class MainController {
 		taskAssignedService.deleteAssignedTask(taskID,userId,phaseId);
 		String path = "redirect:/assigned-task/" + taskID;
 		ModelAndView model = new ModelAndView(path);
+		return model;
+	}
+	
+	@RequestMapping(value = "/insertAssignedTask", method = RequestMethod.POST)
+	public ModelAndView insertAssignedTask(@ModelAttribute("assignedTask") Task_Assigned assignedTask,@RequestParam("user_name") String username)
+	{
+		String path = "redirect:/assigned-task/" + assignedTask.getTask_id();
+		ModelAndView model = new ModelAndView(path);
+		assignedTask.getUser_id().setUser_id(userService.getIdByUsername(username));;
+		taskAssignedService.insertAssignedTask(assignedTask);
 		return model;
 	}
 
