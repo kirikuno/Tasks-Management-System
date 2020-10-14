@@ -677,7 +677,7 @@
 
 													<div class="button-box">
 														<a type="button" class="btn btn-primary"
-															href="deleteAssignedTask/${assignedTask.task_id}/${assignedTask.user_id.getUser_id()}/${assignedTask.phase_id}" >Delete Assigned Task</a>
+															href="/deleteAssignedTask/${assignedTask.task_id}/${assignedTask.user_id.getUser_id()}/${assignedTask.phase_id}" >Delete Assigned Task</a>
 													</div>
 												</td>
 											</tr>

@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,7 +58,7 @@ public class MainController {
 		return model;
 	}
 
-	@GetMapping(value = "/assigned-task/{id}")
+	@RequestMapping(value = "/assigned-task/{id}")
 	public ModelAndView taskDetail(@PathVariable(name = "id") int id) {
 		List<Task_Assigned> assignedTasks = taskAssignedService.getTaskAssignedByTaskId(id);
 		ModelAndView model = new ModelAndView("assigned-task");
@@ -67,11 +66,13 @@ public class MainController {
 		return model;
 	}
 	
-	@GetMapping(value = "/assigned-task/deleteAssignedTask/{taskId}/{userId}/{phaseId}")
+	@RequestMapping(value = "/deleteAssignedTask/{taskId}/{userId}/{phaseId}")
 	public ModelAndView deleteAssignedTask(@PathVariable("taskId") int taskID, @PathVariable("userId") int userId, @PathVariable("phaseId") int phaseId ) 
 	{
 		taskAssignedService.deleteAssignedTask(taskID,userId,phaseId);
-		return taskDetail(taskID);
+		String path = "redirect:/assigned-task/" + taskID;
+		ModelAndView model = new ModelAndView(path);
+		return model;
 	}
 
 	@RequestMapping(value = "/menu2")
