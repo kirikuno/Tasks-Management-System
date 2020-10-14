@@ -1,25 +1,17 @@
 package com.java.controller;
-
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.ws.rs.Path;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.model.Project;
 import com.java.model.Task;
 import com.java.model.Task_Assigned;
-import com.java.model.User;
-import com.java.service.ProjectService;
 import com.java.service.TaskService;
 import com.java.service.Task_AssignedService;
 import com.java.service.UserService;
@@ -37,10 +29,6 @@ public class Task_Controller {
 
 		ModelAndView model = new ModelAndView("tasks");
 		List<Task> tasks = taskservice.getbyProject(id);
-		List<User> users = userservice.getUsersByProjectId(id);
-		for (int i = 0; i < tasks.size(); i++) {
-            tasks.get(i).setLead_id(users.get(i));
-        }
 		model.addObject("tasks", tasks);
 		model.addObject("project", new Project());
 

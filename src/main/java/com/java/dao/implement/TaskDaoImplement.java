@@ -83,7 +83,7 @@ public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 
 	@Override
 	public List<Task> getbyProject(int id) {
-		String sql = "SELECT * FROM [Tasks_Management].[dbo].Tasks where project_id=? order by leader_id";
+		String sql = "SELECT * FROM [Tasks_Management].[dbo].Tasks t,[Tasks_Management].[dbo].[user] u where project_id=? and t.leader_id = u.userid order by leader_id; ";
 		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql,id);
 		
 		
@@ -92,6 +92,7 @@ public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 			Task ta = new Task();
 			User user=new User();
 			user.setUser_id((int) row.get("leader_id"));
+			user.setUsername((String)row.get("username"));
 			Project project=new Project();
 			project.setProject_id((int) row.get("project_id"));
 			ta.setTask_id((int) row.get("task_id"));
