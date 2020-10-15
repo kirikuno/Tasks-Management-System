@@ -9,22 +9,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-<<<<<<< HEAD
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-=======
+
 import org.springframework.web.bind.annotation.RequestMapping;
->>>>>>> branch 'master' of https://github.com/kirikuno/Tasks-Management-System
+
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.model.Project;
 import com.java.model.Task;
 import com.java.model.Task_Assigned;
-<<<<<<< HEAD
+
 import com.java.model.User;
-=======
+
 import com.java.service.ProjectService;
->>>>>>> branch 'master' of https://github.com/kirikuno/Tasks-Management-System
+
 import com.java.service.TaskService;
 import com.java.service.Task_AssignedService;
 import com.java.service.UserService;
@@ -37,13 +37,13 @@ public class Task_Controller {
 	Task_AssignedService task_asignedservice;
 	@Autowired
 	UserService userservice;
-<<<<<<< HEAD
+
 	int id_pj; 
-=======
+
 	@Autowired
 	ProjectService projectService;
 	
->>>>>>> branch 'master' of https://github.com/kirikuno/Tasks-Management-System
+
 	@GetMapping(value = "task-project/{id}")
 	public ModelAndView taskProject(@PathVariable(name = "id") int id) {
 
@@ -69,7 +69,7 @@ public class Task_Controller {
 	}
 	
 
-<<<<<<< HEAD
+
 	@GetMapping(value = "edit-task/{id}")
 	public ModelAndView eitTask(@PathVariable(name = "id") int id, @ModelAttribute("task") Task task) {
 		ModelAndView model = new ModelAndView("tasks");
@@ -110,7 +110,8 @@ public class Task_Controller {
 
 		ModelAndView model = new ModelAndView("task-detail");
 		List<Task_Assigned> task_asign = task_asignedservice.getallTaskAssignedByID(id);
-=======
+		return model;
+	}
 	@RequestMapping(value = "/task-detail/{id}/{phaseId}")
 	public ModelAndView taskDetail2(@PathVariable(name = "id") int id,@PathVariable(name = "phaseId") int phaseId)
 	{
@@ -120,16 +121,15 @@ public class Task_Controller {
 		Project project = projectService.getProjectByTaskId(id);
 		Task task = taskservice.getbyid(id); 
 		Task_Assigned assignedTask = task_asignedservice.getAssignedTask(id,phaseId);
->>>>>>> branch 'master' of https://github.com/kirikuno/Tasks-Management-System
-		model.addObject("taskAssign", task_asign);
-<<<<<<< HEAD
 
-=======
+		model.addObject("taskAssign", task_asign);
+
+
 		model.addObject("project",project);
 		model.addObject("task",task);
 		model.addObject("assignedTask",assignedTask);
 		
->>>>>>> branch 'master' of https://github.com/kirikuno/Tasks-Management-System
+
 		return model;
 	}
 }
