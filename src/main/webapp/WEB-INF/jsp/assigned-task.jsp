@@ -635,7 +635,7 @@
 										<div class="col-sm-9">
 											<div class="input-group">
 												<form:input type="date" class="form-control"
-													id="finishedDate" path="finished_date" />
+													id="finishedDate" value="08/08/1998" path="finished_date"/>
 												<script type="text/javascript">
 													const
 													element = document

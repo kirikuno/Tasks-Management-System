@@ -21,7 +21,6 @@
 <link href="../../assets/extra-libs/c3/c3.min.css" rel="stylesheet" />
 <link href="../../assets/libs/morris.js/morris.css" rel="stylesheet" />
 <!-- Custom CSS -->
-<link href="../../dist/css/style.min.css" rel="stylesheet" />
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -606,7 +605,7 @@
 															<label class="control-label text-right col-md-3">Due
 																Date Task</label>
 															<div class="col-md-9">
-																<p class="form-control-static">2020-10-30</p>
+																<p class="form-control-static">${task.due_date}</p>
 															</div>
 														</div>
 													</div>
@@ -616,8 +615,7 @@
 															<label class="control-label text-right col-md-3">Task
 																Name</label>
 															<div class="col-md-9">
-																<p class="form-control-static">edit existing books
-																	in the system</p>
+																<p class="form-control-static">${task.task_name}</p>
 															</div>
 														</div>
 													</div>
@@ -630,7 +628,7 @@
 															<label class="control-label text-right col-md-3">Due
 																Date Project</label>
 															<div class="col-md-9">
-																<p class="form-control-static">2020-10-30</p>
+																<p class="form-control-static">${project.due_date}</p>
 															</div>
 														</div>
 													</div>
@@ -640,8 +638,7 @@
 															<label class="control-label text-right col-md-3">Project
 																Name </label>
 															<div class="col-md-9">
-																<p class="form-control-static">Banking Management
-																	System</p>
+																<p class="form-control-static">${project.project_name}</p>
 															</div>
 														</div>
 													</div>
@@ -649,7 +646,7 @@
 												</div>
 
 												<!--/row-->
-												<h4 class="card-title">Asigned Info</h4>
+												<h4 class="card-title">Assigned Task Info</h4>
 											</div>
 											<hr class="m-t-0 m-b-40">
 											<div class="card-body">
@@ -658,7 +655,7 @@
 														<div class="form-group row">
 															<label class="control-label text-right col-md-3">Deadline</label>
 															<div class="col-md-9">
-																<p class="form-control-static">2020-10-09</p>
+																<p class="form-control-static">${assignedTask.deadline}</p>
 															</div>
 														</div>
 													</div>
@@ -669,7 +666,7 @@
 															<label class="control-label text-right col-md-3">Finished
 																Date</label>
 															<div class="col-md-9">
-																<p class="form-control-static">2020-10-08</p>
+																<p class="form-control-static">${assignedTask.finished_date}</p>
 															</div>
 														</div>
 													</div>
@@ -679,7 +676,7 @@
 															<label class="control-label text-right col-md-3">Description
 															</label>
 															<div class="col-md-9">
-																<p class="form-control-static">design UI</p>
+																<p class="form-control-static">${assignedTask.description}</p>
 															</div>
 														</div>
 													</div>

@@ -31,9 +31,8 @@ public class TaskServiceImplement implements TaskService {
 	}
 
 	@Override
-	public void getbyid(int id) {
-		// TODO Auto-generated method stub
-		
+	public Task getbyid(int id) {
+		return taskDao.getbyid(id);
 	}
 
 
