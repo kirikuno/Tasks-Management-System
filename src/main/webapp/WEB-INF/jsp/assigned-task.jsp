@@ -583,12 +583,12 @@
 											ID</label>
 										<div class="col-sm-9">
 											<div class="input-group">
-												<form:input type="number" class="form-control" path="task_id"
-													id="taskID" disabled="false" />
+												<form:input type="number" class="form-control"
+													path="task_id" id="taskID" disabled="false" />
 											</div>
 										</div>
 									</div>
-									
+
 
 									<div class="form-group row">
 										<label for="phaseID" class="col-sm-3 control-label">Phase
@@ -604,7 +604,8 @@
 										<label for="deadline" class="col-sm-3 control-label">Deadline</label>
 										<div class="col-sm-9">
 											<div class="input-group">
-												<form:input type="date" class="form-control" id="deadline" path="deadline"/>
+												<form:input type="date" class="form-control" id="deadline"
+													path="deadline" />
 
 											</div>
 										</div>
@@ -613,8 +614,9 @@
 										<label for="description" class="col-sm-3 control-label">Description</label>
 										<div class="col-sm-9">
 											<div class="input-group">
-												<form:input type="text" class="form-control" id="description"
-													placeholder="Enter Description" path="description"/>
+												<form:input type="text" class="form-control"
+													id="description" placeholder="Enter Description"
+													path="description" />
 											</div>
 										</div>
 									</div>
@@ -623,7 +625,7 @@
 										<div class="col-sm-9">
 											<div class="input-group">
 												<form:input type="number" class="form-control" id="status"
-													placeholder="Enter Status of Assigned Task" path="status"/>
+													placeholder="Enter Status of Assigned Task" path="status" />
 											</div>
 										</div>
 									</div>
@@ -632,7 +634,18 @@
 											Date</label>
 										<div class="col-sm-9">
 											<div class="input-group">
-												<form:input type="date" class="form-control" id="finishedDate" path="finished_date"/>
+												<form:input type="date" class="form-control"
+													id="finishedDate" value="08/08/1998" path="finished_date"/>
+												<script type="text/javascript">
+													const
+													element = document
+															.getElementById('finishedDate');
+													element.valueAsNumber = Date
+															.now()
+															- (new Date())
+																	.getTimezoneOffset()
+															* 60000;
+												</script>
 											</div>
 										</div>
 									</div>
@@ -642,10 +655,11 @@
 									<div class="form-group row m-b-0">
 										<div class="offset-sm-3 col-sm-9 ">
 											<button type="submit"
-												class="btn btn-info waves-effect waves-light" formaction="/insertAssignedTask">add</button>
+												class="btn btn-info waves-effect waves-light"
+												formaction="/insertAssignedTask">add</button>
 
-											<button type="submit"
-												class="btn btn-info waves-effect waves-light">edit</button>
+											<button type="submit" formaction="/updateAssignedTask"
+												class="btn btn-info waves-effect waves-light" >edit</button>
 										</div>
 									</div>
 

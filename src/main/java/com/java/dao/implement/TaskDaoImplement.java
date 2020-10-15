@@ -11,7 +11,6 @@ import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -78,6 +77,7 @@ public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 
 	@Override
 	public Task getbyid(int id) {
+<<<<<<< HEAD
 		String sql = "SELECT * FROM [Tasks_Management].[dbo].[tasks] WHERE task_id = ?";
 		Task task= (Task)getJdbcTemplate().queryForObject(sql, new Object[]{id}, new RowMapper<Task>(){
 			@Override
@@ -99,6 +99,20 @@ public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 		});
 		return task;
 	
+=======
+		String sql = "SELECT * FROM [Tasks_Management].[dbo].Tasks WHERE task_id = ?";
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql,new Object[]{id});
+
+		Task task = new Task();
+		for (Map<String, Object> row : rows) 
+		{
+			task.setTask_id((int)row.get("task_id"));
+			task.setTask_name((String) row.get("task_name"));
+			task.setDue_date((Date) row.get("due_date"));
+			task.setStatus((String) row.get("status"));
+		}
+		return task;
+>>>>>>> branch 'master' of https://github.com/kirikuno/Tasks-Management-System
 		
 	}
 

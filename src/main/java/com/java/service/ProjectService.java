@@ -12,4 +12,5 @@ public interface ProjectService {
   void updateProject(Project project);
 	Project getbyId(int id);
 	void deleteProject(int id);
+	Project getProjectByTaskId(int id);
 }

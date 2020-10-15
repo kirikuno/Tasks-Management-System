@@ -49,6 +49,11 @@ public class ProjectServiceImplement implements ProjectService {
 		projectDao.deleteProject(id);
 		
 	}
+
+	@Override
+	public Project getProjectByTaskId(int id) {
+		return projectDao.getProjectByTaskId(id);
+	}
 	
 
 

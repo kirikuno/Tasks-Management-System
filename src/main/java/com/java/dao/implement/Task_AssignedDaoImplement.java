@@ -13,7 +13,10 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.java.dao.Task_AssignedDao;
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/kirikuno/Tasks-Management-System
 import com.java.model.Task_Assigned;
 import com.java.model.User;
 
@@ -76,7 +79,7 @@ public class Task_AssignedDaoImplement extends JdbcDaoSupport implements Task_As
 
 	@Override
 	public List<Task_Assigned> getallTaskAssignedByID(int id) {
-		String sql = "select  ta.userid,ta.task_id,u.username,ta.deadline,ta.description,ta.finished_date,ta.phase_id,ta.status from [Tasks_Management].[dbo].Task_Assigned ta,[dbo].[user] u  where ta.userid= u.userid and task_id =? order by phase_id asc";
+		String sql = "select  ta.userid,ta.task_id,u.username,ta.deadline,ta.description,ta.finished_date,ta.phase_id,ta.status from [Tasks_Management].[dbo].Task_Assigned ta,[Tasks_Management].[dbo].[user] u  where ta.userid= u.userid and task_id =? order by phase_id asc";
 		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql, id);
 
 		List<Task_Assigned> result = new ArrayList<Task_Assigned>();
@@ -108,9 +111,49 @@ public class Task_AssignedDaoImplement extends JdbcDaoSupport implements Task_As
 	@Override
 	public void insertAssignedTask(Task_Assigned ta) {
 		String sql = "INSERT INTO [Tasks_Management].[dbo].[Task_Assigned] " +
-				"(task_id,userid,phase_id,deadline,finished_date,description,status) VALUES (?,?,?,?,?,?,?)" ;
+				"(task_id,userid,phase_id,deadline,finished_date,description,status) VALUES (?,?,?,?,?,?,?);"
+				+ "UPDATE [Tasks_Management].[dbo].[Task_Assigned] SET finished_date = NULL WHERE task_id = ? and userid = ? and phase_id = ?";
 		getJdbcTemplate().update(sql, new Object[]{
-				ta.getTask_id(),ta.getUser_id().getUser_id(),ta.getPhase_id(),ta.getDeadline(),ta.getFinished_date(),ta.getDescription(),ta.getStatus()
+				ta.getTask_id(),ta.getUser_id().getUser_id(),ta.getPhase_id(),ta.getDeadline(),ta.getFinished_date(),ta.getDescription(),ta.getStatus(),ta.getTask_id(),ta.getUser_id().getUser_id(),ta.getPhase_id()
 		});
+	}
+	
+	@Override
+	public void updateAssignedTask(Task_Assigned ta) {
+		String sql = "UPDATE [Tasks_Management].[dbo].[Task_Assigned] SET userid=?, phase_id=?, deadline=?, finished_date=?, description=?, status=? WHERE task_id = ? and userid = ? and phase_id = ?";
+		getJdbcTemplate().update(sql, new Object[]{
+				ta.getUser_id().getUser_id(),ta.getPhase_id(),ta.getDeadline(),ta.getFinished_date(),ta.getDescription(),ta.getStatus(),ta.getTask_id(),ta.getUser_id().getUser_id(),ta.getPhase_id()
+		});
+	}
+
+	
+	@Override
+	public void submitAssignedTask(int taskId,	int phaseId) {
+		String sql = "EXEC submitAssignedTask @taskId = ?, @phaseId = ?;";
+		getJdbcTemplate().update(sql, new Object[]{taskId,phaseId});
+	}
+	
+	@Override
+	public Task_Assigned getAssignedTask(int taskId,int phaseId) {
+		String sql = "SELECT * FROM [Tasks_Management].[dbo].[Task_Assigned] WHERE task_id = ? and phase_id=?;";
+		
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql, new Object[] { taskId,phaseId });
+		Task_Assigned taskAssigned = new Task_Assigned();
+		for (Map<String, Object> row : rows) {
+			
+			User user = new User();
+			user.setUser_id((Integer) row.get("userid"));
+			user.setUsername((String)row.get("username"));
+			
+			taskAssigned.setTask_id((Integer) row.get("task_id"));
+			taskAssigned.setUser_id(user);
+			taskAssigned.setPhase_id((Integer) row.get("phase_id"));
+			taskAssigned.setStatus((Integer) row.get("status"));
+			taskAssigned.setDeadline((Date) row.get("deadline"));
+			taskAssigned.setDescription((String) row.get("description"));
+			taskAssigned.setFinished_date((Date) row.get("finished_date"));
+			
+		}
+		return taskAssigned;
 	}
 }

@@ -51,6 +51,22 @@ public class ProjectDaoImplement extends JdbcDaoSupport implements ProjectDAO{
 		}
 		return result;
 	}
+	
+	@Override
+	public Project getProjectByTaskId(int id) 
+	{
+		String sql = "SELECT * FROM [Tasks_Management].[dbo].[Project] WHERE project_id in (SELECT project_id FROM [Tasks_Management].[dbo].[Tasks] WHERE task_id = ?);";
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql,new Object[]{id});
+		Project project = new Project();
+		for (Map<String, Object> row : rows) 
+		{
+			project.setProject_id((int)row.get("project_id"));
+			project.setProject_name((String) row.get("project_name"));
+			project.setDue_date((Date) row.get("due_date"));
+			project.setProject_description((String) row.get("project_description"));
+		}
+		return project;
+	}
 
 
 	@Override

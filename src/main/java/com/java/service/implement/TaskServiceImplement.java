@@ -33,7 +33,10 @@ public class TaskServiceImplement implements TaskService {
 	@Override
 	public Task getbyid(int id) {
 		return taskDao.getbyid(id);
+<<<<<<< HEAD
 		
+=======
+>>>>>>> branch 'master' of https://github.com/kirikuno/Tasks-Management-System
 	}
 
 
