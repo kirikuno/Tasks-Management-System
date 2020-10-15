@@ -31,15 +31,15 @@ public class TaskServiceImplement implements TaskService {
 	}
 
 	@Override
-	public void getbyid(int id) {
-		// TODO Auto-generated method stub
+	public Task getbyid(int id) {
+		return taskDao.getbyid(id);
 		
 	}
 
 
 	@Override
 	public void deleteTask(int id) {
-		// TODO Auto-generated method stub
+		taskDao.deleteTask(id);
 		
 	}
 
@@ -47,6 +47,12 @@ public class TaskServiceImplement implements TaskService {
 	public List<Task> getbyProject(int id) {
 	
 		return taskDao.getbyProject(id);
+	}
+
+	@Override
+	public void updateTask(Task id) {
+		taskDao.updateTask(id);
+		
 	}
 
 

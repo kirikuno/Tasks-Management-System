@@ -74,7 +74,7 @@ public class ProjectDaoImplement extends JdbcDaoSupport implements ProjectDAO{
 
 	@Override
 	public Project getbyId(int id) {
-		String sql = "SELECT * FROM [Tasks_Management].[dbo].project WHERE project_id = ?";
+		String sql = "SELECT * FROM [Tasks_Management].[dbo].[project] WHERE project_id = ?";
 		Project project= (Project)getJdbcTemplate().queryForObject(sql, new Object[]{id}, new RowMapper<Project>(){
 			@Override
 			public Project mapRow(ResultSet rs, int rwNumber) throws SQLException {

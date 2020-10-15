@@ -13,7 +13,7 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.java.dao.Task_AssignedDao;
-import com.java.model.Task;
+
 import com.java.model.Task_Assigned;
 import com.java.model.User;
 

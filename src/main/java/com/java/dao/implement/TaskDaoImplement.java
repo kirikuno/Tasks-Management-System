@@ -1,5 +1,7 @@
 package com.java.dao.implement;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -46,7 +48,9 @@ public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 			task.setTask_name((String) row.get("task_name"));
 			task.setDue_date((Date) row.get("due_date"));
 			task.setStatus((String) row.get("status"));
-			
+			task.setTask_description((String)row.get("task_description"));
+			task.setLead_id((User)row.get("lead_id"));
+			task.setProject_id((Project) row.get("project_id"));
 			result.add(task);
 		}
 		return result;
@@ -55,29 +59,53 @@ public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 	@Override
 	public void insertTask(Task task) {
 		String sql = "INSERT INTO [Tasks_Management].[dbo].tasks " +
-				"(task_id, status,due_date,task_name) VALUES (?, ?, ?)" ;
+				"(task_id, status,due_date,task_name,task_description,leader_id,project_id) VALUES (?, ?, ?,?,?,?,?)" ;
 		getJdbcTemplate().update(sql, new Object[]{
-//				emp.getEmpId(), emp.getEmpName(),emp.getDepartId()
+				task.getTask_id(), task.getStatus(),task.getDue_date(),task.getTask_name(),task.getTask_description(),task.getLead_id().getUser_id(),task.getProject_id()
 		});
 		
 	}
 
 	@Override
 	public void updateTask(Task task) {
-		// TODO Auto-generated method stub
+		String sql = "UPDATE  [Tasks_Management].[dbo].tasks " +
+				"SET  status=?,due_date=?,task_name=?,task_description=?,leader_id=?,project_id=? where task_id=?" ;
+		getJdbcTemplate().update(sql, new Object[]{
+				task.getTask_id(), task.getStatus(),task.getDue_date(),task.getTask_name(),task.getTask_description(),task.getLead_id().getUser_id(),task.getProject_id()
+		});
 		
 	}
 
 	@Override
-	public void getbyid(int id) {
-		// TODO Auto-generated method stub
+	public Task getbyid(int id) {
+		String sql = "SELECT * FROM [Tasks_Management].[dbo].[tasks] WHERE task_id = ?";
+		Task task= (Task)getJdbcTemplate().queryForObject(sql, new Object[]{id}, new RowMapper<Task>(){
+			@Override
+			public Task mapRow(ResultSet rs, int rwNumber) throws SQLException {
+				Task task = new Task();
+				Project project=new Project();
+				project.setProject_id(rs.getInt("project_id"));
+				User user=new User();
+				user.setUser_id(rs.getInt("leader_id"));
+				task.setTask_id(rs.getInt("task_id"));
+				task.setStatus(rs.getString("status"));
+				task.setDue_date(rs.getDate("due_date"));
+				task.setTask_name(rs.getString("task_name"));
+				task.setTask_description("task_description");
+				task.setProject_id(project);
+				task.setLead_id(user);
+				return task;
+			}
+		});
+		return task;
+	
 		
 	}
 
 
 	@Override
 	public void deleteTask(int id) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

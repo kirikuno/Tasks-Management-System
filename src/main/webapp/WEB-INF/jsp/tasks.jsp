@@ -549,16 +549,16 @@
 								<h4 class="card-title">Create Task</h4>
 							</div>
 							<hr class="m-t-0" />
-							<form class="form-horizontal r-separator"
-								action="/add-task" method="post" modelAttribute="task">
+							<form:form class="form-horizontal r-separator" action="/add-task"
+								method="post" modelAttribute="task">
 								<div class="card-body">
 									<div class="form-group row p-b-15" hidden="">
 										<label for="inputEmail3"
 											class="col-sm-3 text-right control-label col-form-label">Task
 											ID</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" id="inputEmail3"
-												path="project_id" placeholder="Full Name Here" />
+											<form:input type="text" class="form-control" id="inputEmail3"
+												path="task_id" placeholder="Full Name Here" />
 										</div>
 									</div>
 									<div class="form-group row p-b-15">
@@ -566,8 +566,8 @@
 											class="col-sm-3 text-right control-label col-form-label">Task
 											Name</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" id="inputEmail3"
-												path="project_name" placeholder="Full Name Here" />
+											<form:input type="text" class="form-control" id="inputEmail3"
+												path="task_name" placeholder="Full Name Here" />
 										</div>
 									</div>
 									<div class="form-group row p-b-15">
@@ -575,30 +575,33 @@
 											class="col-sm-3 text-right control-label col-form-label">Due
 											Date</label>
 										<div class="col-sm-9">
-											<input type="date" class="form-control" path="due_date" />
+											<form:input type="date" class="form-control" path="due_date" />
 										</div>
 									</div>
+
 									<div class="form-group row p-b-15">
-										<label class="col-sm-3 text-right control-label col-form-label">Lead</label>
-										<div class="col-md-9">
-											<select class="form-control custom-select">
-												<option value="">User1</option>
-												<option value="">User2</option>
-												<option value="">User3</option>
-												<option value="">User4</option>
-											</select> 
-										</div>
-									</div>
-									<div class="form-group row p-b-15">
-										<label for="inputEmail3"
+										<label
 											class="col-sm-3 text-right control-label col-form-label">Description</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" id="inputEmail3"
-												path="project_description" placeholder="Description Here" />
+											<form:input type="text" class="form-control" id="inputEmail3"
+												path="task_description" placeholder="Description Here" />
 										</div>
 									</div>
-									
-
+									<div class="form-group row p-b-15">
+										<label
+											class="col-sm-3 text-right control-label col-form-label">Lead</label>
+										<div class="col-md-9">
+											<select class="form-control custom-select"  id="user_name" name="user_name"
+												required="required" path="lead_id">
+												<option value="">SELECT</option>
+												<c:forEach var="user" items="${users }">
+												<option value="${user.username}">${user.username} </option>
+												</c:forEach>
+													<%-- <form:options items="${users}" itemValue="user_id" itemLabel="username"/> --%>
+												
+											</select>
+										</div>
+									</div>
 
 
 								</div>
@@ -607,14 +610,15 @@
 										<button type="submit"
 											class="btn btn-info waves-effect waves-light">Save</button>
 										<button type="submit"
-											class="btn btn-dark waves-effect waves-light">
-											Cancel</button>
+											class="btn btn-dark waves-effect waves-light">Cancel</button>
 									</div>
 								</div>
-							</form>
+							</form:form>
 						</div>
 					</div>
 				</div>
+
+
 				<hr>
 
 				<!-- ============================================================== -->
@@ -652,14 +656,15 @@
 													<td>
 														<div class="button-box">
 															<a type="button" class="btn btn-default"
-																href="/edit-project/${project.project_id}">Edit</a>
+																href="/edit-task/${task.task_id}">Edit</a>
 															<!-- <a type="button" class="btn btn-primary"
 																data-toggle="modal" data-target="#exampleModal"
 																data-whatever="@mdo">Delete project</a> -->
 															<a type="button" class="btn btn-danger"
-																href="/delete-project/${project.project_id}">Delete</a>
-															<a type="button" class="btn btn-success"
-																href="/assigned-task/${task.task_id }">View Assigned Tasks </a>
+																href="/delete-task/${task.task_id}">Delete</a> <a
+																type="button" class="btn btn-success"
+																href="/assigned-task/${task.task_id }">View Assigned
+																Tasks </a>
 														</div> <%-- <div class="modal fade" id="exampleModal" tabindex="-1"
 															role="dialog" aria-labelledby="exampleModalLabel1">
 															<div class="modal-dialog center" role="document">
@@ -684,7 +689,7 @@
 												</tr>
 											</c:forEach>
 										</tbody>
-										
+
 									</table>
 								</div>
 							</div>
@@ -715,48 +720,49 @@
 			<!-- End Page wrapper  -->
 			<!-- ============================================================== -->
 		</div>
-		<!-- ============================================================== -->
-		<!-- End Wrapper -->
-		<!-- ============================================================== -->
-		<!-- ============================================================== -->
-		<!-- customizer Panel -->
-		<!-- ============================================================== -->
+	</div>
+	<!-- ============================================================== -->
+	<!-- End Wrapper -->
+	<!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- customizer Panel -->
+	<!-- ============================================================== -->
 
-		<div class="chat-windows"></div>
-		<!-- ============================================================== -->
-		<!-- All Jquery -->
-		<!-- ============================================================== -->
-		<script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
-		<!-- Bootstrap tether Core JavaScript -->
-		<script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
-		<script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-		<!-- apps -->
-		<script src="../../dist/js/app.min.js"></script>
-		<script src="../../dist/js/app.init.dark.js"></script>
-		<script src="../../dist/js/app-style-switcher.js"></script>
-		<!-- slimscrollbar scrollbar JavaScript -->
-		<script
-			src="../../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-		<script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
-		<!--Wave Effects -->
-		<script src="../../dist/js/waves.js"></script>
-		<!--Menu sidebar -->
-		<script src="../../dist/js/sidebarmenu.js"></script>
-		<!--Custom JavaScript -->
-		<script src="../../dist/js/custom.min.js"></script>
-		<!--This page JavaScript -->
-		<!--chartis chart-->
-		<script src="../../assets/libs/chartist/dist/chartist.min.js"></script>
-		<script
-			src="../../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-		<!--c3 charts -->
-		<script src="../../assets/extra-libs/c3/d3.min.js"></script>
-		<script src="../../assets/extra-libs/c3/c3.min.js"></script>
-		<!--chartjs -->
-		<script src="../../assets/libs/raphael/raphael.min.js"></script>
-		<script src="../../assets/libs/morris.js/morris.min.js"></script>
+	<div class="chat-windows"></div>
+	<!-- ============================================================== -->
+	<!-- All Jquery -->
+	<!-- ============================================================== -->
+	<script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+	<!-- Bootstrap tether Core JavaScript -->
+	<script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+	<script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<!-- apps -->
+	<script src="../../dist/js/app.min.js"></script>
+	<script src="../../dist/js/app.init.dark.js"></script>
+	<script src="../../dist/js/app-style-switcher.js"></script>
+	<!-- slimscrollbar scrollbar JavaScript -->
+	<script
+		src="../../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+	<script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
+	<!--Wave Effects -->
+	<script src="../../dist/js/waves.js"></script>
+	<!--Menu sidebar -->
+	<script src="../../dist/js/sidebarmenu.js"></script>
+	<!--Custom JavaScript -->
+	<script src="../../dist/js/custom.min.js"></script>
+	<!--This page JavaScript -->
+	<!--chartis chart-->
+	<script src="../../assets/libs/chartist/dist/chartist.min.js"></script>
+	<script
+		src="../../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+	<!--c3 charts -->
+	<script src="../../assets/extra-libs/c3/d3.min.js"></script>
+	<script src="../../assets/extra-libs/c3/c3.min.js"></script>
+	<!--chartjs -->
+	<script src="../../assets/libs/raphael/raphael.min.js"></script>
+	<script src="../../assets/libs/morris.js/morris.min.js"></script>
 
-		<script src="../../dist/js/pages/dashboards/dashboard1.js"></script>
+	<script src="../../dist/js/pages/dashboards/dashboard1.js"></script>
 </body>
 <footer class="footer text-center">
 	All Rights Reserved by AdminBite admin. Designed and Developed by <a

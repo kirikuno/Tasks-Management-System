@@ -2,16 +2,26 @@ package com.java.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Task {
 
 	private int task_id;
 	private String task_name;
 	private String task_description;
 	private String status;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date due_date;
 	private Project project_id;
 	private User lead_id;
 	
+
+	public User getLead_id() {
+		return lead_id;
+	}
+	public void setLead_id(User lead_id) {
+		this.lead_id = lead_id;
+	}
 	public Task() {
 		super();
 	}
@@ -63,17 +73,12 @@ public class Task {
 		this.project_id = project_id;
 	}
 	
-	public User getLead_id() {
-		return lead_id;
-	}
-	public void setLead_id(User lead_id) {
-		this.lead_id = lead_id;
-	}
+	
 	@Override
 	public String toString() {
 		return "Task [task_id=" + task_id + ", task_name=" + task_name + ", task_description=" + task_description
 				+ ", status=" + status + ", due_date=" + due_date + ", project_id=" + project_id + ", lead_id="
-				+ lead_id + "]";
+				+  lead_id + "]";
 	}
 	
 	
