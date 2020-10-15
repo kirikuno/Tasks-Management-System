@@ -39,16 +39,25 @@ public class Task_Controller {
 		return model;
 	}
 	
+	@RequestMapping(value = "/submitAssignedTask/{id}/{phaseId}")
+	public ModelAndView submitAssignedTask(@PathVariable(name = "id") int id,@PathVariable(name = "phaseId") int phaseId)
+	{
+		String path = "redirect:/task-detail/" + id + "/" + phaseId;
+		ModelAndView model = new ModelAndView(path);
+		task_asignedservice.submitAssignedTask(id,phaseId);
+		return model;
+	}
+	
 
-	@RequestMapping(value = "/task-detail/{id}/{userId}/{phaseId}")
-	public ModelAndView taskDetail2(@PathVariable(name = "id") int id,@PathVariable(name = "phaseId") int phaseId ,@PathVariable(name = "userId") int userId)
+	@RequestMapping(value = "/task-detail/{id}/{phaseId}")
+	public ModelAndView taskDetail2(@PathVariable(name = "id") int id,@PathVariable(name = "phaseId") int phaseId)
 	{
 		String path = "task-detail";
 		ModelAndView model = new ModelAndView(path);
 		List<Task_Assigned> task_asign = task_asignedservice.getallTaskAssignedByID(id);
 		Project project = projectService.getProjectByTaskId(id);
 		Task task = taskservice.getbyid(id); 
-		Task_Assigned assignedTask = task_asignedservice.getAssignedTask(id,userId,phaseId);
+		Task_Assigned assignedTask = task_asignedservice.getAssignedTask(id,phaseId);
 		model.addObject("taskAssign", task_asign);
 		model.addObject("project",project);
 		model.addObject("task",task);

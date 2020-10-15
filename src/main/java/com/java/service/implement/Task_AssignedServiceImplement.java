@@ -48,8 +48,13 @@ public class Task_AssignedServiceImplement implements Task_AssignedService {
 	}
 
 	@Override
-	public Task_Assigned getAssignedTask(int taskId, int userId, int phaseId) {
-		return taskAssignedDao.getAssignedTask(taskId,userId,phaseId);
+	public Task_Assigned getAssignedTask(int taskId, int phaseId) {
+		return taskAssignedDao.getAssignedTask(taskId,phaseId);
+	}
+
+	@Override
+	public void submitAssignedTask(int taskId, int phaseId) {
+		taskAssignedDao.submitAssignedTask(taskId,phaseId);
 	}
 
 }

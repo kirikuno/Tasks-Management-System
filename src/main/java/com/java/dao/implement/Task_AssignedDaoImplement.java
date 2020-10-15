@@ -122,11 +122,18 @@ public class Task_AssignedDaoImplement extends JdbcDaoSupport implements Task_As
 		});
 	}
 
+	
 	@Override
-	public Task_Assigned getAssignedTask(int taskId, int userId, int phaseId) {
-		String sql = "SELECT * FROM [Tasks_Management].[dbo].[Task_Assigned] WHERE task_id = ? and userid=? and phase_id=?;";
+	public void submitAssignedTask(int taskId,	int phaseId) {
+		String sql = "EXEC submitAssignedTask @taskId = ?, @phaseId = ?;";
+		getJdbcTemplate().update(sql, new Object[]{taskId,phaseId});
+	}
+	
+	@Override
+	public Task_Assigned getAssignedTask(int taskId,int phaseId) {
+		String sql = "SELECT * FROM [Tasks_Management].[dbo].[Task_Assigned] WHERE task_id = ? and phase_id=?;";
 		
-		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql, new Object[] { taskId,userId,phaseId });
+		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql, new Object[] { taskId,phaseId });
 		Task_Assigned taskAssigned = new Task_Assigned();
 		for (Map<String, Object> row : rows) {
 			

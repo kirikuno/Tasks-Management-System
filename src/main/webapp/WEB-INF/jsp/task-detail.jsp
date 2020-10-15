@@ -692,9 +692,9 @@
 														<div class="col-md-6">
 															<div class="row">
 																<div class="col-md-offset-3 col-md-9">
-																	<button type="submit" class="btn btn-success">
+																	<a type="button" class="btn btn-success" href="/submitAssignedTask/${assignedTask.task_id}/${assignedTask.phase_id}">
 																		<i class="fa fa-pencil"></i> Submit Task
-																	</button>
+																	</a>
 
 																</div>
 															</div>

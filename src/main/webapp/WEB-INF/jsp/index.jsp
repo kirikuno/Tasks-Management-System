@@ -577,7 +577,7 @@
 
 							<c:forEach var="taskAssigned" items="${taskAssignedList}">
 								<c:if test="${taskAssigned.getStatus() == 2}">
-									<a class="card-body" href="/task-detail/${taskAssigned.getTask_id()}/${taskAssigned.getUser_id().getUser_id()}/${taskAssigned.phase_id}"
+									<a class="card-body" href="/task-detail/${taskAssigned.getTask_id()}/${taskAssigned.phase_id}"
 										style="opacity: 0.5; filter: alpha(opacity = 90);">
 
 										<h3 class="card-title">
