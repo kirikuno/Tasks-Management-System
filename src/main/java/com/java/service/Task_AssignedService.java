@@ -10,4 +10,5 @@ public interface Task_AssignedService {
   	  List<Task_Assigned> getallTaskAssignedByID(int id);
 	  void deleteAssignedTask(int task_id,int user_id, int phase_id);
 	  void insertAssignedTask(Task_Assigned ta);
+	  void updateAssignedTask(Task_Assigned ta);
 }

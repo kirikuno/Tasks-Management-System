@@ -13,7 +13,6 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.java.dao.Task_AssignedDao;
-import com.java.model.Task;
 import com.java.model.Task_Assigned;
 import com.java.model.User;
 
@@ -108,9 +107,18 @@ public class Task_AssignedDaoImplement extends JdbcDaoSupport implements Task_As
 	@Override
 	public void insertAssignedTask(Task_Assigned ta) {
 		String sql = "INSERT INTO [Tasks_Management].[dbo].[Task_Assigned] " +
-				"(task_id,userid,phase_id,deadline,finished_date,description,status) VALUES (?,?,?,?,?,?,?)" ;
+				"(task_id,userid,phase_id,deadline,finished_date,description,status) VALUES (?,?,?,?,?,?,?);"
+				+ "UPDATE [Tasks_Management].[dbo].[Task_Assigned] SET finished_date = NULL WHERE task_id = ? and userid = ? and phase_id = ?";
 		getJdbcTemplate().update(sql, new Object[]{
-				ta.getTask_id(),ta.getUser_id().getUser_id(),ta.getPhase_id(),ta.getDeadline(),ta.getFinished_date(),ta.getDescription(),ta.getStatus()
+				ta.getTask_id(),ta.getUser_id().getUser_id(),ta.getPhase_id(),ta.getDeadline(),ta.getFinished_date(),ta.getDescription(),ta.getStatus(),ta.getTask_id(),ta.getUser_id().getUser_id(),ta.getPhase_id()
+		});
+	}
+	
+	@Override
+	public void updateAssignedTask(Task_Assigned ta) {
+		String sql = "UPDATE [Tasks_Management].[dbo].[Task_Assigned] SET userid=?, phase_id=?, deadline=?, finished_date=?, description=?, status=? WHERE task_id = ? and userid = ? and phase_id = ?";
+		getJdbcTemplate().update(sql, new Object[]{
+				ta.getUser_id().getUser_id(),ta.getPhase_id(),ta.getDeadline(),ta.getFinished_date(),ta.getDescription(),ta.getStatus(),ta.getTask_id(),ta.getUser_id().getUser_id(),ta.getPhase_id()
 		});
 	}
 }

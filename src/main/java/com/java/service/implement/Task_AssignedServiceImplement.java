@@ -42,4 +42,9 @@ public class Task_AssignedServiceImplement implements Task_AssignedService {
 		taskAssignedDao.insertAssignedTask(ta);
 	}
 
+	@Override
+	public void updateAssignedTask(Task_Assigned ta) {
+		taskAssignedDao.updateAssignedTask(ta);
+	}
+
 }
