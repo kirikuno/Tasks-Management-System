@@ -27,7 +27,7 @@ public class TaskServiceImplement implements TaskService {
 
 	@Override
 	public void insertTask(Task task) {
-		
+		taskDao.insertTask(task);
 	}
 
 	@Override

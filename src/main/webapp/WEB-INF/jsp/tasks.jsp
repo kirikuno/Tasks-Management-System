@@ -549,7 +549,7 @@
 								<h4 class="card-title">Create Task</h4>
 							</div>
 							<hr class="m-t-0" />
-							<form:form class="form-horizontal r-separator" action="/add-task"
+							<form:form class="form-horizontal r-separator" action="/add-task/${project.project_id}"
 								method="post" modelAttribute="task">
 								<div class="card-body">
 									<div class="form-group row p-b-15" hidden="">
@@ -589,6 +589,22 @@
 									</div>
 									<div class="form-group row p-b-15">
 										<label
+											class="col-sm-3 text-right control-label col-form-label">Status</label>
+										<div class="col-sm-9">
+											<form:input type="text" class="form-control" id="inputEmail3"
+												path="status" placeholder="Description Here" />
+										</div>
+									</div>
+									<div class="form-group row p-b-15">
+										<label
+											class="col-sm-3 text-right control-label col-form-label">Project</label>
+										<div class="col-sm-9">
+											<form:input type="text" class="form-control" id="inputEmail3"
+												path="project_id" placeholder="Description Here" value="${project.project_name }"  disabled="true"/>
+										</div>
+									</div>
+									<div class="form-group row p-b-15">
+										<label
 											class="col-sm-3 text-right control-label col-form-label">Lead</label>
 										<div class="col-md-9">
 											<select class="form-control custom-select"  id="user_name" name="user_name"
@@ -609,8 +625,7 @@
 									<div class="form-group m-b-0 text-right">
 										<button type="submit"
 											class="btn btn-info waves-effect waves-light">Save</button>
-										<button type="submit"
-											class="btn btn-dark waves-effect waves-light">Cancel</button>
+										
 									</div>
 								</div>
 							</form:form>
@@ -661,7 +676,7 @@
 																data-toggle="modal" data-target="#exampleModal"
 																data-whatever="@mdo">Delete project</a> -->
 															<a type="button" class="btn btn-danger"
-																href="/delete-task/${task.task_id}">Delete</a> <a
+																href="/delete-task/${task.task_id}/${task.project_id.getProject_id()}">Delete</a> <a
 																type="button" class="btn btn-success"
 																href="/assigned-task/${task.task_id }">View Assigned
 																Tasks </a>

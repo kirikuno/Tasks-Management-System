@@ -1,6 +1,6 @@
 package com.java.controller;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,12 +37,8 @@ public class Task_Controller {
 	Task_AssignedService task_asignedservice;
 	@Autowired
 	UserService userservice;
-
-	int id_pj; 
-
 	@Autowired
 	ProjectService projectService;
-	
 
 	@GetMapping(value = "task-project/{id}")
 	public ModelAndView taskProject(@PathVariable(name = "id") int id) {
@@ -50,58 +46,79 @@ public class Task_Controller {
 		ModelAndView model = new ModelAndView("tasks");
 		List<User> users = userservice.getAllUsers();
 		List<Task> tasks = taskservice.getbyProject(id);
-		id_pj=id;
+		Project pj = projectService.getbyId(id);
+
 		model.addObject("tasks", tasks);
 		model.addObject("users", users);
-		model.addObject("user", new User());
 		model.addObject("task", new Task());
+		model.addObject("project", pj);
 
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/submitAssignedTask/{id}/{phaseId}")
-	public ModelAndView submitAssignedTask(@PathVariable(name = "id") int id,@PathVariable(name = "phaseId") int phaseId)
-	{
+	public ModelAndView submitAssignedTask(@PathVariable(name = "id") int id,
+			@PathVariable(name = "phaseId") int phaseId) {
 		String path = "redirect:/task-detail/" + id + "/" + phaseId;
 		ModelAndView model = new ModelAndView(path);
-		task_asignedservice.submitAssignedTask(id,phaseId);
+		task_asignedservice.submitAssignedTask(id, phaseId);
 		return model;
 	}
-	
-
 
 	@GetMapping(value = "edit-task/{id}")
 	public ModelAndView eitTask(@PathVariable(name = "id") int id, @ModelAttribute("task") Task task) {
 		ModelAndView model = new ModelAndView("tasks");
 		task = taskservice.getbyid(id);
-		List<Task> tasks = taskservice.getbyProject(id);
-		List<User> users = userservice.getAllUsers(); 
+		Project project=projectService.getbyId(task.getProject_id().getProject_id());
+		List<Task> tasks = taskservice.getbyProject(task.getProject_id().getProject_id());
+		List<User> users = userservice.getAllUsers();
 		model.addObject("tasks", tasks);
 		model.addObject("task", task);
 		model.addObject("users", users);
-		
+		model.addObject("project", project);
+
 		return model;
 	}
 
-	@PostMapping(value = "/add-task")
-	public ModelAndView createtask(@ModelAttribute("task") Task task,@RequestParam("user_name") String username) {
-		task.getLead_id().setUser_id(userservice.getIdByUsername(username));
-		
-//		if ((task.getTask_id()) != 0) {
-//			
-//			taskservice.updateTask(task);
-//		} else {
-//			
-//			taskservice.insertTask(task);
-//		}
+	@PostMapping(value = "/add-task/{id}")
+	public ModelAndView createtask(@ModelAttribute("task") Task task, @PathVariable(name = "id") int id,
+			@RequestParam("user_name") String username) {
+		String path = "redirect:/task-project/" + id;
+		//
+		User user = new User();
+		user.setUser_id(userservice.getIdByUsername(username));
+		System.out.println(user.getUser_id());
+		task.setLead_id(user);
+		//
+		Project pj = new Project();
+		pj.setProject_id(id);
+		task.setProject_id(pj);
+		//
+		if ((task.getTask_id()) != 0) {
 
-		return taskProject(id_pj);
+			taskservice.updateTask(task);
+			System.out.println("UPDATE");
+		} else {
+			try {
+				taskservice.insertTask(task);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println("INSERT");
+
+		}
+
+		return new ModelAndView(path);
 	}
 
-	@GetMapping(value = "delete-task/{id}")
-	public ModelAndView delete(@PathVariable(name = "id") int id) {
+	@GetMapping(value = "delete-task/{id}/{id2}")
+	public ModelAndView delete(@PathVariable(name = "id") int id,@PathVariable(name = "id2") int id2) {
+		Project pj=projectService.getbyId(id2);
+		String path = "redirect:/task-project/" + pj.getProject_id();
+		
+		
 		taskservice.deleteTask(id);
-		return null;
+		return  new ModelAndView(path);
 
 	}
 
@@ -112,23 +129,21 @@ public class Task_Controller {
 		List<Task_Assigned> task_asign = task_asignedservice.getallTaskAssignedByID(id);
 		return model;
 	}
+
 	@RequestMapping(value = "/task-detail/{id}/{phaseId}")
-	public ModelAndView taskDetail2(@PathVariable(name = "id") int id,@PathVariable(name = "phaseId") int phaseId)
-	{
+	public ModelAndView taskDetail2(@PathVariable(name = "id") int id, @PathVariable(name = "phaseId") int phaseId) {
 		String path = "task-detail";
 		ModelAndView model = new ModelAndView(path);
 		List<Task_Assigned> task_asign = task_asignedservice.getallTaskAssignedByID(id);
 		Project project = projectService.getProjectByTaskId(id);
-		Task task = taskservice.getbyid(id); 
-		Task_Assigned assignedTask = task_asignedservice.getAssignedTask(id,phaseId);
+		Task task = taskservice.getbyid(id);
+		Task_Assigned assignedTask = task_asignedservice.getAssignedTask(id, phaseId);
 
 		model.addObject("taskAssign", task_asign);
 
-
-		model.addObject("project",project);
-		model.addObject("task",task);
-		model.addObject("assignedTask",assignedTask);
-		
+		model.addObject("project", project);
+		model.addObject("task", task);
+		model.addObject("assignedTask", assignedTask);
 
 		return model;
 	}

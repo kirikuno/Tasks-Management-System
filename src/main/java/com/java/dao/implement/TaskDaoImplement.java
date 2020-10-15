@@ -58,20 +58,20 @@ public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 
 	@Override
 	public void insertTask(Task task) {
-		String sql = "INSERT INTO [Tasks_Management].[dbo].tasks " +
-				"(task_id, status,due_date,task_name,task_description,leader_id,project_id) VALUES (?, ?, ?,?,?,?,?)" ;
+		String sql = "INSERT INTO [Tasks_Management].[dbo].[tasks] " +
+				"( status,due_date,task_name,task_description,leader_id,project_id) VALUES ( ?, ?,?,?,?,?)" ;
 		getJdbcTemplate().update(sql, new Object[]{
-				task.getTask_id(), task.getStatus(),task.getDue_date(),task.getTask_name(),task.getTask_description(),task.getLead_id().getUser_id(),task.getProject_id()
+				 task.getStatus(),task.getDue_date(),task.getTask_name(),task.getTask_description(),task.getLead_id().getUser_id(),task.getProject_id().getProject_id()
 		});
 		
 	}
 
 	@Override
 	public void updateTask(Task task) {
-		String sql = "UPDATE  [Tasks_Management].[dbo].tasks " +
-				"SET  status=?,due_date=?,task_name=?,task_description=?,leader_id=?,project_id=? where task_id=?" ;
+		String sql = "UPDATE [Tasks_Management].[dbo].[tasks] SET  status=?,due_date=?,task_name=?,task_description=?,leader_id=?,project_id=? where task_id=? ";
+				
 		getJdbcTemplate().update(sql, new Object[]{
-				task.getTask_id(), task.getStatus(),task.getDue_date(),task.getTask_name(),task.getTask_description(),task.getLead_id().getUser_id(),task.getProject_id()
+				 task.getStatus(),task.getDue_date(),task.getTask_name(),task.getTask_description(),task.getLead_id().getUser_id(),task.getProject_id().getProject_id(),task.getTask_id()
 		});
 		
 	}
@@ -92,7 +92,7 @@ public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 				task.setStatus(rs.getString("status"));
 				task.setDue_date(rs.getDate("due_date"));
 				task.setTask_name(rs.getString("task_name"));
-				task.setTask_description("task_description");
+				task.setTask_description(rs.getString("task_description"));
 				task.setProject_id(project);
 				task.setLead_id(user);
 				return task;
@@ -109,7 +109,8 @@ public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 
 	@Override
 	public void deleteTask(int id) {
-		
+		String sql = "DELETE FROM [Tasks_Management].[dbo].[Tasks] WHERE task_id = ? ;";
+		getJdbcTemplate().update(sql, new Object[]{id});	
 		
 	}
 
@@ -136,7 +137,6 @@ public class TaskDaoImplement extends JdbcDaoSupport implements TaskDAO{
 			ta.setProject_id(project);
 			result.add(ta);
 		}
-		
 		return result;
 		
 
