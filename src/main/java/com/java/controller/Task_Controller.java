@@ -127,6 +127,7 @@ public class Task_Controller {
 
 		ModelAndView model = new ModelAndView("task-detail");
 		List<Task_Assigned> task_asign = task_asignedservice.getallTaskAssignedByID(id);
+		model.addObject("taskAssign", task_asign);
 		return model;
 	}
 
