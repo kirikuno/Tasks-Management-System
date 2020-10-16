@@ -111,7 +111,11 @@ public class MainController {
 
 	@RequestMapping("/menu3")
 	public ModelAndView createProject() {
-		return new ModelAndView("create-project", "project", new Project());
+		ModelAndView model= new ModelAndView("create-project", "project", new Project());
+		List<Project> projects = projectService.getAllProject();
+		model.addObject("projects", projects);
+		return model;
+		
 	}
 
 	@RequestMapping(value = "/menu4")

@@ -1,6 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
@@ -21,6 +22,7 @@
 <link href="../../assets/extra-libs/c3/c3.min.css" rel="stylesheet" />
 <link href="../../assets/libs/morris.js/morris.css" rel="stylesheet" />
 <!-- Custom CSS -->
+<link href="../../dist/css/style.min.css" rel="stylesheet" />
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -548,38 +550,43 @@
 							<div class="col-12">
 								<div class="card">
 									<div class="card-body">
-										
-											<c:forEach var="taska" items="${taskAssign}">
+										<c:forEach var="taska" items="${taskAssign}">
+											<ul class="timeline timeline-left">
+												<li class="timeline-inverted timeline-item">
+													<div class="timeline-badge success">
+														<img src="../../assets/images/users/userall.jpg" alt="img"
+															class="img-fluid">
+													</div>
+													<div class="timeline-panel">
+														<div class="timeline-heading">
 
-												<ul class="timeline timeline-left">
-													<li class="timeline-inverted timeline-item">
-														<div class="timeline-badge success">
-															<img src="../../assets/images/users/userall.jpg"
-																alt="img" class="img-fluid">
-														</div>
-														<div class="timeline-panel">
-															<div class="timeline-heading">
-													
-																<h4 class="timeline-title">${taska.user_id.username}</h4>
+															<h4 class="timeline-title">${taska.user_id.username}</h4>
 
-																<p>
-																	<small class="text-muted"><i
-																		class="fa fa-clock-o"></i> 
-																		<c:if  test="${taska.status == 2}"> <font color="red"> <c:out value="Status: In Progress"/> </font></c:if> 
-																		<c:if test="${taska.status == 1}"> <font color="blue"> <c:out value="Status: To Do"/> </font> </c:if>
-																		<c:if test="${taska.status == 3}"><font color="green"> <c:out value="Status: Done" /> </font></c:if>
-																		
-																		</small>
-																</p>
-															</div>
-															<div class="timeline-body">
-																<p>Description:  ${taska.description }</p>
-															</div>
+															<p>
+																<small class="text-muted"><i
+																	class="fa fa-clock-o"></i> <c:if
+																		test="${taska.status == 2}">
+																		<font color="red"> <c:out
+																				value="Status: In Progress" />
+																		</font>
+																	</c:if> <c:if test="${taska.status == 1}">
+																		<font color="blue"> <c:out
+																				value="Status: To Do" />
+																		</font>
+																	</c:if> <c:if test="${taska.status == 3}">
+																		<font color="green"> <c:out
+																				value="Status: Done" />
+																		</font>
+																	</c:if> </small>
+															</p>
 														</div>
-													</li>
-												</ul>
-											</c:forEach>
-										
+														<div class="timeline-body">
+															<p>Description: ${taska.description }</p>
+														</div>
+													</div>
+												</li>
+											</ul>
+										</c:forEach>
 									</div>
 								</div>
 							</div>
@@ -692,10 +699,27 @@
 														<div class="col-md-6">
 															<div class="row">
 																<div class="col-md-offset-3 col-md-9">
-																	<a type="button" class="btn btn-success" href="/submitAssignedTask/${assignedTask.task_id}/${assignedTask.phase_id}">
-																		<i class="fa fa-pencil"></i> Submit Task
-																	</a>
-
+																	<c:if test="${assignedTask.getStatus() == 1}">
+																		<%-- <a type="button" class="btn btn-success" 
+																			href="/submitAssignedTask/${assignedTask.task_id}/${assignedTask.phase_id}">
+																			<i class="fa fa-pencil"></i> Wait
+																		</a> --%>
+																		<a type="button" class="btn btn-success">
+																			<i class="fa fa-pencil"></i> Wait
+																		</a>
+																	</c:if>
+																	<c:if test="${assignedTask.getStatus() == 2}">
+																		<a type="button" class="btn btn-success"
+																			href="/submitAssignedTask/${assignedTask.task_id}/${assignedTask.phase_id}">
+																			<i class="fa fa-pencil"></i> Submit
+																		</a>
+																	</c:if>
+																	<c:if test="${assignedTask.getStatus() == 3}">
+																		<a type="button" class="btn btn-success"
+																			>
+																			<i class="fa fa-pencil"></i> Done
+																		</a>
+																	</c:if>
 																</div>
 															</div>
 														</div>
@@ -749,6 +773,9 @@
 	<!-- All Jquery -->
 	<!-- ============================================================== -->
 	<div class="chat-windows"></div>
+	<!-- ============================================================== -->
+	<!-- All Jquery -->
+	<!-- ============================================================== -->
 	<script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
 	<!-- Bootstrap tether Core JavaScript -->
 	<script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>

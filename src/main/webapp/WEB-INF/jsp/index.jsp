@@ -552,7 +552,7 @@
 
 							<c:forEach var="taskAssigned" items="${taskAssignedList}">
 								<c:if test="${taskAssigned.getStatus() == 1}">
-									<button class="card-body"
+									<a class="card-body"
 										style="opacity: 0.5; filter: alpha(opacity = 90);">
 
 										<h3 class="card-title">
@@ -563,7 +563,7 @@
 											<c:out value="${taskAssigned.getDescription()}" />
 										</p>
 
-									</button>
+									</a>
 								</c:if>
 							</c:forEach>
 
@@ -602,7 +602,7 @@
 
 							<c:forEach var="taskAssigned" items="${taskAssignedList}">
 								<c:if test="${taskAssigned.getStatus() == 3}">
-									<button class="card-body"
+									<a class="card-body" href="/task-detail/${taskAssigned.getTask_id()}/${taskAssigned.phase_id}"
 										style="opacity: 0.5; filter: alpha(opacity = 90);">
 
 										<h3 class="card-title">
@@ -613,7 +613,7 @@
 											<c:out value="${taskAssigned.getDescription()}" />
 										</p>
 
-									</button>
+									</a>
 								</c:if>
 							</c:forEach>
 

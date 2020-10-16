@@ -652,13 +652,9 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">Default Table</h4>
+								<h4 class="card-title"> Table</h4>
 								<h6 class="card-subtitle">
-									Using the most basic table markup, here’s how
-									<code>.table</code>
-									-based tables look in Bootstrap. All table styles are inherited
-									in Bootstrap 4, meaning any nested tables will be styled in the
-									same manner as the parent.
+									
 								</h6>
 								<div class="table-responsive">
 									<table id="demo-foo-addrow"
