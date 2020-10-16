@@ -276,7 +276,7 @@ ALTER TABLE [dbo].[Tasks] CHECK CONSTRAINT [FK__Tasks__project_i__403A8C7D]
 GO
 
 
- CREATE PROCEDURE submitAssignedTask(@taskId int, @phaseId int)
+  CREATE PROCEDURE submitAssignedTask(@taskId int, @phaseId int)
   AS
  Begin
  UPDATE [Tasks_Management].[dbo].[Task_Assigned] SET status = 3, finished_date = GETDATE() WHERE task_id = @taskId and phase_id = @phaseId;
@@ -286,6 +286,10 @@ GO
  begin
     SET @phaseId = @phaseId + 1;
     UPDATE [Tasks_Management].[dbo].[Task_Assigned] SET status = 2, finished_date = NULL WHERE task_id = @taskId and phase_id = @phaseId;
+ end
+ else
+ begin
+    UPDATE [Tasks_Management].[dbo].[Tasks] SET status = 'completed' WHERE task_id in (select task_id from [Tasks_Management].[dbo].[Task_Assigned] where task_id = @taskId and phase_id = @phaseId)
  end
 End;
 GO
