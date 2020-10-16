@@ -107,26 +107,23 @@ public class Task_AssignedDaoImplement extends JdbcDaoSupport implements Task_As
 
 	@Override
 	public void insertAssignedTask(Task_Assigned ta) {
-		String sql = "INSERT INTO [Tasks_Management].[dbo].[Task_Assigned] " +
-				"(task_id,userid,phase_id,deadline,finished_date,description,status) VALUES (?,?,?,?,?,?,?);"
-				+ "UPDATE [Tasks_Management].[dbo].[Task_Assigned] SET finished_date = NULL WHERE task_id = ? and userid = ? and phase_id = ?";
+		String sql = "INSERT INTO [Tasks_Management].[dbo].[Task_Assigned] " + "(task_id,userid,phase_id,deadline,description,status) VALUES (?,?,?,?,?,?);";
 		getJdbcTemplate().update(sql, new Object[]{
-				ta.getTask_id(),ta.getUser_id().getUser_id(),ta.getPhase_id(),ta.getDeadline(),ta.getFinished_date(),ta.getDescription(),ta.getStatus(),ta.getTask_id(),ta.getUser_id().getUser_id(),ta.getPhase_id()
-		});
+				ta.getTask_id(),ta.getUser_id().getUser_id(),ta.getPhase_id(),ta.getDeadline(),ta.getDescription(),ta.getStatus()});
 	}
 	
 	@Override
 	public void updateAssignedTask(Task_Assigned ta) {
-		String sql = "UPDATE [Tasks_Management].[dbo].[Task_Assigned] SET userid=?, phase_id=?, deadline=?, finished_date=?, description=?, status=? WHERE task_id = ? and userid = ? and phase_id = ?";
+		String sql = "UPDATE [Tasks_Management].[dbo].[Task_Assigned] SET userid=?, phase_id=?, deadline=?, description=?, status=? WHERE task_id = ? and userid = ? and phase_id = ?";
 		getJdbcTemplate().update(sql, new Object[]{
-				ta.getUser_id().getUser_id(),ta.getPhase_id(),ta.getDeadline(),ta.getFinished_date(),ta.getDescription(),ta.getStatus(),ta.getTask_id(),ta.getUser_id().getUser_id(),ta.getPhase_id()
+				ta.getUser_id().getUser_id(),ta.getPhase_id(),ta.getDeadline(),ta.getDescription(),ta.getStatus(),ta.getTask_id(),ta.getUser_id().getUser_id(),ta.getPhase_id()
 		});
 	}
 
 	
 	@Override
 	public void submitAssignedTask(int taskId,	int phaseId) {
-		String sql = "EXEC submitAssignedTask @taskId = ?, @phaseId = ?;";
+		String sql = "EXEC [Tasks_Management].[dbo].submitAssignedTask @taskId = ?, @phaseId = ?;";
 		getJdbcTemplate().update(sql, new Object[]{taskId,phaseId});
 	}
 	

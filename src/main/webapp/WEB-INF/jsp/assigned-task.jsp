@@ -36,7 +36,6 @@
 		document.getElementById("taskID").value = x[0].innerHTML;
 		document.getElementById("user_name").value = x[1].innerHTML;
 		document.getElementById("phaseID").value = x[3].textContent;
-		document.getElementById("finishedDate").value = x[4].innerHTML;
 		document.getElementById("deadline").value = x[5].innerHTML;
 		document.getElementById("description").value = x[6].innerHTML;
 		document.getElementById("status").value = x[7].innerHTML;
@@ -629,29 +628,6 @@
 											</div>
 										</div>
 									</div>
-									<div class="form-group row">
-										<label for="finishedDate" class="col-sm-3 control-label">Finished
-											Date</label>
-										<div class="col-sm-9">
-											<div class="input-group">
-												<form:input type="date" class="form-control"
-													id="finishedDate" value="08/08/1998" path="finished_date"/>
-												<script type="text/javascript">
-													const
-													element = document
-															.getElementById('finishedDate');
-													element.valueAsNumber = Date
-															.now()
-															- (new Date())
-																	.getTimezoneOffset()
-															* 60000;
-												</script>
-											</div>
-										</div>
-									</div>
-
-
-
 									<div class="form-group row m-b-0">
 										<div class="offset-sm-3 col-sm-9 ">
 											<button type="submit"
