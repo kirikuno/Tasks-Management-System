@@ -114,7 +114,7 @@ public class Task_AssignedDaoImplement extends JdbcDaoSupport implements Task_As
 	
 	@Override
 	public void updateAssignedTask(Task_Assigned ta) {
-		String sql = "UPDATE [Tasks_Management].[dbo].[Task_Assigned] SET userid=?, phase_id=?, deadline=?, description=?, status=? WHERE task_id = ? and userid = ? and phase_id = ?";
+		String sql = "UPDATE [Tasks_Management].[dbo].[Task_Assigned] SET userid=?, phase_id=?, deadline=?, description=?, status=? WHERE task_id = ? and phase_id = ?";
 		getJdbcTemplate().update(sql, new Object[]{
 				ta.getUser_id().getUser_id(),ta.getPhase_id(),ta.getDeadline(),ta.getDescription(),ta.getStatus(),ta.getTask_id(),ta.getUser_id().getUser_id(),ta.getPhase_id()
 		});
